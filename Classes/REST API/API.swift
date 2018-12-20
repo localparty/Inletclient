@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 
 
-enum API {}
+public enum API {}
 
 extension API {
     // business partner id
@@ -47,12 +47,12 @@ extension DataRequest {
     }
 }
 
-protocol ClientProtocol {
+public protocol ClientProtocol {
     func request<Response>(_ endpoint: Endpoint<Response>) -> Single<Response>
 }
 
 
-final class Client: ClientProtocol {
+public final class Client: ClientProtocol {
     private let baseURL = URL(string: "https://appdelivery.uat.inletdigital.com")!
     private let queue = DispatchQueue(label: "appdelivery.uat.inletdigital.com")
     
@@ -125,7 +125,7 @@ final class Client: ClientProtocol {
         }
     }
     
-    func request<Response>(_ endpoint: Endpoint<Response>) -> Single<Response> {
+    public func request<Response>(_ endpoint: Endpoint<Response>) -> Single<Response> {
         return Single<Response>.create { observer in
             
             let userNameValue = "$2a$06$YKYwyV3lwnQ.mFNm97XtgOie.oTAOnsh0VQh1UHQ9jbLgyrNfY/1C"
@@ -182,7 +182,7 @@ final class Client: ClientProtocol {
     }
 }
 
-class EndpointConfiguration {
+public class EndpointConfiguration {
     static let defaultHeaders: Headers = [
         "Content-Type": "application/json",
         "cache-control": "no-cache"
@@ -190,15 +190,15 @@ class EndpointConfiguration {
     static let timeoutInterval:TimeInterval = 220
 }
 
-typealias Headers = [String: String]
-typealias Parameters = [String: Any]
-typealias Path = String
+public typealias Headers = [String: String]
+public typealias Parameters = [String: Any]
+public typealias Path = String
 
-enum Method {
+public enum Method {
     case get, post, put, patch, delete
 }
 
-final class Endpoint<Response> {
+public final class Endpoint<Response> {
     
     let method: Method
     let path: Path
@@ -260,7 +260,7 @@ extension Endpoint where Response == Void {
     }
 }
 
-enum UserAttribute: String {
+public enum UserAttribute: String {
     case termsConsent
     case inletConsumerId
     case phoneNumber
@@ -269,14 +269,14 @@ enum UserAttribute: String {
     case email
 }
 
-typealias PayWithWfUser = String
-typealias PayWithWfUsers = [PayWithWfUser: [UserAttribute: Any]]
-typealias InletCid = String
+public typealias PayWithWfUser = String
+public typealias PayWithWfUsers = [PayWithWfUser: [UserAttribute: Any]]
+public typealias InletCid = String
 
 
 
 
-class WfClient{
+public class WfClient {
     
     static let users: PayWithWfUsers = [
         "bill": [
@@ -291,19 +291,15 @@ class WfClient{
     
 }
 
-enum BillPayApi {}
+public enum BillPayApi {}
 
-struct TermsAndConditionsConsent{
-    var consent: Bool
-}
-
-struct BrandDetails {
+public struct BrandDetails {
     var discoveryConsents: DiscoveryConsents?
     var discoveryProfile: DiscoveryProfile?
     var brandProfiles: [[BrandProfile]]?
 }
 
-typealias ApiErrorDelegate = ((Error)->Void)?
+public typealias ApiErrorDelegate = ((Error)->Void)?
 
 extension BillPayApi {
     static func getTermsAndConditionsConsent(payWithWfUser: PayWithWfUser) -> Bool? {
