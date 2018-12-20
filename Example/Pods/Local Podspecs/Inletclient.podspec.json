@@ -1,0 +1,33 @@
+{
+  "name": "Inletclient",
+  "version": "0.1.0",
+  "summary": "The Swift client for the Inlet REST APIs",
+  "description": "The Swift client for the Inlet REST APIs, implemented with RxSwift and Alamofire.",
+  "homepage": "https://github.com/localparty/Inletclient",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "localparty": "localparty@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/localparty/Inletclient.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "Inletclient/Classes/**/*",
+  "dependencies": {
+    "Alamofire": [
+
+    ],
+    "RxSwift": [
+
+    ],
+    "RxCocoa": [
+
+    ]
+  }
+}

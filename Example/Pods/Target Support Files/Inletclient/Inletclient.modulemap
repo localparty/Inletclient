@@ -1,0 +1,6 @@
+framework module Inletclient {
+  umbrella header "Inletclient-umbrella.h"
+
+  export *
+  module * { export * }
+}
