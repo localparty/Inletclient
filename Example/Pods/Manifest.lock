@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (4.8.0)
-  - Inletclient (0.1.0):
+  - Inletclient (1.0.2):
     - Alamofire
     - RxCocoa
     - RxSwift
@@ -26,7 +26,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
-  Inletclient: 49a62d5c99b0ae35e30fcdd0dfbb89b48b8f44b1
+  Inletclient: 94c4b284d65d38070cd12b883074d76e7aed819e
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973

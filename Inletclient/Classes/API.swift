@@ -291,7 +291,7 @@ public class WfClient {
     
 }
 
-public enum BillPayApi {}
+public enum Inletclient {}
 
 public struct BrandDetails {
     var discoveryConsents: DiscoveryConsents?
@@ -299,10 +299,8 @@ public struct BrandDetails {
     var brandProfiles: [[BrandProfile]]?
 }
 
-public typealias ApiErrorDelegate = ((Error)->Void)?
-
-extension BillPayApi {
-    static func getTermsAndConditionsConsent(payWithWfUser: PayWithWfUser) -> Bool? {
+extension Inletclient {
+    public static func getTermsAndConditionsConsent(payWithWfUser: PayWithWfUser) -> Bool? {
         guard WfClient.users[payWithWfUser] != nil &&
             WfClient.users[payWithWfUser]![.termsConsent] != nil else {
                 print("couldn't find that user in the Pay With Wells Fargo DB– try again?")
@@ -315,7 +313,7 @@ extension BillPayApi {
         return WfClient.users[payWithWfUser]![.termsConsent] as? Bool
     }
     
-    static func getPayees(payWithWfUser: PayWithWfUser, onBrandDetails: ((BrandDetails)->Void)?, onError: ApiErrorDelegate) {
+    public static func getPayees(payWithWfUser: PayWithWfUser, onBrandDetails: ((BrandDetails)->Void)?, onError: ((Error)->Void)?) {
         
         let minConfidenceLevel = 19
         

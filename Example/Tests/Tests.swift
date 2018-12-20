@@ -13,8 +13,18 @@ class Tests: XCTestCase {
         super.tearDown()
     }
     
+    func onError(_ error: Error) {
+        print("Inletclient error– \(error)")
+    }
+    
+    func onBrandDetails(_ brandDetails: BrandDetails) {
+        print("Inletclient brand details– \(brandDetails)")
+    }
+    
     func testExample() {
+        let payWithWfUser:PayWithWfUser = "bill"
         // This is an example of a functional test case.
+        Inletclient.getPayees(payWithWfUser: payWithWfUser, onBrandDetails: onBrandDetails, onError: onError)
         XCTAssert(true, "Pass")
     }
     
