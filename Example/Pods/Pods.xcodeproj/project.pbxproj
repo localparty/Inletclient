@@ -167,27 +167,28 @@
 		818F00208795DB0E79F45E21D02137DB /* Signal+Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2619B89522FF232EC03E2042E5B084 /* Signal+Subscription.swift */; };
 		8197C0693951A47EA5FBC9197BA404F8 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A7CE23AD0AB0CF423C5937D5BFE6A /* Window.swift */; };
 		82B8F3F94C75C61D4DE8EF345644ED58 /* ImmediateSchedulerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CE646F0DBA7ABDFF8FF9D0E66023FA /* ImmediateSchedulerType.swift */; };
-		83E0AA3E21CC2AB70075F0F8 /* ResultMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA2621CC2AB60075F0F8 /* ResultMatch.swift */; };
-		83E0AA3F21CC2AB70075F0F8 /* BillMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA2721CC2AB60075F0F8 /* BillMetadata.swift */; };
-		83E0AA4021CC2AB70075F0F8 /* RemittanceAddres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA2821CC2AB60075F0F8 /* RemittanceAddres.swift */; };
-		83E0AA4121CC2AB70075F0F8 /* DiscoveryProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA2921CC2AB60075F0F8 /* DiscoveryProfile.swift */; };
-		83E0AA4221CC2AB70075F0F8 /* RemittanceAddresse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA2A21CC2AB60075F0F8 /* RemittanceAddresse.swift */; };
-		83E0AA4321CC2AB70075F0F8 /* InletPutDiscoveryProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA2C21CC2AB70075F0F8 /* InletPutDiscoveryProfile.swift */; };
-		83E0AA4421CC2AB70075F0F8 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA2D21CC2AB70075F0F8 /* API.swift */; };
-		83E0AA4521CC2AB70075F0F8 /* InletGetBrandProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA2E21CC2AB70075F0F8 /* InletGetBrandProfile.swift */; };
-		83E0AA4621CC2AB70075F0F8 /* InletGetDiscoveryConsent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA2F21CC2AB70075F0F8 /* InletGetDiscoveryConsent.swift */; };
-		83E0AA4721CC2AB70075F0F8 /* BrandConsent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA3121CC2AB70075F0F8 /* BrandConsent.swift */; };
-		83E0AA4821CC2AB70075F0F8 /* DeliveryInstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA3221CC2AB70075F0F8 /* DeliveryInstruction.swift */; };
-		83E0AA4921CC2AB70075F0F8 /* EmailDeliveryPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA3321CC2AB70075F0F8 /* EmailDeliveryPointType.swift */; };
-		83E0AA4A21CC2AB70075F0F8 /* BrandProfileRemittanceAddresse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA3421CC2AB70075F0F8 /* BrandProfileRemittanceAddresse.swift */; };
-		83E0AA4B21CC2AB70075F0F8 /* SupportPhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA3521CC2AB70075F0F8 /* SupportPhoneNumber.swift */; };
-		83E0AA4C21CC2AB70075F0F8 /* ZipDeliveryPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA3621CC2AB70075F0F8 /* ZipDeliveryPointType.swift */; };
-		83E0AA4D21CC2AB70075F0F8 /* BrandProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA3721CC2AB70075F0F8 /* BrandProfile.swift */; };
-		83E0AA4E21CC2AB70075F0F8 /* AssetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA3821CC2AB70075F0F8 /* AssetData.swift */; };
-		83E0AA4F21CC2AB70075F0F8 /* BrandConnectionParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA3921CC2AB70075F0F8 /* BrandConnectionParameter.swift */; };
-		83E0AA5021CC2AB70075F0F8 /* UserField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA3A21CC2AB70075F0F8 /* UserField.swift */; };
-		83E0AA5121CC2AB70075F0F8 /* DocumentRetentionPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA3B21CC2AB70075F0F8 /* DocumentRetentionPolicy.swift */; };
-		83E0AA5221CC2AB70075F0F8 /* SupportEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA3C21CC2AB70075F0F8 /* SupportEmail.swift */; };
+		83E0AA7121CC45570075F0F8 /* ResultMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA5621CC45560075F0F8 /* ResultMatch.swift */; };
+		83E0AA7221CC45570075F0F8 /* BillMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA5721CC45560075F0F8 /* BillMetadata.swift */; };
+		83E0AA7321CC45570075F0F8 /* RemittanceAddres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA5821CC45560075F0F8 /* RemittanceAddres.swift */; };
+		83E0AA7421CC45570075F0F8 /* DiscoveryProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA5921CC45560075F0F8 /* DiscoveryProfile.swift */; };
+		83E0AA7521CC45570075F0F8 /* RemittanceAddresse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA5A21CC45560075F0F8 /* RemittanceAddresse.swift */; };
+		83E0AA7621CC45570075F0F8 /* InletPutDiscoveryProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA5D21CC45560075F0F8 /* InletPutDiscoveryProfile.swift */; };
+		83E0AA7721CC45570075F0F8 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA5E21CC45560075F0F8 /* API.swift */; };
+		83E0AA7821CC45570075F0F8 /* InletGetBrandProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA5F21CC45560075F0F8 /* InletGetBrandProfile.swift */; };
+		83E0AA7921CC45570075F0F8 /* InletGetDiscoveryConsent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA6021CC45560075F0F8 /* InletGetDiscoveryConsent.swift */; };
+		83E0AA7A21CC45570075F0F8 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 83E0AA6121CC45560075F0F8 /* .gitkeep */; };
+		83E0AA7B21CC45570075F0F8 /* BrandConsent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA6321CC45560075F0F8 /* BrandConsent.swift */; };
+		83E0AA7C21CC45570075F0F8 /* DeliveryInstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA6421CC45560075F0F8 /* DeliveryInstruction.swift */; };
+		83E0AA7D21CC45570075F0F8 /* EmailDeliveryPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA6521CC45560075F0F8 /* EmailDeliveryPointType.swift */; };
+		83E0AA7E21CC45570075F0F8 /* BrandProfileRemittanceAddresse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA6621CC45560075F0F8 /* BrandProfileRemittanceAddresse.swift */; };
+		83E0AA7F21CC45570075F0F8 /* SupportPhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA6721CC45560075F0F8 /* SupportPhoneNumber.swift */; };
+		83E0AA8021CC45570075F0F8 /* ZipDeliveryPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA6821CC45560075F0F8 /* ZipDeliveryPointType.swift */; };
+		83E0AA8121CC45570075F0F8 /* BrandProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA6921CC45560075F0F8 /* BrandProfile.swift */; };
+		83E0AA8221CC45570075F0F8 /* AssetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA6A21CC45560075F0F8 /* AssetData.swift */; };
+		83E0AA8321CC45570075F0F8 /* BrandConnectionParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA6B21CC45560075F0F8 /* BrandConnectionParameter.swift */; };
+		83E0AA8421CC45570075F0F8 /* UserField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA6C21CC45560075F0F8 /* UserField.swift */; };
+		83E0AA8521CC45570075F0F8 /* DocumentRetentionPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA6D21CC45560075F0F8 /* DocumentRetentionPolicy.swift */; };
+		83E0AA8621CC45570075F0F8 /* SupportEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0AA6E21CC45560075F0F8 /* SupportEmail.swift */; };
 		8428F67FA772235FA072F2473C20A313 /* _RXObjCRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E517D2A130BA6B00A2979B25093EB46 /* _RXObjCRuntime.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		851C5DC62D19928D0C4E8DCA87800356 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E72DC8C1BF7A1B933EB0419657218CD /* Queue.swift */; };
 		859951C230340FCAB147A65962507219 /* RxTabBarControllerDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2895B7DA69C748ACEE6A8878081A2E0E /* RxTabBarControllerDelegateProxy.swift */; };
@@ -612,27 +613,28 @@
 		80008EF72C7FDD48F45903D0A203C2D9 /* Platform.Darwin.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Platform.Darwin.swift; path = Platform/Platform.Darwin.swift; sourceTree = "<group>"; };
 		8070D57AC42F29A6100A3035A287E54A /* RxTableViewDataSourceProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxTableViewDataSourceProxy.swift; path = RxCocoa/iOS/Proxies/RxTableViewDataSourceProxy.swift; sourceTree = "<group>"; };
 		837F415BB6146E321DAE081EB3F00D20 /* SingleAsync.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SingleAsync.swift; path = RxSwift/Observables/SingleAsync.swift; sourceTree = "<group>"; };
-		83E0AA2621CC2AB60075F0F8 /* ResultMatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultMatch.swift; sourceTree = "<group>"; };
-		83E0AA2721CC2AB60075F0F8 /* BillMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillMetadata.swift; sourceTree = "<group>"; };
-		83E0AA2821CC2AB60075F0F8 /* RemittanceAddres.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemittanceAddres.swift; sourceTree = "<group>"; };
-		83E0AA2921CC2AB60075F0F8 /* DiscoveryProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryProfile.swift; sourceTree = "<group>"; };
-		83E0AA2A21CC2AB60075F0F8 /* RemittanceAddresse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemittanceAddresse.swift; sourceTree = "<group>"; };
-		83E0AA2C21CC2AB70075F0F8 /* InletPutDiscoveryProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InletPutDiscoveryProfile.swift; sourceTree = "<group>"; };
-		83E0AA2D21CC2AB70075F0F8 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		83E0AA2E21CC2AB70075F0F8 /* InletGetBrandProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InletGetBrandProfile.swift; sourceTree = "<group>"; };
-		83E0AA2F21CC2AB70075F0F8 /* InletGetDiscoveryConsent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InletGetDiscoveryConsent.swift; sourceTree = "<group>"; };
-		83E0AA3121CC2AB70075F0F8 /* BrandConsent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandConsent.swift; sourceTree = "<group>"; };
-		83E0AA3221CC2AB70075F0F8 /* DeliveryInstruction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryInstruction.swift; sourceTree = "<group>"; };
-		83E0AA3321CC2AB70075F0F8 /* EmailDeliveryPointType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailDeliveryPointType.swift; sourceTree = "<group>"; };
-		83E0AA3421CC2AB70075F0F8 /* BrandProfileRemittanceAddresse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandProfileRemittanceAddresse.swift; sourceTree = "<group>"; };
-		83E0AA3521CC2AB70075F0F8 /* SupportPhoneNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportPhoneNumber.swift; sourceTree = "<group>"; };
-		83E0AA3621CC2AB70075F0F8 /* ZipDeliveryPointType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipDeliveryPointType.swift; sourceTree = "<group>"; };
-		83E0AA3721CC2AB70075F0F8 /* BrandProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandProfile.swift; sourceTree = "<group>"; };
-		83E0AA3821CC2AB70075F0F8 /* AssetData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetData.swift; sourceTree = "<group>"; };
-		83E0AA3921CC2AB70075F0F8 /* BrandConnectionParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandConnectionParameter.swift; sourceTree = "<group>"; };
-		83E0AA3A21CC2AB70075F0F8 /* UserField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserField.swift; sourceTree = "<group>"; };
-		83E0AA3B21CC2AB70075F0F8 /* DocumentRetentionPolicy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentRetentionPolicy.swift; sourceTree = "<group>"; };
-		83E0AA3C21CC2AB70075F0F8 /* SupportEmail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportEmail.swift; sourceTree = "<group>"; };
+		83E0AA5621CC45560075F0F8 /* ResultMatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultMatch.swift; sourceTree = "<group>"; };
+		83E0AA5721CC45560075F0F8 /* BillMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillMetadata.swift; sourceTree = "<group>"; };
+		83E0AA5821CC45560075F0F8 /* RemittanceAddres.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemittanceAddres.swift; sourceTree = "<group>"; };
+		83E0AA5921CC45560075F0F8 /* DiscoveryProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryProfile.swift; sourceTree = "<group>"; };
+		83E0AA5A21CC45560075F0F8 /* RemittanceAddresse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemittanceAddresse.swift; sourceTree = "<group>"; };
+		83E0AA5D21CC45560075F0F8 /* InletPutDiscoveryProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InletPutDiscoveryProfile.swift; sourceTree = "<group>"; };
+		83E0AA5E21CC45560075F0F8 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		83E0AA5F21CC45560075F0F8 /* InletGetBrandProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InletGetBrandProfile.swift; sourceTree = "<group>"; };
+		83E0AA6021CC45560075F0F8 /* InletGetDiscoveryConsent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InletGetDiscoveryConsent.swift; sourceTree = "<group>"; };
+		83E0AA6121CC45560075F0F8 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		83E0AA6321CC45560075F0F8 /* BrandConsent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandConsent.swift; sourceTree = "<group>"; };
+		83E0AA6421CC45560075F0F8 /* DeliveryInstruction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryInstruction.swift; sourceTree = "<group>"; };
+		83E0AA6521CC45560075F0F8 /* EmailDeliveryPointType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailDeliveryPointType.swift; sourceTree = "<group>"; };
+		83E0AA6621CC45560075F0F8 /* BrandProfileRemittanceAddresse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandProfileRemittanceAddresse.swift; sourceTree = "<group>"; };
+		83E0AA6721CC45560075F0F8 /* SupportPhoneNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportPhoneNumber.swift; sourceTree = "<group>"; };
+		83E0AA6821CC45560075F0F8 /* ZipDeliveryPointType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipDeliveryPointType.swift; sourceTree = "<group>"; };
+		83E0AA6921CC45560075F0F8 /* BrandProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandProfile.swift; sourceTree = "<group>"; };
+		83E0AA6A21CC45560075F0F8 /* AssetData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetData.swift; sourceTree = "<group>"; };
+		83E0AA6B21CC45560075F0F8 /* BrandConnectionParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandConnectionParameter.swift; sourceTree = "<group>"; };
+		83E0AA6C21CC45560075F0F8 /* UserField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserField.swift; sourceTree = "<group>"; };
+		83E0AA6D21CC45560075F0F8 /* DocumentRetentionPolicy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentRetentionPolicy.swift; sourceTree = "<group>"; };
+		83E0AA6E21CC45560075F0F8 /* SupportEmail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportEmail.swift; sourceTree = "<group>"; };
 		84EDBC0B65D84AC93A3A84FB2A3C96DB /* Pods-Inletclient_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Inletclient_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		854F504D190A6EC24C049BD00E8C1C8A /* AtomicInt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AtomicInt.swift; path = Platform/AtomicInt.swift; sourceTree = "<group>"; };
 		857645C3D9C02D3B15343EDD2B3AFB01 /* UIBarButtonItem+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIBarButtonItem+Rx.swift"; path = "RxCocoa/iOS/UIBarButtonItem+Rx.swift"; sourceTree = "<group>"; };
@@ -1148,64 +1150,74 @@
 			path = ../..;
 			sourceTree = "<group>";
 		};
-		83E0AA2521CC2AB60075F0F8 /* discovery profile 2018-12-19 */ = {
+		83E0AA5421CC45560075F0F8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				83E0AA2621CC2AB60075F0F8 /* ResultMatch.swift */,
-				83E0AA2721CC2AB60075F0F8 /* BillMetadata.swift */,
-				83E0AA2821CC2AB60075F0F8 /* RemittanceAddres.swift */,
-				83E0AA2921CC2AB60075F0F8 /* DiscoveryProfile.swift */,
-				83E0AA2A21CC2AB60075F0F8 /* RemittanceAddresse.swift */,
+				83E0AA5521CC45560075F0F8 /* discovery profile 2018-12-19 */,
+				83E0AA5B21CC45560075F0F8 /* discovery consent 2018-12-19 */,
+				83E0AA5C21CC45560075F0F8 /* REST API */,
+				83E0AA6121CC45560075F0F8 /* .gitkeep */,
+				83E0AA6221CC45560075F0F8 /* brand profile 2018-12-20 */,
+			);
+			name = Classes;
+			path = Inletclient/Classes;
+			sourceTree = "<group>";
+		};
+		83E0AA5521CC45560075F0F8 /* discovery profile 2018-12-19 */ = {
+			isa = PBXGroup;
+			children = (
+				83E0AA5621CC45560075F0F8 /* ResultMatch.swift */,
+				83E0AA5721CC45560075F0F8 /* BillMetadata.swift */,
+				83E0AA5821CC45560075F0F8 /* RemittanceAddres.swift */,
+				83E0AA5921CC45560075F0F8 /* DiscoveryProfile.swift */,
+				83E0AA5A21CC45560075F0F8 /* RemittanceAddresse.swift */,
 			);
 			path = "discovery profile 2018-12-19";
 			sourceTree = "<group>";
 		};
-		83E0AA2B21CC2AB70075F0F8 /* REST API */ = {
-			isa = PBXGroup;
-			children = (
-				83E0AA2C21CC2AB70075F0F8 /* InletPutDiscoveryProfile.swift */,
-				83E0AA2D21CC2AB70075F0F8 /* API.swift */,
-				83E0AA2E21CC2AB70075F0F8 /* InletGetBrandProfile.swift */,
-				83E0AA2F21CC2AB70075F0F8 /* InletGetDiscoveryConsent.swift */,
-			);
-			path = "REST API";
-			sourceTree = "<group>";
-		};
-		83E0AA3021CC2AB70075F0F8 /* brand profile 2018-12-20 */ = {
-			isa = PBXGroup;
-			children = (
-				83E0AA3121CC2AB70075F0F8 /* BrandConsent.swift */,
-				83E0AA3221CC2AB70075F0F8 /* DeliveryInstruction.swift */,
-				83E0AA3321CC2AB70075F0F8 /* EmailDeliveryPointType.swift */,
-				83E0AA3421CC2AB70075F0F8 /* BrandProfileRemittanceAddresse.swift */,
-				83E0AA3521CC2AB70075F0F8 /* SupportPhoneNumber.swift */,
-				83E0AA3621CC2AB70075F0F8 /* ZipDeliveryPointType.swift */,
-				83E0AA3721CC2AB70075F0F8 /* BrandProfile.swift */,
-				83E0AA3821CC2AB70075F0F8 /* AssetData.swift */,
-				83E0AA3921CC2AB70075F0F8 /* BrandConnectionParameter.swift */,
-				83E0AA3A21CC2AB70075F0F8 /* UserField.swift */,
-				83E0AA3B21CC2AB70075F0F8 /* DocumentRetentionPolicy.swift */,
-				83E0AA3C21CC2AB70075F0F8 /* SupportEmail.swift */,
-			);
-			path = "brand profile 2018-12-20";
-			sourceTree = "<group>";
-		};
-		83E0AA3D21CC2AB70075F0F8 /* discovery consent 2018-12-19 */ = {
+		83E0AA5B21CC45560075F0F8 /* discovery consent 2018-12-19 */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = "discovery consent 2018-12-19";
 			sourceTree = "<group>";
 		};
-		83E0AA5321CC2AD50075F0F8 /* Classes */ = {
+		83E0AA5C21CC45560075F0F8 /* REST API */ = {
 			isa = PBXGroup;
 			children = (
-				83E0AA3021CC2AB70075F0F8 /* brand profile 2018-12-20 */,
-				83E0AA3D21CC2AB70075F0F8 /* discovery consent 2018-12-19 */,
-				83E0AA2521CC2AB60075F0F8 /* discovery profile 2018-12-19 */,
-				83E0AA2B21CC2AB70075F0F8 /* REST API */,
+				83E0AA5D21CC45560075F0F8 /* InletPutDiscoveryProfile.swift */,
+				83E0AA5E21CC45560075F0F8 /* API.swift */,
+				83E0AA5F21CC45560075F0F8 /* InletGetBrandProfile.swift */,
+				83E0AA6021CC45560075F0F8 /* InletGetDiscoveryConsent.swift */,
 			);
-			path = Classes;
+			path = "REST API";
+			sourceTree = "<group>";
+		};
+		83E0AA6221CC45560075F0F8 /* brand profile 2018-12-20 */ = {
+			isa = PBXGroup;
+			children = (
+				83E0AA6321CC45560075F0F8 /* BrandConsent.swift */,
+				83E0AA6421CC45560075F0F8 /* DeliveryInstruction.swift */,
+				83E0AA6521CC45560075F0F8 /* EmailDeliveryPointType.swift */,
+				83E0AA6621CC45560075F0F8 /* BrandProfileRemittanceAddresse.swift */,
+				83E0AA6721CC45560075F0F8 /* SupportPhoneNumber.swift */,
+				83E0AA6821CC45560075F0F8 /* ZipDeliveryPointType.swift */,
+				83E0AA6921CC45560075F0F8 /* BrandProfile.swift */,
+				83E0AA6A21CC45560075F0F8 /* AssetData.swift */,
+				83E0AA6B21CC45560075F0F8 /* BrandConnectionParameter.swift */,
+				83E0AA6C21CC45560075F0F8 /* UserField.swift */,
+				83E0AA6D21CC45560075F0F8 /* DocumentRetentionPolicy.swift */,
+				83E0AA6E21CC45560075F0F8 /* SupportEmail.swift */,
+			);
+			path = "brand profile 2018-12-20";
+			sourceTree = "<group>";
+		};
+		83E0AA6F21CC45560075F0F8 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Assets;
+			path = Inletclient/Assets;
 			sourceTree = "<group>";
 		};
 		89B571DDF7CEFA69DCF0B1F518794470 /* RxSwift */ = {
@@ -1369,7 +1381,8 @@
 		89B59249A1C22AB430B9CF4B19DF1EF0 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				83E0AA5321CC2AD50075F0F8 /* Classes */,
+				83E0AA6F21CC45560075F0F8 /* Assets */,
+				83E0AA5421CC45560075F0F8 /* Classes */,
 				060F39BA0771E231E65C3561428D0DBF /* Inletclient.podspec */,
 				DA18B87C3210F2B9F9DE4DEFC4EE75CE /* LICENSE */,
 				5CDB5DED1576CC728235D8035AF96FDB /* README.md */,
@@ -1662,6 +1675,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83E0AA7A21CC45570075F0F8 /* .gitkeep in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1700,28 +1714,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83E0AA4F21CC2AB70075F0F8 /* BrandConnectionParameter.swift in Sources */,
-				83E0AA5021CC2AB70075F0F8 /* UserField.swift in Sources */,
-				83E0AA4021CC2AB70075F0F8 /* RemittanceAddres.swift in Sources */,
-				83E0AA4521CC2AB70075F0F8 /* InletGetBrandProfile.swift in Sources */,
-				83E0AA4D21CC2AB70075F0F8 /* BrandProfile.swift in Sources */,
-				83E0AA4A21CC2AB70075F0F8 /* BrandProfileRemittanceAddresse.swift in Sources */,
-				83E0AA4121CC2AB70075F0F8 /* DiscoveryProfile.swift in Sources */,
-				83E0AA3E21CC2AB70075F0F8 /* ResultMatch.swift in Sources */,
+				83E0AA8321CC45570075F0F8 /* BrandConnectionParameter.swift in Sources */,
+				83E0AA8421CC45570075F0F8 /* UserField.swift in Sources */,
+				83E0AA7321CC45570075F0F8 /* RemittanceAddres.swift in Sources */,
+				83E0AA7821CC45570075F0F8 /* InletGetBrandProfile.swift in Sources */,
+				83E0AA8121CC45570075F0F8 /* BrandProfile.swift in Sources */,
+				83E0AA7E21CC45570075F0F8 /* BrandProfileRemittanceAddresse.swift in Sources */,
+				83E0AA7421CC45570075F0F8 /* DiscoveryProfile.swift in Sources */,
+				83E0AA7121CC45570075F0F8 /* ResultMatch.swift in Sources */,
 				076221607E296E375E47A72659ABA2F5 /* Inletclient-dummy.m in Sources */,
-				83E0AA4221CC2AB70075F0F8 /* RemittanceAddresse.swift in Sources */,
-				83E0AA5221CC2AB70075F0F8 /* SupportEmail.swift in Sources */,
-				83E0AA4321CC2AB70075F0F8 /* InletPutDiscoveryProfile.swift in Sources */,
-				83E0AA4C21CC2AB70075F0F8 /* ZipDeliveryPointType.swift in Sources */,
-				83E0AA4E21CC2AB70075F0F8 /* AssetData.swift in Sources */,
-				83E0AA4921CC2AB70075F0F8 /* EmailDeliveryPointType.swift in Sources */,
-				83E0AA4621CC2AB70075F0F8 /* InletGetDiscoveryConsent.swift in Sources */,
-				83E0AA4421CC2AB70075F0F8 /* API.swift in Sources */,
-				83E0AA3F21CC2AB70075F0F8 /* BillMetadata.swift in Sources */,
-				83E0AA5121CC2AB70075F0F8 /* DocumentRetentionPolicy.swift in Sources */,
-				83E0AA4B21CC2AB70075F0F8 /* SupportPhoneNumber.swift in Sources */,
-				83E0AA4821CC2AB70075F0F8 /* DeliveryInstruction.swift in Sources */,
-				83E0AA4721CC2AB70075F0F8 /* BrandConsent.swift in Sources */,
+				83E0AA7521CC45570075F0F8 /* RemittanceAddresse.swift in Sources */,
+				83E0AA8621CC45570075F0F8 /* SupportEmail.swift in Sources */,
+				83E0AA7621CC45570075F0F8 /* InletPutDiscoveryProfile.swift in Sources */,
+				83E0AA8021CC45570075F0F8 /* ZipDeliveryPointType.swift in Sources */,
+				83E0AA8221CC45570075F0F8 /* AssetData.swift in Sources */,
+				83E0AA7D21CC45570075F0F8 /* EmailDeliveryPointType.swift in Sources */,
+				83E0AA7921CC45570075F0F8 /* InletGetDiscoveryConsent.swift in Sources */,
+				83E0AA7721CC45570075F0F8 /* API.swift in Sources */,
+				83E0AA7221CC45570075F0F8 /* BillMetadata.swift in Sources */,
+				83E0AA8521CC45570075F0F8 /* DocumentRetentionPolicy.swift in Sources */,
+				83E0AA7F21CC45570075F0F8 /* SupportPhoneNumber.swift in Sources */,
+				83E0AA7C21CC45570075F0F8 /* DeliveryInstruction.swift in Sources */,
+				83E0AA7B21CC45570075F0F8 /* BrandConsent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
