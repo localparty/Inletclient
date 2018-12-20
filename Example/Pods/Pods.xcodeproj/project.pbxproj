@@ -1153,9 +1153,12 @@
 		83E0AA5421CC45560075F0F8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				83E0AA5D21CC45560075F0F8 /* InletPutDiscoveryProfile.swift */,
+				83E0AA5F21CC45560075F0F8 /* InletGetBrandProfile.swift */,
+				83E0AA6021CC45560075F0F8 /* InletGetDiscoveryConsent.swift */,
+				83E0AA5E21CC45560075F0F8 /* API.swift */,
 				83E0AA5521CC45560075F0F8 /* discovery profile 2018-12-19 */,
 				83E0AA5B21CC45560075F0F8 /* discovery consent 2018-12-19 */,
-				83E0AA5C21CC45560075F0F8 /* REST API */,
 				83E0AA6121CC45560075F0F8 /* .gitkeep */,
 				83E0AA6221CC45560075F0F8 /* brand profile 2018-12-20 */,
 			);
@@ -1180,17 +1183,6 @@
 			children = (
 			);
 			path = "discovery consent 2018-12-19";
-			sourceTree = "<group>";
-		};
-		83E0AA5C21CC45560075F0F8 /* REST API */ = {
-			isa = PBXGroup;
-			children = (
-				83E0AA5D21CC45560075F0F8 /* InletPutDiscoveryProfile.swift */,
-				83E0AA5E21CC45560075F0F8 /* API.swift */,
-				83E0AA5F21CC45560075F0F8 /* InletGetBrandProfile.swift */,
-				83E0AA6021CC45560075F0F8 /* InletGetDiscoveryConsent.swift */,
-			);
-			path = "REST API";
 			sourceTree = "<group>";
 		};
 		83E0AA6221CC45560075F0F8 /* brand profile 2018-12-20 */ = {
