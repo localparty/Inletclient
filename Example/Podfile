@@ -1,0 +1,6 @@
+use_frameworks!
+target 'Inletclient_Tests' do
+  pod 'Inletclient', :path => '../'
+  
+  
+end
