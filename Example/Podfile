@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'Inletclient_Example' do
+  pod 'Inletclient', :path => '../'
+
+  target 'Inletclient_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
