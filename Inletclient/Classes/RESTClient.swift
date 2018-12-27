@@ -47,6 +47,8 @@ public protocol RESTClientProtocol {
 public final class RESTClient: RESTClientProtocol {
     private let baseURL = URL(string: "https://appdelivery.uat.inletdigital.com")!
     private let queue = DispatchQueue(label: "appdelivery.uat.inletdigital.com")
+    private var username: String
+    private var password: String
     
     static func initUrlProtectionSpace(user: String, password: String) {
         let upsHost = "appdelivery.uat.inletdigital.com"
@@ -103,8 +105,10 @@ public final class RESTClient: RESTClientProtocol {
         
         URLCredentialStorage.shared.setDefaultCredential(credential, for: protectionSpace)
     }
-    init() {
+    init(username: String, password: String) {
         RESTClient.configureProtectionSpace()
+        self.username = username
+        self.password = password
     }
     
     static func httpMethod(from method: Method) -> Alamofire.HTTPMethod {
@@ -119,9 +123,6 @@ public final class RESTClient: RESTClientProtocol {
     
     public func request<Response>(_ endpoint: Endpoint<Response>) -> Single<Response> {
         return Single<Response>.create { observer in
-            
-            let userNameValue = "$2a$06$YKYwyV3lwnQ.mFNm97XtgOie.oTAOnsh0VQh1UHQ9jbLgyrNfY/1C"
-            let passwordValue = "$2a$06$H7RhnGbrHg17E4siBcilwuJTwgyRiYQZAC6GPO0lITc/t/r24ORAC"
             
             let urlRequestURL = self.url(path: endpoint.path)
             
@@ -146,7 +147,7 @@ public final class RESTClient: RESTClientProtocol {
                 .request(urlRequest)
                 .validateResponseStatus()
                 .debugLog()
-                .authenticate(user: userNameValue, password: passwordValue, persistence: .permanent)
+                .authenticate(user: self.username, password: self.password, persistence: .permanent)
                 
                 .responseData(queue: queue) { response in
                     if let data = response.data {

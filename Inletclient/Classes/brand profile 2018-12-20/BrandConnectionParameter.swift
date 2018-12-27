@@ -17,8 +17,8 @@ public struct BrandConnectionParameter : Codable {
     
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        emailDeliveryPointType = try EmailDeliveryPointType(from: decoder)
-        zipDeliveryPointType = try ZipDeliveryPointType(from: decoder)
+        emailDeliveryPointType = try values.decodeIfPresent(EmailDeliveryPointType.self, forKey: .emailDeliveryPointType)
+        zipDeliveryPointType = try values.decodeIfPresent(ZipDeliveryPointType.self, forKey: .zipDeliveryPointType)
     }
     
 }

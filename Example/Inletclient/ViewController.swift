@@ -53,8 +53,28 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let payWithWfUser: PayWithWfUser = "bill"
-        Inletclient.getBrandDetails(payWithWfUser: payWithWfUser, onBrandDetails: onBrandDetails, onError: onError)
+        
+        
+        enum PayWithWfUser: String {
+            case bill
+        }
+        
+        let users: [PayWithWfUser: [UserAttribute: String]] = [
+            .bill: [
+                .termsConsent: "false",
+                .inletConsumerId: "WFTEST111918A",
+                .phoneNumber: "451-555-1111",
+                .phoneCountryCode: "1",
+                .zip: "94016",
+                .email: "wfuser1@email.com"
+            ]
+        ]
+        let userNameValue = "$2a$06$YKYwyV3lwnQ.mFNm97XtgOie.oTAOnsh0VQh1UHQ9jbLgyrNfY/1C"
+        let passwordValue = "$2a$06$H7RhnGbrHg17E4siBcilwuJTwgyRiYQZAC6GPO0lITc/t/r24ORAC"
+        
+        let inletClient = Inletclient(username: userNameValue, password: passwordValue)
+        
+        inletClient.getBrandDetails(userAttributes: users[.bill]!, onBrandDetails: onBrandDetails, onError: onError)
     }
 
     override func didReceiveMemoryWarning() {

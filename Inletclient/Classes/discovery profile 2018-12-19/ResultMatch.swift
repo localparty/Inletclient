@@ -18,9 +18,6 @@ public struct ResultMatch : Codable {
     public let remittanceAddresses : [RemittanceAddresse]?
     public let verificationComplete : Bool?
     
-    // introduced to merge the brand detail data
-    public var brandProfile : BrandProfile?
-    
     enum CodingKeys: String, CodingKey {
         case accountNumber = "accountNumber"
         case billMetadata = "billMetadata"
@@ -32,9 +29,6 @@ public struct ResultMatch : Codable {
         case enrollmentEligibilityStatus = "enrollmentEligibilityStatus"
         case remittanceAddresses = "remittanceAddresses"
         case verificationComplete = "verificationComplete"
-        
-        // introduced to merge the brand detail data
-        case brandProfile = "brandProfile"
     }
     
     public init(from decoder: Decoder) throws {
@@ -49,9 +43,6 @@ public struct ResultMatch : Codable {
         enrollmentEligibilityStatus = try values.decodeIfPresent(Bool.self, forKey: .enrollmentEligibilityStatus)
         remittanceAddresses = try values.decodeIfPresent([RemittanceAddresse].self, forKey: .remittanceAddresses)
         verificationComplete = try values.decodeIfPresent(Bool.self, forKey: .verificationComplete)
-        
-        // introduced to merge the brand detail data
-        brandProfile = try values.decodeIfPresent(BrandProfile.self, forKey: .brandProfile)
     }
     
 }

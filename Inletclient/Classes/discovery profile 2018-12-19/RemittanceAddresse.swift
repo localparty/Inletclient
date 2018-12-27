@@ -15,7 +15,8 @@ public struct RemittanceAddresse : Codable {
     
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        remittanceAddress = try RemittanceAddres(from: decoder)
+        remittanceAddress = try values.decodeIfPresent(RemittanceAddres.self, forKey: .remittanceAddress)
+        //remittanceAddress = try RemittanceAddres(from: decoder)
     }
     
 }

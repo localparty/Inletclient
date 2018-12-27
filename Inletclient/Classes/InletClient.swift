@@ -3,7 +3,15 @@ import Alamofire
 import RxSwift
 import RxCocoa
 
-public enum Inletclient {}
+public class Inletclient {
+    var username: String
+    var password: String
+    
+    public init(username: String, password: String){
+        self.username = username
+        self.password = password
+    }
+}
 
 public struct BrandDetails {
     public var discoveryConsents: DiscoveryConsents?
@@ -16,20 +24,8 @@ public enum InletClientError: Error {
 }
 
 extension Inletclient {
-    public static func getTermsAndConditionsConsent(payWithWfUser: PayWithWfUser) -> Bool? {
-        guard WfClient.users[payWithWfUser] != nil &&
-            WfClient.users[payWithWfUser]![.termsConsent] != nil else {
-                print("couldn't find that user in the Pay With Wells Fargo DB– try again?")
-                return nil
-        }
-        guard WfClient.users[payWithWfUser]![.termsConsent] != nil else {
-            print("the database seems to have an empty value for termsConsent– try again?")
-            return nil
-        }
-        return WfClient.users[payWithWfUser]![.termsConsent] as? Bool
-    }
     
-    static func onBrandProfiles(
+    func onBrandProfiles(
         discoveryConsents: DiscoveryConsents,
         discoveryProfile: DiscoveryProfile,
         brandProfileDetails: [(ResultMatch, BrandProfile)],
@@ -46,13 +42,13 @@ extension Inletclient {
     }
     
     
-    static func putDiscoveryProfile(
+    func putDiscoveryProfile(
         client: RESTClient,
         channelSpecificConsumerId: String,
-        zip: String,
-        phoneCountryCode: String,
-        phone: String,
-        email: String,
+        zip: String?,
+        phoneCountryCode: String?,
+        phone: String?,
+        email: String?,
         minConfidenceLevel: Int,
         discoveryConsents: DiscoveryConsents,
         onBrandDetails: ((BrandDetails)->Void)?,
@@ -62,7 +58,7 @@ extension Inletclient {
         let consentId:String = discoveryConsents.consents![0].consentId!
         
         func onPutDiscoveryProfile (discoveryProfile: DiscoveryProfile) -> Void {
-            Inletclient.onDiscoveryProfile(
+            onDiscoveryProfile(
                 client: client, discoveryConsents: discoveryConsents,
                 discoveryProfile: discoveryProfile, minConfidenceLevel: minConfidenceLevel,
                 onBrandDetails: onBrandDetails, onError: onError)
@@ -77,7 +73,7 @@ extension Inletclient {
             .subscribe(onNext: onPutDiscoveryProfile, onError: onError)
     }
     
-    public static func onDiscoveryProfile(
+    public func onDiscoveryProfile(
         client: RESTClient,
         discoveryConsents: DiscoveryConsents,
         discoveryProfile: DiscoveryProfile,
@@ -150,7 +146,7 @@ extension Inletclient {
         
         func onBrandProfilesMerged (brandProfileDetails: [(ResultMatch, BrandProfile)]) -> Void {
             
-            Inletclient.onBrandProfiles(
+            onBrandProfiles(
                 discoveryConsents: discoveryConsents,
                 discoveryProfile: discoveryProfile,
                 brandProfileDetails: brandProfileDetails,
@@ -165,24 +161,26 @@ extension Inletclient {
             .subscribe(onNext: onBrandProfilesMerged, onError: onError)
     }
     
-    public static func getBrandDetails(payWithWfUser: PayWithWfUser, onBrandDetails: ((BrandDetails)->Void)?, onError: ((Error)->Void)?) {
+    public func getBrandDetails(
+        userAttributes: [UserAttribute: String],
+        onBrandDetails: ((BrandDetails)->Void)?, onError: ((Error)->Void)?) {
         
         let minConfidenceLevel = 19
         
-        let client = RESTClient()
+        let client = RESTClient(username: username, password: password)
         
-        let channelSpecificConsumerId = WfClient.users[payWithWfUser]![.inletConsumerId] as! String
-        let zip = WfClient.users[payWithWfUser]![.zip] as! String
-        let phoneCountryCode = WfClient.users[payWithWfUser]![.phoneCountryCode] as! String
-        let phone = WfClient.users[payWithWfUser]![.phoneNumber] as! String
-        let email = WfClient.users[payWithWfUser]![.email] as! String
+        let channelSpecificConsumerId: String = userAttributes[.inletConsumerId]!
+        let zip: String? = userAttributes[.zip]
+        let phoneCountryCode: String? = userAttributes[.phoneCountryCode]
+        let phone: String? = userAttributes[.phoneNumber]
+        let email: String? = userAttributes[.email]
         
         func onDiscoveryConsents (_ discoveryConsents: DiscoveryConsents) -> Void {
             guard discoveryConsents.consents != nil else {
                 onError?(InletClientError.emptyResponse)
                 return
             }
-            Inletclient.putDiscoveryProfile(
+            putDiscoveryProfile(
                 client: client, channelSpecificConsumerId: channelSpecificConsumerId,
                 zip: zip, phoneCountryCode: phoneCountryCode, phone: phone, email: email,
                 minConfidenceLevel: minConfidenceLevel,

@@ -12,7 +12,10 @@ import RxSwift
 import RxCocoa
 
 extension API {
-    public static func putDiscoveryProfile(channelSpecificConsumerId: String, consentId: String, zip: String, phoneCountryCode: String, phone: String, email:String) -> Endpoint<DiscoveryProfile> {
+    public static func putDiscoveryProfile(
+        channelSpecificConsumerId: String, consentId: String?,
+        zip: String?, phoneCountryCode: String?, phone: String?,
+        email:String?) -> Endpoint<DiscoveryProfile> {
         let channelId: String = API.channelId()
         let endpointPath = "api/access/v1/discovery/channel/\(channelId)/channelconsumer/\(channelSpecificConsumerId)"
         
