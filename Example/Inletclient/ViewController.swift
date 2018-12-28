@@ -10,77 +10,59 @@ import UIKit
 import Inletclient
 
 class ViewController: UIViewController {
+    @IBOutlet weak var brandsUIButton: UIButton!
     
-    func onError(_ error: Error) {
-        print("Inletclient error– \(error)")
-    }
-    
-    public struct Brand {
-        
-        public enum ConnectionParameter: String {
-            case zip = "zipDeliveryPointType"
-            case email = "emailDeliveryPointType"
-        }
-        
-        var id: String? = nil
-        var connection: Bool? = nil
-        var displayName: String? = nil
-        var description: String? = nil
-        var connectionParameters: [ConnectionParameter]? = nil
-        var assetData: [AssetData]?
-        
-        func getConnectionParameters(brandInfoTuple: (resultMatch: ResultMatch, brandProfile: BrandProfile)) ->
-            [ConnectionParameter] {
-                var requiredData: [ConnectionParameter] = []
-                
-                if let brandConnectionParameters: [BrandConnectionParameter] = brandInfoTuple.brandProfile.brandConnectionParameters {
-                    for matchingBrandProfile: BrandConnectionParameter in brandConnectionParameters {
-                        if matchingBrandProfile.emailDeliveryPointType != nil &&
-                            !requiredData.contains(ConnectionParameter.email) {
-                            requiredData.append(ConnectionParameter.email)
-                        }
-                        if matchingBrandProfile.zipDeliveryPointType != nil &&
-                            !requiredData.contains(ConnectionParameter.zip) {
-                            requiredData.append(ConnectionParameter.zip)
-                        }
-                    }
+    @IBAction func onGetDataNow(_ sender: UIButton) {
+        sender.isEnabled = false
+        getBrandsFromInlet(
+            andThen: { data in
+                DispatchQueue.main.async {
+                    sender.isEnabled = true
                 }
-                return requiredData
-        }
-        
-        public static func extractFrom(brandDetails: BrandDetails) -> [Brand]{
-            var brands: [Brand] = []
-            
-            if let brandProfileDeets = brandDetails.brandProfileDetails {
-                
-                for tuple in brandProfileDeets {
-                    var brand = Brand()
-                    brand.id = tuple.brandProfile.brandId
-                    brand.connection = tuple.resultMatch.connection
-                    brand.displayName = tuple.brandProfile.brandDisplayName
-                    brand.description = tuple.brandProfile.brandDescription
-                    brand.connectionParameters = brand.getConnectionParameters(brandInfoTuple: tuple)
-                    brand.assetData = tuple.brandProfile.assetData
-                    
-                    brands.append(brand)
+            },
+            orElse: { error in
+                DispatchQueue.main.async {
+                    sender.isEnabled = true
                 }
             }
-            return brands
+        )
+    }
+    
+    @IBOutlet weak var brandsUITableView: UITableView!
+    
+    enum StoryBoardReusableCellIdentifier: String {
+        case inletBrand = "inletBrandCell"
+        case errorCell = "errorCell"
+    }
+    
+    func onBrandDetailsError(_ error: Error) {
+        print("Inletclient error– \(error)")
+        
+        let errorDataSource: UITableViewDataSource =
+            error.asUITableViewDataSource(withCellIdentifier: StoryBoardReusableCellIdentifier.errorCell.rawValue)
+        
+        DispatchQueue.main.async {
+            self.brandsUITableView.dataSource = errorDataSource
+            self.brandsUITableView.reloadData()
         }
     }
-
+    
     func onBrandDetails(_ brandDetails: BrandDetails) {
-        let brandsInfo: [Brand] = Brand.extractFrom(brandDetails: brandDetails)
-        for brandInfo in brandsInfo {
-            print("brand details– \(String(describing: brandInfo))")
+        let inletBrands: [InletBrand] = InletBrand.extractFrom(brandDetails: brandDetails)
+        for inletBrand in inletBrands {
+            print("brand details– \(String(describing: inletBrand))")
         }
+        
+        let inletBrandsDatasource: UITableViewDataSource = InletBrand.getUITableViewDataSource(fromInletBrands: inletBrands, reusableCellIdentifier: StoryBoardReusableCellIdentifier.inletBrand.rawValue)
+        
+        DispatchQueue.main.async {
+            self.brandsUITableView.dataSource = inletBrandsDatasource
+            self.brandsUITableView.reloadData()
+        }
+        
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        
+    
+    func getBrandsFromInlet(andThen onDataReady: ((Any)->Void)? = nil, orElse: ((Error)->Void)? = nil){
         enum PayWithWfUser: String {
             case bill
             case chris
@@ -129,26 +111,20 @@ class ViewController: UIViewController {
         
         inletClient.getBrandDetails(
             userAttributes: users[.bill]!,
-            onBrandDetails: onBrandDetails,
-            onError: onError)
-        /*
-         
-         
-         inletClient.getBrandDetails(
-         userAttributes: users[.chris]!,
-         onBrandDetails: onBrandDetails,
-         onError: onError)
-         
-         inletClient.getBrandDetails(
-         userAttributes: users[.jason]!,
-         onBrandDetails: onBrandDetails,
-         onError: onError)
-         
-         inletClient.getBrandDetails(
-         userAttributes: users[.g]!,
-         onBrandDetails: onBrandDetails,
-         onError: onError)
-         */
+            onBrandDetails: { brandDetails in
+                onDataReady?(brandDetails)
+                self.onBrandDetails(brandDetails)
+            },
+            onError: { error in
+                orElse?(error)
+                self.onBrandDetailsError(error)
+            }
+        )
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {

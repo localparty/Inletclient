@@ -7,15 +7,15 @@ import Foundation
 
 public struct AssetData : Codable {
     
-    let assetDescription : String?
-    let assetId : String?
-    let assetName : String?
-    let assetTitle : String?
-    let assetType : String?
-    let brandId : String?
-    let languageCode : String?
+    public let assetDescription : String?
+    public let assetId : String?
+    public let assetName : String?
+    public let assetTitle : String?
+    public let assetType : String?
+    public let brandId : String?
+    public let languageCode : String?
     
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case assetDescription = "assetDescription"
         case assetId = "assetId"
         case assetName = "assetName"
