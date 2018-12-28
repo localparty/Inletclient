@@ -15,38 +15,64 @@ class ViewController: UIViewController {
         print("Inletclient error– \(error)")
     }
     
-    func onBrandDetails(_ brandDetails: BrandDetails) {
-        print("Inletclient brand details– \(brandDetails)")
+    public struct Brand {
         
-        enum RequiredDatum: String {
+        public enum ConnectionParameter: String {
             case zip = "zipDeliveryPointType"
             case email = "emailDeliveryPointType"
         }
         
-        if let brandProfileDeet = brandDetails.brandProfileDetails {
-            
-            for tuple in brandProfileDeet {
-                var requiredData: [RequiredDatum] = []
-             
-                let brandProfile: BrandProfile = tuple.brandProfile
+        var id: String? = nil
+        var connection: Bool? = nil
+        var displayName: String? = nil
+        var description: String? = nil
+        var connectionParameters: [ConnectionParameter]? = nil
+        var assetData: [AssetData]?
+        
+        func getConnectionParameters(brandInfoTuple: (resultMatch: ResultMatch, brandProfile: BrandProfile)) ->
+            [ConnectionParameter] {
+                var requiredData: [ConnectionParameter] = []
                 
-                if let brandConnectionParameters: [BrandConnectionParameter] = brandProfile.brandConnectionParameters {
+                if let brandConnectionParameters: [BrandConnectionParameter] = brandInfoTuple.brandProfile.brandConnectionParameters {
                     for matchingBrandProfile: BrandConnectionParameter in brandConnectionParameters {
                         if matchingBrandProfile.emailDeliveryPointType != nil &&
-                            !requiredData.contains(RequiredDatum.email) {
-                            requiredData.append(RequiredDatum.email)
+                            !requiredData.contains(ConnectionParameter.email) {
+                            requiredData.append(ConnectionParameter.email)
                         }
                         if matchingBrandProfile.zipDeliveryPointType != nil &&
-                            !requiredData.contains(RequiredDatum.zip) {
-                            requiredData.append(RequiredDatum.zip)
+                            !requiredData.contains(ConnectionParameter.zip) {
+                            requiredData.append(ConnectionParameter.zip)
                         }
                     }
                 }
+                return requiredData
+        }
+        
+        public static func extractFrom(brandDetails: BrandDetails) -> [Brand]{
+            var brands: [Brand] = []
+            
+            if let brandProfileDeets = brandDetails.brandProfileDetails {
                 
-                for requiredDatum  in requiredData {
-                    print("the brand with id– \(String(describing: brandProfile.brandId)) requires additional data– \(requiredDatum.rawValue)")
+                for tuple in brandProfileDeets {
+                    var brand = Brand()
+                    brand.id = tuple.brandProfile.brandId
+                    brand.connection = tuple.resultMatch.connection
+                    brand.displayName = tuple.brandProfile.brandDisplayName
+                    brand.description = tuple.brandProfile.brandDescription
+                    brand.connectionParameters = brand.getConnectionParameters(brandInfoTuple: tuple)
+                    brand.assetData = tuple.brandProfile.assetData
+                    
+                    brands.append(brand)
                 }
             }
+            return brands
+        }
+    }
+
+    func onBrandDetails(_ brandDetails: BrandDetails) {
+        let brandsInfo: [Brand] = Brand.extractFrom(brandDetails: brandDetails)
+        for brandInfo in brandsInfo {
+            print("brand details– \(String(describing: brandInfo))")
         }
     }
 
@@ -57,6 +83,9 @@ class ViewController: UIViewController {
         
         enum PayWithWfUser: String {
             case bill
+            case chris
+            case jason
+            case g
         }
         
         let users: [PayWithWfUser: [UserAttribute: String]] = [
@@ -67,6 +96,30 @@ class ViewController: UIViewController {
                 .phoneCountryCode: "1",
                 .zip: "94016",
                 .email: "wfuser1@email.com"
+            ],
+            .chris: [
+                .termsConsent: "false",
+                .inletConsumerId: "WFTEST111918B",
+                .phoneNumber: "451-555-2222",
+                .phoneCountryCode: "1",
+                .zip: "94016",
+                .email: "wfuser2@email.com"
+            ],
+            .g: [
+                .termsConsent: "false",
+                .inletConsumerId: "WFTEST111918C",
+                .phoneNumber: "451-555-3333",
+                .phoneCountryCode: "1",
+                .zip: "94016",
+                .email: "wfuser3@email.com"
+            ],
+            .jason: [
+                .termsConsent: "false",
+                .inletConsumerId: "WFTEST111918D",
+                .phoneNumber: "451-555-4444",
+                .phoneCountryCode: "1",
+                .zip: "94016",
+                .email: "wfuser4@email.com"
             ]
         ]
         let userNameValue = "$2a$06$YKYwyV3lwnQ.mFNm97XtgOie.oTAOnsh0VQh1UHQ9jbLgyrNfY/1C"
@@ -74,7 +127,28 @@ class ViewController: UIViewController {
         
         let inletClient = Inletclient(username: userNameValue, password: passwordValue)
         
-        inletClient.getBrandDetails(userAttributes: users[.bill]!, onBrandDetails: onBrandDetails, onError: onError)
+        inletClient.getBrandDetails(
+            userAttributes: users[.bill]!,
+            onBrandDetails: onBrandDetails,
+            onError: onError)
+        /*
+         
+         
+         inletClient.getBrandDetails(
+         userAttributes: users[.chris]!,
+         onBrandDetails: onBrandDetails,
+         onError: onError)
+         
+         inletClient.getBrandDetails(
+         userAttributes: users[.jason]!,
+         onBrandDetails: onBrandDetails,
+         onError: onError)
+         
+         inletClient.getBrandDetails(
+         userAttributes: users[.g]!,
+         onBrandDetails: onBrandDetails,
+         onError: onError)
+         */
     }
 
     override func didReceiveMemoryWarning() {
