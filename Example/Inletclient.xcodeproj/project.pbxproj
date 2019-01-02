@@ -12,7 +12,8 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		839C9D2121DA9CC30076EF22 /* PayeesUITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839C9D2021DA9CC30076EF22 /* PayeesUITableViewController.swift */; };
+		83FC61DC21DD4F49009397D8 /* TableViewControllerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FC61DB21DD4F49009397D8 /* TableViewControllerImpl.swift */; };
+		83FC61DE21DD4F61009397D8 /* DatasourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FC61DD21DD4F61009397D8 /* DatasourceController.swift */; };
 		A85F4CE62C5D35D80F4CB11C /* Pods_Inletclient_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFD5D7AE1509218C6B26C53 /* Pods_Inletclient_Example.framework */; };
 		F1011C3BDF9F955AD53A6C6B /* Pods_Inletclient_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2442E3112641CFE97253CA28 /* Pods_Inletclient_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -40,7 +41,8 @@
 		607FACE51AFB9204008FA782 /* Inletclient_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Inletclient_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		839C9D2021DA9CC30076EF22 /* PayeesUITableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayeesUITableViewController.swift; sourceTree = "<group>"; };
+		83FC61DB21DD4F49009397D8 /* TableViewControllerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerImpl.swift; sourceTree = "<group>"; };
+		83FC61DD21DD4F61009397D8 /* DatasourceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatasourceController.swift; sourceTree = "<group>"; };
 		CB48E150B25F8790A212C1B7 /* Pods-Inletclient_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inletclient_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Inletclient_Example/Pods-Inletclient_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		CD6A91F57BB8C4103A038C5D /* Pods-Inletclient_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inletclient_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Inletclient_Tests/Pods-Inletclient_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		CEFD5D7AE1509218C6B26C53 /* Pods_Inletclient_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inletclient_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,7 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				839C9D2021DA9CC30076EF22 /* PayeesUITableViewController.swift */,
+				83FC61DD21DD4F61009397D8 /* DatasourceController.swift */,
+				83FC61DB21DD4F49009397D8 /* TableViewControllerImpl.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -343,8 +346,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				839C9D2121DA9CC30076EF22 /* PayeesUITableViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				83FC61DC21DD4F49009397D8 /* TableViewControllerImpl.swift in Sources */,
+				83FC61DE21DD4F61009397D8 /* DatasourceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

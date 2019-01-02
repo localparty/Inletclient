@@ -119,11 +119,16 @@ extension BrandDetails {
 public class MemoDataSource: NSObject, UITableViewDataSource {
     
     public let reusableCellIdentifier: String
-    public let memo: String
+    public let text: String
+    public let detail: String
     
-    public init(reusableCellIdentifier: String, memo: String){
+    public init(
+        reusableCellIdentifier: String,
+        text: String,
+        detail: String){
         self.reusableCellIdentifier = reusableCellIdentifier
-        self.memo = memo
+        self.text = text
+        self.detail = detail
     }
     
     public func numberOfSections(in tableView: UITableView) -> Int {
@@ -140,7 +145,8 @@ public class MemoDataSource: NSObject, UITableViewDataSource {
                 withIdentifier: reusableCellIdentifier,
                 for: indexPath)
         
-        cell.textLabel?.text = memo
+        cell.textLabel?.text = text
+        cell.detailTextLabel?.text = detail
         
         return cell
     }

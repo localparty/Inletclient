@@ -1,12 +1,7 @@
 import UIKit
 import Inletclient
 
-class InletBrandCell: UITableViewCell {
-    public var logoURL: URL? = nil
-    public var displayValue: String? = nil
-}
-
-class PayeesUITableViewController: UITableViewController, DatasourceDelegate {
+class TableViewControllerImpl: UITableViewController, DatasourceDelegate {
     
     enum StoryBoardReusableCellIdentifier: String {
         case `default` = "default"
@@ -51,21 +46,8 @@ class PayeesUITableViewController: UITableViewController, DatasourceDelegate {
     }
     
     func setBrandContent(brand: InletBrand, cell: UITableViewCell) {
-        var logoURL: URL?
-        for assetDatum: AssetData in brand.assetData ?? [] {
-            if assetDatum.assetType == "assetType" &&
-                assetDatum.assetName != nil {
-                logoURL = URL(string: assetDatum.assetName!)
-                break
-            }
-        }
-        if cell is InletBrandCell {
-            let inletBrandCell: InletBrandCell = cell as! InletBrandCell
-            inletBrandCell.logoURL = logoURL
-        } else {
-            cell.textLabel?.text = "displayName– \(brand.displayName)"
-            cell.detailTextLabel?.text = "description– \(brand.description)" 
-        }
+        cell.textLabel?.text = "displayName– \(String(describing: brand.displayName))"
+        cell.detailTextLabel?.text = "description– \(String(describing: brand.description))"
     }
     
     func getReusableCellIdentifier() -> String {
