@@ -121,10 +121,11 @@ public class MemoDataSource: NSObject, UITableViewDataSource {
     public let reusableCellIdentifier: String
     public let memo: String
     
-    init(reusableCellIdentifier: String, memo: String){
+    public init(reusableCellIdentifier: String, memo: String){
         self.reusableCellIdentifier = reusableCellIdentifier
         self.memo = memo
     }
+    
     public func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -143,8 +144,7 @@ public class MemoDataSource: NSObject, UITableViewDataSource {
         
         return cell
     }
-    
-    
+
 }
 
 public protocol DatasourceDelegate {
