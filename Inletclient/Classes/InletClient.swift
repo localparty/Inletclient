@@ -163,7 +163,8 @@ extension Inletclient {
     
     public func getBrandDetails(
         userAttributes: [UserAttribute: String],
-        onBrandDetails: ((BrandDetails)->Void)?, onError: ((Error)->Void)?) {
+        andThen: ((BrandDetails)->Void)?,
+        orElse: ((Error)->Void)?) {
         
         let minConfidenceLevel = 19
         
@@ -177,20 +178,20 @@ extension Inletclient {
         
         func onDiscoveryConsents (_ discoveryConsents: DiscoveryConsents) -> Void {
             guard discoveryConsents.consents != nil else {
-                onError?(InletClientError.emptyResponse)
+                orElse?(InletClientError.emptyResponse)
                 return
             }
             putDiscoveryProfile(
                 client: client, channelSpecificConsumerId: channelSpecificConsumerId,
                 zip: zip, phoneCountryCode: phoneCountryCode, phone: phone, email: email,
                 minConfidenceLevel: minConfidenceLevel,
-                discoveryConsents: discoveryConsents, onBrandDetails: onBrandDetails, onError: onError
+                discoveryConsents: discoveryConsents, onBrandDetails: andThen, onError: orElse
             )
         }
         
         _ = client
             .request(API.getDiscoveryConsents())
             .asObservable()
-            .subscribe(onNext: onDiscoveryConsents, onError: onError)
+            .subscribe(onNext: onDiscoveryConsents, onError: orElse)
     }
 }
