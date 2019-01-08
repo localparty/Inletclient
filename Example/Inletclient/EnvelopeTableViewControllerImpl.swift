@@ -17,6 +17,9 @@ class EnvelopeTableViewControllerImpl: UITableViewController, EnvelopeDataSource
             text: error.localizedDescription,
             detail: String(describing: error))
         uiTableViewDatasource = errorDatasource
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     override func viewDidLoad() {
@@ -33,6 +36,9 @@ class EnvelopeTableViewControllerImpl: UITableViewController, EnvelopeDataSource
             andThen: {(envelope) in
                 let envelopeDatasource: UITableViewDataSource = envelope.asUITableViewDataSource(datasourceDelegate: self)
                 self.uiTableViewDatasource = envelopeDatasource
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
         },
             orElse: orElse)
     }
