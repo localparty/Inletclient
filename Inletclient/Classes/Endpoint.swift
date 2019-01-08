@@ -18,7 +18,7 @@ public final class Endpoint<Response> {
          path: Path,
          parameters: Parameters? = nil,
          headers: Headers? = nil,
-         encoding: ParameterEncoding? = nil,
+         encoding: ParameterEncoding? = JSONEncoding.default,
          decode: @escaping (Data) throws -> Response) {
         self.method = method
         self.path = path

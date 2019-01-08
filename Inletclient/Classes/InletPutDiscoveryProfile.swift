@@ -27,8 +27,7 @@ extension API {
         return Endpoint(
             method: .put,
             path: endpointPath,
-            parameters: parameters,
-            encoding: JSONEncoding.default
+            parameters: parameters
         )
     }
 }

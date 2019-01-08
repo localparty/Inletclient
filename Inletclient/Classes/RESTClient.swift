@@ -105,7 +105,7 @@ public final class RESTClient: RESTClientProtocol {
         
         URLCredentialStorage.shared.setDefaultCredential(credential, for: protectionSpace)
     }
-    init(username: String, password: String) {
+    public init(username: String, password: String) {
         RESTClient.configureProtectionSpace()
         self.username = username
         self.password = password

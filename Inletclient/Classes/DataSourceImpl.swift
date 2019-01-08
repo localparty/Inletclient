@@ -101,8 +101,6 @@ public class InletBrandsUITableViewDataSource: NSObject, UITableViewDataSource {
         
         return cell
     }
-    
-    
 }
 
 extension BrandDetails {

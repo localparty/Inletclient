@@ -19,7 +19,7 @@ public struct DiscoveryConsents: Codable {
 }
 
 extension API {
-    static func getDiscoveryConsents() -> Endpoint<DiscoveryConsents> {
+    public static func getDiscoveryConsents() -> Endpoint<DiscoveryConsents> {
         return Endpoint(path: "api/access/v1/discovery/consent")
     }
 }

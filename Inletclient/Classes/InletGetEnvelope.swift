@@ -12,10 +12,7 @@ import RxSwift
 import RxCocoa
 
 extension API {
-    public static func getBrandProfile(brandId: String) -> Endpoint<[BrandProfile]> {
-        
-        let endpointPath = "api/access/v1/brand/\(brandId)"
-        
-        return Endpoint(path: endpointPath)
+    public static func getEnvelope(envelopeId: String) -> Endpoint<Envelope> {
+        return Endpoint(path: "api/access/v1/envelope/\(envelopeId)")
     }
 }
