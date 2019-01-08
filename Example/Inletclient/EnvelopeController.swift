@@ -53,7 +53,8 @@ extension Envelope {
         
         for child in type.children {
             if child.label! == name {
-                return String(describing: child.value)
+                let value:String = String(describing: child.value)
+                return value
             }
         }
         return nil
@@ -64,7 +65,8 @@ extension Envelope {
         
         for child in type.children {
             if child.label! == name{
-                return String(describing: child.value.self)
+                let type: String = String(describing: child.value.self)
+                return type
             }
         }
         return nil
