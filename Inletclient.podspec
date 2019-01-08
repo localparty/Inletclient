@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Inletclient'
-  s.version          = '1.0.7'
+  s.version          = '1.0.8'
   s.summary          = 'The Swift client for the Inlet REST APIs'
 
 # This description is used to generate tags and improve search results.
@@ -18,7 +18,9 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-The Swift client for the Inlet REST APIs, implemented with RxSwift and Alamofire.
+# The Swift client for the Inlet REST APIs, implemented with RxSwift and Alamofire.
+- Payees
+- Current Bills
                        DESC
 
   s.homepage         = 'https://github.com/localparty/Inletclient'
