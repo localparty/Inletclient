@@ -1,7 +1,8 @@
 import UIKit
 import Inletclient
 
-class EnvelopeTableViewControllerImpl: UITableViewController, EnvelopeDataSource {
+class EnvelopeTableViewControllerImpl: UITableViewController {
+    
     
     enum StoryBoardReusableCellIdentifier: String {
         case `default` = "default"
@@ -9,14 +10,14 @@ class EnvelopeTableViewControllerImpl: UITableViewController, EnvelopeDataSource
     
     let inletController: EnvelopeController = EnvelopeController()
     
-    var uiTableViewDatasource: UITableViewDataSource?
+    var uiTableViewHelper: UITableViewHelper?
     
     func orElse(error: Error){
-        let errorDatasource: UITableViewDataSource = MemoDataSource(
+        let errorDatasource: UITableViewHelper = MemoDatasource(
             reusableCellIdentifier: StoryBoardReusableCellIdentifier.default.rawValue,
             text: error.localizedDescription,
             detail: String(describing: error))
-        uiTableViewDatasource = errorDatasource
+        uiTableViewHelper = errorDatasource
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -25,17 +26,17 @@ class EnvelopeTableViewControllerImpl: UITableViewController, EnvelopeDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let progressDatasource: UITableViewDataSource = MemoDataSource(
+        let progressDatasource: UITableViewHelper = MemoDatasource(
             reusableCellIdentifier: StoryBoardReusableCellIdentifier.default.rawValue,
             text: "loading...",
             detail: "Inlet API")
-        uiTableViewDatasource = progressDatasource
+        uiTableViewHelper = progressDatasource
         
         inletController.getEnvelope(
             withEnvelopeId: "EV:10000271587",
             andThen: {(envelope) in
-                let envelopeDatasource: UITableViewDataSource = envelope.asUITableViewDataSource(datasourceDelegate: self)
-                self.uiTableViewDatasource = envelopeDatasource
+                let envelopeDatasource: UITableViewHelper = envelope.asUITableViewHelper(reusableCellIdentifier: "default")
+                self.uiTableViewHelper = envelopeDatasource
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -46,15 +47,19 @@ class EnvelopeTableViewControllerImpl: UITableViewController, EnvelopeDataSource
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return uiTableViewDatasource!.numberOfSections!(in: tableView)
+        return uiTableViewHelper!.numberOfSections!(in: tableView)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return uiTableViewDatasource!.tableView(tableView, numberOfRowsInSection: section)
+        return uiTableViewHelper!.tableView(tableView, numberOfRowsInSection: section)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return uiTableViewDatasource!.tableView(tableView, cellForRowAt: indexPath)
+        return uiTableViewHelper!.tableView(tableView, cellForRowAt: indexPath)
+    }
+    
+    override public func tableView(_ tableView: UITableView, didSelectRowAt: IndexPath) {
+        uiTableViewHelper?.tableView?(tableView, didSelectRowAt: didSelectRowAt)
     }
     
     // MARK: - EnvelopeDataSource

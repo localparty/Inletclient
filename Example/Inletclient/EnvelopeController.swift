@@ -15,7 +15,7 @@ class EnvelopeController {
     let passwordValue = "$2a$06$H7RhnGbrHg17E4siBcilwuJTwgyRiYQZAC6GPO0lITc/t/r24ORAC"
     let restClient: RESTClient
     
-    var datasource: UITableViewDataSource? = MemoDataSource(
+    var datasource: UITableViewDataSource? = MemoDatasource(
         reusableCellIdentifier: "default",
         text: "loading envelope now...",
         detail: "Inlet REST API")
@@ -38,13 +38,33 @@ class EnvelopeController {
     
 }
 
-enum PropertyTypes:String
-{
-    case OptionalInt = "Optional<Int>"
-    case Int = "Int"
-    case OptionalString = "Optional<String>"
-    case String = "String"
-    //...
+public enum ReuseIndentifier: String {
+    case `default` = "default"
+    case hyperTable = "hyper table"
+    case tableController = "table controller"
+}
+
+public enum UIStoryboardName: String {
+    case main = "Main"
+}
+
+public enum ControllerStoryboardIdentifier: String {
+    case tableController = "table controller"
+}
+
+extension UITableView {
+    public func dequeueReusableCell(withReuseIdentifier: ReuseIndentifier, cellForRowAt indexPath: IndexPath)  -> UITableViewCell {
+        return self.dequeueReusableCell(withIdentifier: withReuseIdentifier.rawValue, for: indexPath)
+    }
+}
+
+extension UIStoryboard {
+    public convenience init (uiStoryboardName: UIStoryboardName, bundle: Bundle? = nil) {
+        self.init(name: uiStoryboardName.rawValue, bundle: bundle)
+    }
+    public func instantiateViewController(withControlerStoryboardIdentifier: ControllerStoryboardIdentifier) -> UIViewController{
+        return instantiateViewController(withIdentifier: withControlerStoryboardIdentifier.rawValue);
+    }
 }
 
 extension Envelope {
@@ -60,43 +80,35 @@ extension Envelope {
         return nil
     }
     //returns the property type
-    func getTypeOfProperty(name:String)->String? {
-        let type: Mirror = Mirror(reflecting:self)
+    func getTypeOfProperty(name:String)->Any.Type? {
+        let mirror: Mirror = Mirror(reflecting:self)
         
-        for child in type.children {
+        for child in mirror.children {
+            print("child– \(String(describing: child))")
+        }
+        
+        for child in mirror.children {
             if child.label! == name{
-                let type: String = String(describing: child.value.self)
-                return type
+                let childType = type(of: child.value)
+                //let type: String = String(describing: child.value.self)
+                return childType
             }
         }
         return nil
     }
-    
-    //Property Type Comparison
-    func propertyIsOfType(propertyName:String, type:PropertyTypes)->Bool {
-        if getTypeOfProperty(name: propertyName) == type.rawValue {
-            return true
-        }
-        
-        return false
-    }
-}
-
-public protocol EnvelopeDataSource {
-    func getReusableCellIdentifier(forTypeName: String) -> String
 }
 
 extension Envelope {
-    public func asUITableViewDataSource (datasourceDelegate: EnvelopeDataSource) -> UITableViewDataSource {
+    public func asUITableViewHelper (reusableCellIdentifier: String) -> UITableViewHelper {
         
-        class EnvelopeUITableViewDataSource: NSObject, UITableViewDataSource {
+        class EnvelopeUITableViewHelperImpl: NSObject, UITableViewHelper {
             
             public let envelope: Envelope
-            public let datasourceDelegate: EnvelopeDataSource
+            public let reusableCellIdentifier: String
             
-            init(envelope: Envelope, datasourceDelegate: EnvelopeDataSource) {
+            init(envelope: Envelope, reusableCellIdentifier: String) {
                 self.envelope = envelope
-                self.datasourceDelegate = datasourceDelegate
+                self.reusableCellIdentifier = reusableCellIdentifier
             }
             
             public func numberOfSections(in tableView: UITableView) -> Int {
@@ -112,20 +124,18 @@ extension Envelope {
                 let codingKeyname: String = codingKey.rawValue
                 
                 let cell: UITableViewCell = tableView.dequeueReusableCell(
-                    withIdentifier: self.datasourceDelegate.getReusableCellIdentifier(forTypeName: codingKeyname),
+                    withIdentifier: self.reusableCellIdentifier,
                     for: indexPath)
-                
-                if cell is UITableViewCell {
-                    cell.textLabel?.text = codingKeyname
-                    cell.detailTextLabel?.text = envelope.getValueOfProperty(name: codingKeyname)
-                }
+                cell.textLabel?.text = codingKeyname
+                cell.detailTextLabel?.text = envelope.getValueOfProperty(name: codingKeyname)
                 
                 return cell
             }
+            
         }
-        let uiTableViewDataSource: UITableViewDataSource = EnvelopeUITableViewDataSource(envelope: self, datasourceDelegate: datasourceDelegate)
+        let uiTableViewHelper: EnvelopeUITableViewHelperImpl = EnvelopeUITableViewHelperImpl(envelope: self, reusableCellIdentifier: reusableCellIdentifier)
         
-        return uiTableViewDataSource
+        return uiTableViewHelper
     }
 }
 

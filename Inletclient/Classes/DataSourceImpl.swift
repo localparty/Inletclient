@@ -114,7 +114,7 @@ extension BrandDetails {
     }
 }
 
-public class MemoDataSource: NSObject, UITableViewDataSource {
+public class MemoDatasource: NSObject, UITableViewHelper {
     
     public let reusableCellIdentifier: String
     public let text: String
@@ -156,3 +156,5 @@ public protocol DatasourceDelegate {
     func setBrandContent(brand: InletBrand, cell: UITableViewCell) -> Void
     func getReusableCellIdentifier() -> String
 }
+
+public protocol UITableViewHelper: UITableViewDataSource, UITableViewDelegate {}

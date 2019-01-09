@@ -42,7 +42,7 @@ public struct Envelope: Codable {
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         asOfDate = try values.decodeIfPresent(String.self, forKey: .asOfDate)
-        billData = try EnvelopeBillData(from: decoder)
+        billData = try values.decodeIfPresent(EnvelopeBillData.self, forKey: .billData)
         brandConnectionId = try values.decodeIfPresent(String.self, forKey: .brandConnectionId)
         brandId = try values.decodeIfPresent(String.self, forKey: .brandId)
         contentType = try values.decodeIfPresent(String.self, forKey: .contentType)

@@ -11,7 +11,7 @@ import Inletclient
 
 class InletController {
     
-    var datasource: UITableViewDataSource? = MemoDataSource(reusableCellIdentifier: "default", text: "loading data now...", detail: "Inlet REST API")
+    var datasource: UITableViewDataSource? = MemoDatasource(reusableCellIdentifier: "default", text: "loading data now...", detail: "Inlet REST API")
     
     var datasourceDelegate: DatasourceDelegate? = nil
     
@@ -83,7 +83,7 @@ class InletController {
                 self.datasourceDelegate?.resetDataSource(with: self.datasource!)
             },
             orElse: { error in
-                self.datasource = MemoDataSource(
+                self.datasource = MemoDatasource(
                     reusableCellIdentifier:  (self.datasourceDelegate?.getReusableCellIdentifier())!,
                     
                     text: error.localizedDescription,
