@@ -9,7 +9,7 @@ public struct EnvelopeDocument : Codable {
     
     public let documentId : String?
     
-    enum CodingKeys: String, CodingKey, CaseIterable {
+    enum CodingKeys: String, CodingKey {
         case documentId = "documentId"
     }
     

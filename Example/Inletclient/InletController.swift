@@ -11,13 +11,15 @@ import Inletclient
 
 class InletController {
     
-    var datasource: UITableViewDataSource? = MemoDatasource(reusableCellIdentifier: "default", text: "loading data now...", detail: "Inlet REST API")
+    var datasource: UITableViewDataSource? = TextDetailDatasource(
+        reusableCellIdentifier: "default",
+        text: "loading data now...",
+        detail: "Inlet REST API"
+    )
     
-    var datasourceDelegate: DatasourceDelegate? = nil
-    
-    func getBrandsFromInlet(
-        andThen onDataReady: ((BrandDetails)->Void)? = nil,
-        orElse: ((Error)->Void)? = nil){
+    func getData(
+        onData: (((DiscoveryConsents, DiscoveryProfile, [(ResultMatch, BrandProfile)], Mailbox))->Void)? = nil,
+        onError: ((Error)->Void)? = nil){
         
         enum PayWithWfUser: String {
             case bill
@@ -26,72 +28,66 @@ class InletController {
             case g
         }
         
+        let channelId: String = "CP:0000000149"
+        let envelopeId: String = "EV:10000271587"
+        let minConfidenceLevel: String = "19"
+        
         let users: [PayWithWfUser: [UserAttribute: String]] = [
             .bill: [
+                .channelId: channelId,
                 .termsConsent: "false",
                 .inletConsumerId: "WFTEST111918A",
                 .phoneNumber: "451-555-1111",
                 .phoneCountryCode: "1",
                 .zip: "94016",
-                .email: "wfuser1@email.com"
+                .email: "wfuser1@email.com",
+                .envelopeId: envelopeId,
+                .minConfidenceLevel: minConfidenceLevel
             ],
             .chris: [
+                .channelId: channelId,
                 .termsConsent: "false",
                 .inletConsumerId: "WFTEST111918B",
                 .phoneNumber: "451-555-2222",
                 .phoneCountryCode: "1",
                 .zip: "94016",
-                .email: "wfuser2@email.com"
+                .email: "wfuser2@email.com",
+                .envelopeId: envelopeId,
+                .minConfidenceLevel: minConfidenceLevel
             ],
             .g: [
+                .channelId: channelId,
                 .termsConsent: "false",
                 .inletConsumerId: "WFTEST111918C",
                 .phoneNumber: "451-555-3333",
                 .phoneCountryCode: "1",
                 .zip: "94016",
-                .email: "wfuser3@email.com"
+                .email: "wfuser3@email.com",
+                .envelopeId: envelopeId,
+                .minConfidenceLevel: minConfidenceLevel
             ],
             .jason: [
+                .channelId: channelId,
                 .termsConsent: "false",
                 .inletConsumerId: "WFTEST111918D",
                 .phoneNumber: "451-555-4444",
                 .phoneCountryCode: "1",
                 .zip: "94016",
-                .email: "wfuser4@email.com"
+                .email: "wfuser4@email.com",
+                .envelopeId: envelopeId,
+                .minConfidenceLevel: minConfidenceLevel
             ]
         ]
+        
         let userNameValue = "$2a$06$YKYwyV3lwnQ.mFNm97XtgOie.oTAOnsh0VQh1UHQ9jbLgyrNfY/1C"
         let passwordValue = "$2a$06$H7RhnGbrHg17E4siBcilwuJTwgyRiYQZAC6GPO0lITc/t/r24ORAC"
         
         let inletClient = Inletclient(username: userNameValue, password: passwordValue)
         
-        inletClient.getBrandDetails(
+        inletClient.getData(
             userAttributes: users[.bill]!,
-            andThen: { brandDetails in
-                onDataReady?(brandDetails)
-            },
-            orElse: { error in
-                orElse?(error)
-            }
-        )
-    }
-    
-    public init(){
-        getBrandsFromInlet(
-            andThen: { brandDetails in
-                self.datasource = brandDetails.asUITableViewDataSource(datasourceDelegate: self.datasourceDelegate!)
-                self.datasourceDelegate?.resetDataSource(with: self.datasource!)
-            },
-            orElse: { error in
-                self.datasource = MemoDatasource(
-                    reusableCellIdentifier:  (self.datasourceDelegate?.getReusableCellIdentifier())!,
-                    
-                    text: error.localizedDescription,
-                    detail: String(describing: error)
-                )
-                self.datasourceDelegate?.resetDataSource(with: self.datasource!)
-            }
-        )
+            onData: onData,
+            onError: onError)
     }
     
 }

@@ -1,0 +1,90 @@
+{
+    "ccId": "UATCC:10000272415",
+    "consentId": "GC:10000000002",
+    "resultMatch": [
+        {
+            "brandId": "BB:10000001203",
+            "brandName": "Xcel_POC",
+            "contentType": [
+                "Bill"
+            ],
+            "accountNumber": "WFTEST111518C",
+            "confidenceLevel": 19,
+            "verificationComplete": true,
+            "enrollmentEligibilityStatus": true,
+            "connection": false,
+            "billMetadata": null,
+            "remittanceAddresses": [
+                {
+                    "remittanceAddress": {
+                        "addressName": "Remittance Address",
+                        "addressLines": [
+                            "292 Madison Ave",
+                            "5th Floor",
+                            "New York",
+                            "NY",
+                            "US",
+                            "10017"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "brandId": "BB:10000001203",
+            "brandName": "Xcel_POC",
+            "contentType": [
+                "Bill"
+            ],
+            "accountNumber": null,
+            "confidenceLevel": 1,
+            "verificationComplete": false,
+            "enrollmentEligibilityStatus": true,
+            "connection": false,
+            "billMetadata": null,
+            "remittanceAddresses": null
+        },
+        {
+            "brandId": "BB:10000001203",
+            "brandName": "Xcel_POC",
+            "contentType": [
+                "Bill"
+            ],
+            "accountNumber": null,
+            "confidenceLevel": 1,
+            "verificationComplete": false,
+            "enrollmentEligibilityStatus": true,
+            "connection": false,
+            "billMetadata": null,
+            "remittanceAddresses": null
+        },
+        {
+            "brandId": "BB:10000001203",
+            "brandName": "Xcel_POC",
+            "contentType": [
+                "Bill"
+            ],
+            "accountNumber": null,
+            "confidenceLevel": 1,
+            "verificationComplete": false,
+            "enrollmentEligibilityStatus": true,
+            "connection": false,
+            "billMetadata": null,
+            "remittanceAddresses": null
+        },
+        {
+            "brandId": "BB:10000001203",
+            "brandName": "Xcel_POC",
+            "contentType": [
+                "Bill"
+            ],
+            "accountNumber": null,
+            "confidenceLevel": 1,
+            "verificationComplete": false,
+            "enrollmentEligibilityStatus": true,
+            "connection": false,
+            "billMetadata": null,
+            "remittanceAddresses": null
+        }
+    ]
+}

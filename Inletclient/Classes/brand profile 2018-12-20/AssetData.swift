@@ -14,6 +14,7 @@ public struct AssetData : Codable {
     public let assetType : String?
     public let brandId : String?
     public let languageCode : String?
+    public let assetFile : String?
     
     public enum CodingKeys: String, CodingKey {
         case assetDescription = "assetDescription"
@@ -23,6 +24,7 @@ public struct AssetData : Codable {
         case assetType = "assetType"
         case brandId = "brandId"
         case languageCode = "languageCode"
+        case assetFile = "assetFile"
     }
     
     public init(from decoder: Decoder) throws {
@@ -34,6 +36,7 @@ public struct AssetData : Codable {
         assetType = try values.decodeIfPresent(String.self, forKey: .assetType)
         brandId = try values.decodeIfPresent(String.self, forKey: .brandId)
         languageCode = try values.decodeIfPresent(String.self, forKey: .languageCode)
+        assetFile = try values.decodeIfPresent(String.self, forKey: .assetFile)
     }
     
 }

@@ -3,7 +3,24 @@ import Alamofire
 import RxSwift
 import RxCocoa
 
+public enum UserAttribute: String {
+    case termsConsent
+    case inletConsumerId
+    case phoneNumber
+    case phoneCountryCode
+    case zip
+    case email
+    case envelopeId
+    case minConfidenceLevel
+    case channelId
+}
+
 public class Inletclient {
+    
+    public enum InletClientError: Error {
+        case emptyResponse
+    }
+    
     var username: String
     var password: String
     
@@ -11,82 +28,85 @@ public class Inletclient {
         self.username = username
         self.password = password
     }
-}
-
-public struct BrandDetails {
-    public var discoveryConsents: DiscoveryConsents?
-    public var discoveryProfile: DiscoveryProfile?
-    public var brandProfileDetails: [(resultMatch: ResultMatch, brandProfile: BrandProfile)]?
-}
-
-public enum InletClientError: Error {
-    case emptyResponse
-}
-
-extension Inletclient {
     
-    func onBrandProfiles(
-        discoveryConsents: DiscoveryConsents,
-        discoveryProfile: DiscoveryProfile,
-        brandProfileDetails: [(ResultMatch, BrandProfile)],
-        onBrandDetails: ((BrandDetails)->Void)?,
+    func getEnvelope(
+        restClient: RESTClient,
+        userAttributes: [UserAttribute: String],
+        otherData: (DiscoveryConsents, DiscoveryProfile, [(ResultMatch, BrandProfile)]),
+        onData: (((DiscoveryConsents, DiscoveryProfile, [(ResultMatch, BrandProfile)], Envelope))->Void)?,
         onError: ((Error)->Void)?
-        ) -> Void {
+        ) {
         
-        let brandDetails: BrandDetails = BrandDetails(
-            discoveryConsents: discoveryConsents,
-            discoveryProfile: discoveryProfile,
-            brandProfileDetails: brandProfileDetails)
+        let envelopeId: String = userAttributes[.minConfidenceLevel]!
         
-        onBrandDetails?(brandDetails)
+        func onEnvelope (envelope: Envelope) -> Void {
+            guard envelope.envelopeId != nil else {
+                print("couln't get the envelope")
+                onError?(InletClientError.emptyResponse)
+                return
+            }
+            onData?(( otherData.0, otherData.1, otherData.2, envelope))
+        }
+        
+        _ = restClient
+            .request(API.getEnvelope(envelopeId: envelopeId))
+            .asObservable()
+            .subscribe(onNext: onEnvelope, onError: onError)
     }
     
     
     func putDiscoveryProfile(
-        client: RESTClient,
-        channelSpecificConsumerId: String,
-        zip: String?,
-        phoneCountryCode: String?,
-        phone: String?,
-        email: String?,
-        minConfidenceLevel: Int,
-        discoveryConsents: DiscoveryConsents,
-        onBrandDetails: ((BrandDetails)->Void)?,
+        restClient: RESTClient,
+        userAttributes: [UserAttribute: String],
+        otherData: DiscoveryConsents,
+        onData: (((DiscoveryConsents, DiscoveryProfile, [(ResultMatch, BrandProfile)], Mailbox))->Void)?,
         onError: ((Error)->Void)?
         ) {
+        let channelId: String = userAttributes[.channelId]!
+        let channelSpecificConsumerId: String = userAttributes[.inletConsumerId]!
+        let zip: String? = userAttributes[.zip]
+        let phoneCountryCode: String? = userAttributes[.phoneCountryCode]
+        let phone: String? = userAttributes[.phoneNumber]
+        let email: String? = userAttributes[.email]
         
-        let consentId:String = discoveryConsents.consents![0].consentId!
+        let consentId:String = otherData.consents![0].consentId!
         
         func onPutDiscoveryProfile (discoveryProfile: DiscoveryProfile) -> Void {
             onDiscoveryProfile(
-                client: client, discoveryConsents: discoveryConsents,
-                discoveryProfile: discoveryProfile, minConfidenceLevel: minConfidenceLevel,
-                onBrandDetails: onBrandDetails, onError: onError)
+                restClient: restClient,
+                userAttributes: userAttributes,
+                otherData: (otherData, discoveryProfile),
+                onData: onData,
+                onError: onError
+            )
         }
         
-        _ = client
+        _ = restClient
             .request(API.putDiscoveryProfile(
-                channelSpecificConsumerId: channelSpecificConsumerId,
-                consentId: consentId, zip: zip,
-                phoneCountryCode: phoneCountryCode, phone: phone, email: email))
+                channelId: channelId, channelSpecificConsumerId: channelSpecificConsumerId,
+                consentId: consentId, zip: zip, phoneCountryCode: phoneCountryCode,
+                phone: phone, email: email))
             .asObservable()
             .subscribe(onNext: onPutDiscoveryProfile, onError: onError)
     }
     
     public func onDiscoveryProfile(
-        client: RESTClient,
-        discoveryConsents: DiscoveryConsents,
-        discoveryProfile: DiscoveryProfile,
-        minConfidenceLevel: Int,
-        onBrandDetails: ((BrandDetails)->Void)?,
+        restClient: RESTClient,
+        userAttributes: [UserAttribute: String],
+        otherData: (DiscoveryConsents, DiscoveryProfile),
+        onData: (((DiscoveryConsents, DiscoveryProfile, [(ResultMatch, BrandProfile)], Mailbox))->Void)?,
         onError: ((Error)->Void)?
         ){
+        
+        let minConfidenceLevel = userAttributes[.minConfidenceLevel]
+        let discoveryConsents = otherData.0
+        let discoveryProfile = otherData.1
         
         guard discoveryProfile.ccId != nil &&
             discoveryProfile.consentId != nil &&
             discoveryProfile.resultMatch != nil else {
-            onError?(InletClientError.emptyResponse)
-            return
+                onError?(InletClientError.emptyResponse)
+                return
         }
         
         var brandProfileObservables :[Observable<(ResultMatch, BrandProfile)>] = []
@@ -101,7 +121,7 @@ extension Inletclient {
                 }
                 
                 if let confidenceLevel = resultMatch.confidenceLevel {
-                    guard confidenceLevel >= minConfidenceLevel else {
+                    guard confidenceLevel >= Int(minConfidenceLevel!)! else {
                         print("confidence level is not sufficient– \(confidenceLevel)")
                         continue
                     }
@@ -128,7 +148,7 @@ extension Inletclient {
                         
                         
                         let brandId = resultMatch.brandId
-                        _ = client.request(API.getBrandProfile(brandId: brandId!))
+                        _ = restClient.request(API.getBrandProfile(brandId: brandId!))
                             .asObservable()
                             .subscribe(onNext: onNextt, onError: onErrorr)
                         
@@ -144,54 +164,157 @@ extension Inletclient {
         }
         
         
-        func onBrandProfilesMerged (brandProfileDetails: [(ResultMatch, BrandProfile)]) -> Void {
+        func onNext (
+            brandProfileDetails: [(ResultMatch, BrandProfile)],
+            mailbox: Mailbox
+            ) -> Void {
             
-            onBrandProfiles(
-                discoveryConsents: discoveryConsents,
-                discoveryProfile: discoveryProfile,
-                brandProfileDetails: brandProfileDetails,
-                onBrandDetails: onBrandDetails,
-                onError: onError
-            )
+            onData?((
+                discoveryConsents,
+                discoveryProfile,
+                brandProfileDetails,
+                mailbox))
         }
-        
-        _ = Observable
+        /*
+         _ = Observable
+         .zip(brandProfileObservables)
+         .asObservable()
+         .subscribe(onNext: onBrandProfilesMerged, onError: onError)
+         */
+        let brandProfileZipObservable = Observable
             .zip(brandProfileObservables)
             .asObservable()
-            .subscribe(onNext: onBrandProfilesMerged, onError: onError)
+        let ccId = discoveryProfile.ccId!
+        let getMailboxObservable = restClient
+            .request(API.getMailbox(ccId: ccId))
+            .asObservable()
+        
+        let dependencies = Observable.combineLatest(
+            brandProfileZipObservable,
+            getMailboxObservable
+            )
+            .asObservable()
+            .subscribe(onNext: onNext, onError: onError)
+        
+        
+        
     }
     
-    public func getBrandDetails(
+    public func getData(
         userAttributes: [UserAttribute: String],
-        andThen: ((BrandDetails)->Void)?,
-        orElse: ((Error)->Void)?) {
-        
-        let minConfidenceLevel = 19
-        
+        onData: (((DiscoveryConsents, DiscoveryProfile, [(ResultMatch, BrandProfile)], Mailbox))->Void)?,
+        onError: ((Error)->Void)?) {
         let client = RESTClient(username: username, password: password)
-        
-        let channelSpecificConsumerId: String = userAttributes[.inletConsumerId]!
-        let zip: String? = userAttributes[.zip]
-        let phoneCountryCode: String? = userAttributes[.phoneCountryCode]
-        let phone: String? = userAttributes[.phoneNumber]
-        let email: String? = userAttributes[.email]
         
         func onDiscoveryConsents (_ discoveryConsents: DiscoveryConsents) -> Void {
             guard discoveryConsents.consents != nil else {
-                orElse?(InletClientError.emptyResponse)
+                onError?(InletClientError.emptyResponse)
                 return
             }
             putDiscoveryProfile(
-                client: client, channelSpecificConsumerId: channelSpecificConsumerId,
-                zip: zip, phoneCountryCode: phoneCountryCode, phone: phone, email: email,
-                minConfidenceLevel: minConfidenceLevel,
-                discoveryConsents: discoveryConsents, onBrandDetails: andThen, onError: orElse
+                restClient: client, userAttributes: userAttributes,
+                otherData: discoveryConsents, onData: onData, onError: onError
             )
         }
         
         _ = client
             .request(API.getDiscoveryConsents())
             .asObservable()
-            .subscribe(onNext: onDiscoveryConsents, onError: orElse)
+            .subscribe(onNext: onDiscoveryConsents, onError: onError)
+    }
+    
+    public typealias InletData = (DiscoveryConsents, DiscoveryProfile, [(ResultMatch, BrandProfile)], Mailbox)
+    
+    public static func getBrandProfileObservables (
+        restClient: RESTClient,
+        userAttributes: [UserAttribute: String],
+        discoveryProfile: DiscoveryProfile
+        ) -> Observable<[(ResultMatch, BrandProfile)]> {
+    
+        
+        let minConfidenceLevel = userAttributes[.minConfidenceLevel]
+        let filteredResultMatches: [ResultMatch] = (discoveryProfile.resultMatch ?? [] as! [ResultMatch]).compactMap({ (resultMatch) in
+            guard resultMatch.confidenceLevel != nil else {
+                print("missing confidence level–> \(resultMatch)")
+                return nil
+            }
+            guard resultMatch.confidenceLevel! >= Int(minConfidenceLevel!)! else {
+                print("confidence level is not sufficient– \(resultMatch.confidenceLevel!)")
+                return nil
+            }
+            return resultMatch
+        })
+        
+        let brandProfileObservables: [Observable<(ResultMatch, BrandProfile)>] = filteredResultMatches.map({ (resultMatch) in
+            let brandId = resultMatch.brandId!
+            return restClient.request(API.getBrandProfile(brandId: brandId)).flatMap({(brandProfile) in
+                return Single<(ResultMatch, BrandProfile)>.create { (observer) in
+                    
+                    if brandProfile.capacity != 1{
+                        observer(SingleEvent.error(InletClientError.emptyResponse))
+                    } else {
+                        observer(SingleEvent.success((resultMatch, brandProfile.first!)))
+                    }
+                    return Disposables.create {}
+                }
+            }).asObservable()
+        })
+        return Observable.zip(brandProfileObservables);
+    }
+    
+    public func getData2(userAttributes: [UserAttribute: String]) -> Observable<InletData> {
+        let restClient = RESTClient(username: username, password: password)
+        
+        let discoveryConsentsSequence =
+            restClient
+            .request(API.getDiscoveryConsents())
+        
+        let discoveryProfileSequence =
+            discoveryConsentsSequence.flatMap({ (discoveryConsents) in
+            return restClient
+                .request(API.putDiscoveryProfile2(
+                    discoveryConsents: discoveryConsents,
+                    userAttributes: userAttributes)
+            )
+        })
+        
+        let getMailboxSequence: PrimitiveSequence<SingleTrait, Mailbox> =
+        discoveryProfileSequence.flatMap({ (discoveryProfile) in
+            return restClient
+                .request(API.getMailbox2(discoveryProfile: discoveryProfile))
+        })
+        
+        let brandProfilesSequence =
+            discoveryProfileSequence.flatMap({ (discoveryProfile) -> PrimitiveSequence<SingleTrait, [(ResultMatch, BrandProfile)]> in
+                
+                let single = Single<[(ResultMatch, BrandProfile)]>.create { (observer) in
+                    _ = Inletclient.getBrandProfileObservables(
+                        restClient: restClient, userAttributes: userAttributes,
+                        discoveryProfile: discoveryProfile)
+                        .subscribe(
+                        onNext: { (data) in
+                            observer(SingleEvent.success(data))
+                        },
+                        onError: { (error) in
+                            observer(SingleEvent.error(error))
+                        }
+                    )
+                    
+                    return Disposables.create {
+                        
+                    }
+                    
+                }
+                return single
+                
+            })
+        
+        let dependencies = Observable.combineLatest(
+            discoveryConsentsSequence.asObservable(),
+            discoveryProfileSequence.asObservable(),
+            brandProfilesSequence.asObservable(),
+            getMailboxSequence.asObservable()
+        )
+        return dependencies.asObservable()
     }
 }

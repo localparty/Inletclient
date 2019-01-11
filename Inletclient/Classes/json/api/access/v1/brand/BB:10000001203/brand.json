@@ -1,0 +1,149 @@
+[
+    {
+        "brandId": "BB:10000001203",
+        "brandName": "WFTB1EMPHZIP",
+        "brandDisplayName": "Xcel_POC",
+        "abbreviatedBrandName": "IDFSVDE_bidzip",
+        "brandDescription": "Internal test brand for CIMD",
+        "industryVerticals": null,
+        "parentId": null,
+        "hasChildren": "No",
+        "brandUrl": "http://www.inletdigital.com/",
+        "brandHeadquartersAddress": [
+            "292 Madison Ave",
+            "5th Floor",
+            "New York",
+            "NY",
+            "NY",
+            "10017"
+        ],
+        "remittanceAddresses": [
+            {
+                "addressName": null,
+                "addressLines": null
+            }
+        ],
+        "supportUrl": "http://www.inletdigital.com/",
+        "supportPhoneNumbers": [
+            {
+                "supportPhoneNumberName": "Support Phone Number",
+                "supportPhoneNumberValue": "800-522-0200"
+            }
+        ],
+        "supportEmails": [
+            {
+                "supportEmailValue": "support@inletdigital.com",
+                "supportEmailName": "Support Email"
+            }
+        ],
+        "accountNumberFormat": [
+            "(?=^[a-z0-9]{13}$)"
+        ],
+        "regionsServed": [
+            "US"
+        ],
+        "brandTerminationDate": "",
+        "dateOfFirstAvailability": "2017-09-26 00:00:00.0",
+        "historicalContentSupport": "No",
+        "deliveryInstructionConfirmationSupport": null,
+        "contentIngestionMethod": "Direct Ingest Provider File Exchange",
+        "documentRetentionPolicies": [
+            {
+                "documentRetentionPolicy": {
+                    "contentType": "Bill",
+                    "retentionDuration": "84"
+                }
+            }
+        ],
+        "brandConsents": [
+            {
+                "consentId": "BC:10000002105",
+                "brandId": null,
+                "consentLanguage": null,
+                "consentFile": null,
+                "consentFileName": null,
+                "consentSource": "Self",
+                "consentFormat": "Text",
+                "consentUrl": null,
+                "consentText": "Test Consent",
+                "consentUpdatePolicy": "New Only",
+                "languageCode": null,
+                "effectiveDate": null,
+                "status": null,
+                "expiryDate": null,
+                "consentReference": "Test Consent",
+                "consentLastAccessed": "2018-05-03 11:00:30.142"
+            },
+            {
+                "consentId": "GC:10000000002",
+                "brandId": null,
+                "consentLanguage": null,
+                "consentFile": null,
+                "consentFileName": null,
+                "consentSource": "SELF",
+                "consentFormat": "Text",
+                "consentUrl": null,
+                "consentText": "Test multi-brand consent - Aug 23",
+                "consentUpdatePolicy": "New Only",
+                "languageCode": null,
+                "effectiveDate": null,
+                "status": null,
+                "expiryDate": null,
+                "consentReference": "Test multi-brand consent - Aug 23",
+                "consentLastAccessed": "2017-08-23 09:38:25.281261"
+            }
+        ],
+        "brandConnectionParameters": [
+            {
+                "zipDeliveryPointType": {
+                    "deliveryPointName": "Zip Code",
+                    "deliveryPointScope": "WFTB1EMPHZIP/BB:10000001203",
+                    "userFields": [
+                        {
+                            "fieldId": "zipCode",
+                            "fieldType": "String"
+                        }
+                    ]
+                }
+            },
+            {
+                "emailDeliveryPointType": {
+                    "deliveryPointName": "EM",
+                    "deliveryPointScope": "WFTB1EMPHZIP/BB:10000001203",
+                    "userFields": [
+                        {
+                            "fieldId": "email",
+                            "fieldType": "String"
+                        }
+                    ]
+                }
+            },
+            {}
+        ],
+        "assetData": [
+            {
+                "brandId": null,
+                "assetId": "BA:10000002085",
+                "assetType": "LOGO",
+                "assetName": "Xcel Energy.svg",
+                "assetDescription": "svg Logo",
+                "assetTitle": "Xcel Logo",
+                "languageCode": null,
+                "assetFile": null
+            }
+        ],
+        "deliveryInstructions": {
+            "allowParentInstruction": null,
+            "allowBrandWideInstruction": null,
+            "allowByAccount": "Yes-required",
+            "allowByContentType": "Yes-optional",
+            "allowByAccountContentType": "Yes-optional",
+            "acceptsPrintSuppression": "Yes-optional"
+        },
+        "contentTypes": [
+            "Bill"
+        ],
+        "lastModifiedOn": "2019-01-10 12:03:42.56",
+        "languageCode": "en"
+    }
+]

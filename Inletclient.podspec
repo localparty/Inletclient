@@ -19,6 +19,7 @@ Pod::Spec.new do |s|
 
   s.description      = <<-DESC
 # The Swift client for the Inlet REST APIs, implemented with RxSwift and Alamofire.
+- Payees include logo as base64
 - Payees
 - Current Bills
                        DESC
