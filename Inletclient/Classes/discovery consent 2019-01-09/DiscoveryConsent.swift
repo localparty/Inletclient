@@ -8,8 +8,8 @@
 import UIKit
 
 public struct DiscoveryConsents: Codable {
-    struct Consents: Codable {
-        var consentId: String?
+    public struct Consents: Codable {
+        public var consentId: String?
     }
-    var consents: [Consents]?
+    public var consents: [Consents]?
 }

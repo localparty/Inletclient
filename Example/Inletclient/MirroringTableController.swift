@@ -32,9 +32,8 @@ extension UIStoryboard {
     }
 }
 
-public class MirroringController: UITableViewController {
+public class MirroringTableController: UITableViewController {
     
-    let inletController: InletController2 = InletController2()
     var uiTableViewHelper: UITableViewHelper?
     
     typealias ControllerData = (DiscoveryConsents)
@@ -66,14 +65,38 @@ public class MirroringController: UITableViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         loadSubject(["status": "⚡️ loading local data..."])
-        
-        _ = inletController
-            .getLocalData()
+        _ = getLocalData()
             .asObservable()
             .subscribe(
                 onNext: loadSubject,
                 onError: loadSubject
         )
+    }
+    
+    let datasource: UITableViewDataSource? = TextDetailDatasource(
+        reusableCellIdentifier: "default",
+        text: "loading data now...",
+        detail: "Inlet REST API"
+    )
+    
+    typealias BrandProfilesSingle = Single<(discoveryConsents: DiscoveryConsents, discoveryProfile: DiscoveryProfile, mailbox: Mailbox, brandProfiles: [(ResultMatch, BrandProfile)])>
+    
+    func getLocalData() -> BrandProfilesSingle {
+        /*
+         
+         let username = "$2a$06$YKYwyV3lwnQ.mFNm97XtgOie.oTAOnsh0VQh1UHQ9jbLgyrNfY/1C"
+         let password = "$2a$06$H7RhnGbrHg17E4siBcilwuJTwgyRiYQZAC6GPO0lITc/t/r24ORAC"
+         let restClient = RESTClient(username: username, password: password)
+         */
+        
+        // the local configuration
+        let restClient = RESTClient()
+        
+        let minConfidenceLevel: Int = 10
+        let inletCustomer: InletCustomer = InletCustomer.WFTEST111918A
+        let clientParameters = ClientParameters(inletCustomer: inletCustomer, minConfidenceLevel: minConfidenceLevel, partnerChannelId: partnerChannelId)
+        
+        return InletController(restClient: restClient, clientParameters: clientParameters).getLocalData()
     }
     
 }

@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import RxSwift
 import RxCocoa
+import Inletclient
 
 
 public enum API {
@@ -22,27 +23,6 @@ public enum API {
         )
     }
     
-    public static func putDiscoveryProfile(
-        channelId: String,
-        channelSpecificConsumerId: String, consentId: String?,
-        zip: String?, phoneCountryCode: String?, phone: String?,
-        email:String?) -> Endpoint<DiscoveryProfile> {
-        let endpointPath = "api/access/v1/discovery/channel/\(channelId)/channelconsumer/\(channelSpecificConsumerId)"
-        
-        let parameters = [
-            "consentId": consentId,
-            "channelConsumerDeliveryPoints": [["zipDeliveryPointType": ["userFields": [["zipCode": zip]]]], ["phoneDeliveryPointType": ["userFields": [["countryCode": phoneCountryCode], ["phone": phone]]]], ["emailDeliveryPointType": ["userFields": [["email": email]]]]]
-            ] as [String : Any]
-        
-        return Endpoint(
-            method: .put,
-            path: endpointPath,
-            parameters: parameters,
-            localResource: "discovery-profile",
-            localResourceType: "json"
-        )
-    }
-    
     public static func getBrandProfile(brandId: String) -> Endpoint<[BrandProfile]> {
         return Endpoint(
             path: "api/access/v1/brand/\(brandId)",
@@ -51,24 +31,24 @@ public enum API {
         )
     }
     
-    public static func getEnvelope(envelopeId: String) -> Endpoint<Envelope> {
-        return Endpoint(path: "api/access/v1/envelope/\(envelopeId)")
-    }
-    
-    public static func putDiscoveryProfile2(
+    public static func putDiscoveryProfile(
         discoveryConsents: DiscoveryConsents,
-        userAttributes: [UserAttribute: String]
+        clientParameters: ClientParameters
         ) -> Endpoint<DiscoveryProfile> {
         
         let consentId = discoveryConsents.consents![0].consentId!
         
-        let channelId: String = userAttributes[.channelId]!
-        let channelSpecificConsumerId: String = userAttributes[.inletConsumerId]!
-        let zip: String? = userAttributes[.zip]
-        let phoneCountryCode: String? = userAttributes[.phoneCountryCode]
-        let phone: String? = userAttributes[.phoneNumber]
-        let email: String? = userAttributes[.email]
+        let channelId = clientParameters.partnerChannelId
+        let channelSpecificConsumerId = clientParameters.inletCustomer.ids.sourceCID
+        let zip: Int? = clientParameters.inletCustomer.brandConnectionParameters.zip
+        let phoneCountryCode: Int? = clientParameters.inletCustomer.brandConnectionParameters.phoneNumber?.countryCode
+        let phone: Int64? = clientParameters.inletCustomer.brandConnectionParameters.phoneNumber?.number
+        let email: String? = clientParameters.inletCustomer.brandConnectionParameters.email
         
+        /*  below, aliasing the 'sourceCID' from the data documentation
+            as 'channelSpecificConsumerId' to reflect the name used in the
+            API PDF documentation
+         */
         let endpointPath = "api/access/v1/discovery/channel/\(channelId)/channelconsumer/\(channelSpecificConsumerId)"
         
         let parameters = [
@@ -85,18 +65,15 @@ public enum API {
         )
     }
     
-    public static func getMailbox(ccId: String) -> Endpoint<Mailbox> {
-        return Endpoint(
-            path: "api/access/v1/ccid/\(ccId)/mailbox",
-            localResource: "mailbox",
-            localResourceType: "json")
-    }
-    
-    public static func getMailbox2(discoveryProfile: DiscoveryProfile) -> Endpoint<Mailbox> {
+    public static func getMailbox(discoveryProfile: DiscoveryProfile) -> Endpoint<Mailbox> {
         let ccId = discoveryProfile.ccId!
         return Endpoint(path: "api/access/v1/ccid/\(ccId)/mailbox",
             localResource: "mailbox",
             localResourceType: "json")
+    }
+    
+    public static func getEnvelope(envelopeId: String) -> Endpoint<Envelope> {
+        return Endpoint(path: "api/access/v1/envelope/\(envelopeId)")
     }
 }
 

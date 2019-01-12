@@ -22,8 +22,23 @@ pod 'Inletclient'
 
 ## Author
 
-localparty, localparty@gmail.com
+G Costilla, localparty@gmail.com
 
 ## License
 
 Inletclient is available under the MIT license. See the LICENSE file for more info.
+
+## Known Issues
+### API Usage
+It is ambiguos wheter other API calls are needed for geting the data of the customer. Whti the current API sequence we seem to be retrieving all the info that is required.
+
+#### Automating the Json responses build
+Other brands have not been tested, prob. I should have the API writing the files that are retrieved from Inlet to simplify offline testing.
+
+#### Test Data
+We should probably dump all the data into a swift struct and build a UI for testing it.
+
+#### File Collision
+The generated files fron JSON cafe didn't have a Class prefix so they collide with themselves, probably I should re-generate the classes using a Prefix
+
+### Tests

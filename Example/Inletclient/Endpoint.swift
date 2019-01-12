@@ -70,6 +70,3 @@ extension Endpoint where Response == Void {
         )
     }
 }
-
-
-

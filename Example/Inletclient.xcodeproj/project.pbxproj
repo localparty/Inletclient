@@ -12,10 +12,13 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		83FC61DE21DD4F61009397D8 /* InletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FC61DD21DD4F61009397D8 /* InletController.swift */; };
-		9604AFC521E6FD8B00281F73 /* InletController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9604AFC421E6FD8B00281F73 /* InletController2.swift */; };
-		96460CD921E5CF9300AA2F2B /* MirroringController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96460CD821E5CF9300AA2F2B /* MirroringController.swift */; };
-		96460CDD21E5F66700AA2F2B /* HelperClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96460CDC21E5F66700AA2F2B /* HelperClasses.swift */; };
+		96460CDD21E5F66700AA2F2B /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96460CDC21E5F66700AA2F2B /* Tools.swift */; };
+		9676FDBE21E98F67005375CC /* MirroringTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9676FDBD21E98F67005375CC /* MirroringTableController.swift */; };
+		9676FDC521E994CE005375CC /* DemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9676FDC021E994CD005375CC /* DemoData.swift */; };
+		9676FDC621E994CE005375CC /* InletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9676FDC121E994CE005375CC /* InletController.swift */; };
+		9676FDC721E994CE005375CC /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9676FDC221E994CE005375CC /* Endpoint.swift */; };
+		9676FDC821E994CE005375CC /* RESTClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9676FDC321E994CE005375CC /* RESTClient.swift */; };
+		9676FDC921E994CE005375CC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9676FDC421E994CE005375CC /* API.swift */; };
 		A85F4CE62C5D35D80F4CB11C /* Pods_Inletclient_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFD5D7AE1509218C6B26C53 /* Pods_Inletclient_Example.framework */; };
 		F1011C3BDF9F955AD53A6C6B /* Pods_Inletclient_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2442E3112641CFE97253CA28 /* Pods_Inletclient_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -43,10 +46,13 @@
 		607FACE51AFB9204008FA782 /* Inletclient_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Inletclient_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		83FC61DD21DD4F61009397D8 /* InletController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InletController.swift; sourceTree = "<group>"; };
-		9604AFC421E6FD8B00281F73 /* InletController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InletController2.swift; sourceTree = "<group>"; };
-		96460CD821E5CF9300AA2F2B /* MirroringController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MirroringController.swift; sourceTree = "<group>"; };
-		96460CDC21E5F66700AA2F2B /* HelperClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperClasses.swift; sourceTree = "<group>"; };
+		96460CDC21E5F66700AA2F2B /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
+		9676FDBD21E98F67005375CC /* MirroringTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MirroringTableController.swift; sourceTree = "<group>"; };
+		9676FDC021E994CD005375CC /* DemoData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoData.swift; sourceTree = "<group>"; };
+		9676FDC121E994CE005375CC /* InletController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InletController.swift; sourceTree = "<group>"; };
+		9676FDC221E994CE005375CC /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		9676FDC321E994CE005375CC /* RESTClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTClient.swift; sourceTree = "<group>"; };
+		9676FDC421E994CE005375CC /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		CB48E150B25F8790A212C1B7 /* Pods-Inletclient_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inletclient_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Inletclient_Example/Pods-Inletclient_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		CD6A91F57BB8C4103A038C5D /* Pods-Inletclient_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inletclient_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Inletclient_Tests/Pods-Inletclient_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		CEFD5D7AE1509218C6B26C53 /* Pods_Inletclient_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inletclient_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,11 +105,10 @@
 		607FACD21AFB9204008FA782 /* Example for Inletclient */ = {
 			isa = PBXGroup;
 			children = (
+				9676FDBF21E994B4005375CC /* Inletclient */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				83FC61DD21DD4F61009397D8 /* InletController.swift */,
-				9604AFC421E6FD8B00281F73 /* InletController2.swift */,
-				96460CD821E5CF9300AA2F2B /* MirroringController.swift */,
-				96460CDC21E5F66700AA2F2B /* HelperClasses.swift */,
+				9676FDBD21E98F67005375CC /* MirroringTableController.swift */,
+				96460CDC21E5F66700AA2F2B /* Tools.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -146,6 +151,18 @@
 				EFC2AFE7A0F1DADFCD75603C /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		9676FDBF21E994B4005375CC /* Inletclient */ = {
+			isa = PBXGroup;
+			children = (
+				9676FDC421E994CE005375CC /* API.swift */,
+				9676FDC221E994CE005375CC /* Endpoint.swift */,
+				9676FDC021E994CD005375CC /* DemoData.swift */,
+				9676FDC121E994CE005375CC /* InletController.swift */,
+				9676FDC321E994CE005375CC /* RESTClient.swift */,
+			);
+			name = Inletclient;
 			sourceTree = "<group>";
 		};
 		B5A50B65155FAEF2B36BC983 /* Pods */ = {
@@ -353,11 +370,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96460CDD21E5F66700AA2F2B /* HelperClasses.swift in Sources */,
+				9676FDC521E994CE005375CC /* DemoData.swift in Sources */,
+				96460CDD21E5F66700AA2F2B /* Tools.swift in Sources */,
+				9676FDC821E994CE005375CC /* RESTClient.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
-				96460CD921E5CF9300AA2F2B /* MirroringController.swift in Sources */,
-				83FC61DE21DD4F61009397D8 /* InletController.swift in Sources */,
-				9604AFC521E6FD8B00281F73 /* InletController2.swift in Sources */,
+				9676FDC621E994CE005375CC /* InletController.swift in Sources */,
+				9676FDC721E994CE005375CC /* Endpoint.swift in Sources */,
+				9676FDC921E994CE005375CC /* API.swift in Sources */,
+				9676FDBE21E98F67005375CC /* MirroringTableController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

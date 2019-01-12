@@ -17,7 +17,7 @@ extension DataRequest {
     public func validateResponseStatus() -> Self {
         let validResponseCodes = [200, 401]
         
-        return validate { request,response,data in
+        return validate { request, response, data in
             var responseCodeIsValid = false
             let responseStatusCode = response.statusCode
             
@@ -43,6 +43,16 @@ public protocol RESTClientProtocol {
     func request<Response>(_ endpoint: Endpoint<Response>) -> Single<Response>
 }
 
+public class GenericError:Error {
+    public let name: String
+    public let details: String
+    init (
+        name: String,
+        details: String){
+        self.name = name
+        self.details = details
+    }
+}
 
 public final class RESTClient: RESTClientProtocol {
     public enum Mode: String {
@@ -190,60 +200,134 @@ public final class RESTClient: RESTClientProtocol {
         }
     }
     
-    public func request<Response>(_ endpoint: Endpoint<Response>) -> Single<Response> {
-        return Single<Response>.create { observer in
-            var alamofireRequest: DataRequest?
-            if self.mode == .bundle {
-                let directoryPath =
-                    URL(fileURLWithPath: RESTClient.localResourcedDirectoryName)
-                    .appendingPathComponent(endpoint.path, isDirectory: true)
-                    .path
-                let inletBundle = RESTClient.inletBundle()
-                let inletBundleResource = inletBundle!.path(
-                    forResource: endpoint.localResource,
-                    ofType: endpoint.localResourceType,
-                    inDirectory: directoryPath)
-                if inletBundleResource == nil {
-                    let debuggingDirectoryPath =
-                        URL(fileURLWithPath: (inletBundle?.bundlePath)!)
-                            .appendingPathComponent(RESTClient.localResourcedDirectoryName, isDirectory: true)
-                            .appendingPathComponent(endpoint.path, isDirectory: true)
-                            .appendingPathComponent(endpoint.localResource!, isDirectory: false)
-                            .appendingPathExtension(endpoint.localResourceType!)
-                            .path
-                    print("couldn't find–– \(debuggingDirectoryPath)")
-                }
-                let localResourceURL = URL(fileURLWithPath: inletBundleResource!)
-                alamofireRequest = Alamofire.request(localResourceURL)
-            } else {
-                let apiURL = self.urlFromBase(withPath: endpoint.path)
-                
-                var urlRequest = URLRequest(
-                    url: apiURL,
-                    cachePolicy: .useProtocolCachePolicy,
-                    timeoutInterval: endpoint.timeoutInterval!
-                )
-                
-                urlRequest.httpMethod = RESTClient.httpMethod(from: endpoint.method).rawValue
-                urlRequest.allHTTPHeaderFields = endpoint.headers
-                urlRequest.timeoutInterval = endpoint.timeoutInterval!
-                
-                if let parameters:Parameters = endpoint.parameters {
-                    let postData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
-                    urlRequest.httpBody = postData as Data
-                }
-                alamofireRequest = Alamofire.request(urlRequest)
+    private func dumpResponseData <Response>(
+        response: DataResponse<Data>,
+        endpoint: Endpoint<Response>,
+        jsonPathFromEndpoint: String){
+        
+        guard mode == .inlet else {
+            return
+        }
+        
+        guard response.response?.statusCode == 200 else {
+            print("won't dump the data of a non-200 response :/")
+            return
+        }
+        
+        guard let data = response.data else {
+            return
+        }
+        
+        guard let stringData = String(data: data, encoding: .utf8) else {
+            print("couldn't UTF-8 decode the response's data, giving up now :/")
+            return
+        }
+        
+        // trying to write the data to a file for debugging and logging
+        do {
+            let documentsPath =
+                NSURL(
+                    fileURLWithPath: NSSearchPathForDirectoriesInDomains(
+                        .documentDirectory, .userDomainMask, true).first!)
+            let logsPath =
+                documentsPath
+                    .appendingPathComponent(jsonPathFromEndpoint)!
+            
+            let filePathUrl =
+                logsPath
+                    .appendingPathComponent(endpoint.localResource!, isDirectory: false)
+                    .appendingPathExtension(endpoint.localResourceType!)
+            
+            try FileManager.default.createDirectory(
+                atPath: logsPath.path,
+                withIntermediateDirectories: true, attributes: nil)
+            print("created logs directory– \(logsPath)")
+            do {
+                try stringData.write(to: filePathUrl, atomically: false, encoding: .utf8)
+                print("wrote data to file– \(filePathUrl)")
+            }
+            catch {
+                print("couldn't write data file– \(error)")
             }
             
-            alamofireRequest = alamofireRequest!
+        }
+        catch let error as NSError {
+            NSLog("couldn't create directory \(error.debugDescription)")
+        }
+    }
+    
+    private func getLocalOrRemoteRequest<Response>(
+        endpoint: Endpoint<Response>,
+        jsonPathFromEndpoint: String
+        ) -> DataRequest {
+    
+        var alamofireRequest: DataRequest
+        
+        if self.mode == .bundle {
+            let inletBundle = RESTClient.inletBundle()
+            let inletBundleResource = inletBundle!.path(
+                forResource: endpoint.localResource,
+                ofType: endpoint.localResourceType,
+                inDirectory: jsonPathFromEndpoint)
+            if inletBundleResource == nil {
+                let debuggingDirectoryPath =
+                    URL(fileURLWithPath: (inletBundle?.bundlePath)!)
+                        .appendingPathComponent(RESTClient.localResourcedDirectoryName, isDirectory: true)
+                        .appendingPathComponent(endpoint.path, isDirectory: true)
+                        .appendingPathComponent(endpoint.localResource!, isDirectory: false)
+                        .appendingPathExtension(endpoint.localResourceType!)
+                        .path
+                print("couldn't find–– \(debuggingDirectoryPath)")
+            }
+            let localResourceURL = URL(fileURLWithPath: inletBundleResource!)
+            alamofireRequest = Alamofire.request(localResourceURL)
+            print("created request with file URL– \(localResourceURL)")
+        } else {
+            let apiURL = self.urlFromBase(withPath: endpoint.path)
+            
+            var urlRequest = URLRequest(
+                url: apiURL,
+                cachePolicy: .useProtocolCachePolicy,
+                timeoutInterval: endpoint.timeoutInterval!
+            )
+            
+            urlRequest.httpMethod = RESTClient.httpMethod(from: endpoint.method).rawValue
+            urlRequest.allHTTPHeaderFields = endpoint.headers
+            urlRequest.timeoutInterval = endpoint.timeoutInterval!
+            
+            if let parameters:Parameters = endpoint.parameters {
+                let postData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
+                urlRequest.httpBody = postData as Data
+            }
+            alamofireRequest = Alamofire.request(urlRequest)
+            print("created request with URL– \(urlRequest)")
+        }
+        return alamofireRequest
+    }
+    
+    public func request<Response>(_ endpoint: Endpoint<Response>) -> Single<Response> {
+        return Single<Response>.create { observer in
+            // the following pathes might be used if in writing mode
+            let jsonPathFromEndpoint = "\(RESTClient.localResourcedDirectoryName)/\(endpoint.path)"
+            let alamofireRequest =
+                self.getLocalOrRemoteRequest(endpoint: endpoint, jsonPathFromEndpoint: jsonPathFromEndpoint)
                 .validateResponseStatus()
                 .debugLog()
                 .authenticate(user: self.username, password: self.password, persistence: .permanent)
                 .responseData(queue: self.queue) { response in
-                    if let data = response.data {
-                        let stringData = String(data: data, encoding: .utf8)
-                        print("stringData– \(String(describing: stringData))")
+                    self.dumpResponseData(
+                        response: response,
+                        endpoint: endpoint,
+                        jsonPathFromEndpoint: jsonPathFromEndpoint)
+                    if self.mode == .inlet {
+                        guard response.response?.statusCode == 200 else {
+                            observer(SingleEvent.error(GenericError(
+                                name: "error HTTP status",
+                                details: "\(String(describing: response.response?.statusCode))")))
+                            return
+                        }
                     }
+                    
                     let result = response.result.flatMap(endpoint.decode)
                     switch result {
                     case let .success(val): observer(.success(val))
@@ -252,7 +336,7 @@ public final class RESTClient: RESTClientProtocol {
             }
             
             return Disposables.create {
-                alamofireRequest?.cancel()
+                alamofireRequest.cancel()
             }
         }
     }
