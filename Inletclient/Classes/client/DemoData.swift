@@ -9,9 +9,9 @@
 
 
 public let partnerChannelId: String = "CP:0000000149"
-public enum InletCustomer {
+public enum InletCustomer: String, CaseIterable {
     
-    public enum InletBrand {
+    public enum InletBrand: String, CaseIterable  {
         // the inlet brand cases are based on their 'brand names'
         case
             WFTB1EMPHZIP, WFTB2SNEMPH, WFTB3SNEMZIP, WFTB4ANPHZIP,

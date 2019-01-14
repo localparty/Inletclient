@@ -12,8 +12,10 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		96460CDD21E5F66700AA2F2B /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96460CDC21E5F66700AA2F2B /* Tools.swift */; };
-		9676FDBE21E98F67005375CC /* MirroringTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9676FDBD21E98F67005375CC /* MirroringTableController.swift */; };
+		96720C3221EA8D6A003816D8 /* InletDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96720C3121EA8D6A003816D8 /* InletDataTableViewController.swift */; };
+		96720C3421EA985F003816D8 /* StoryboardConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96720C3321EA985F003816D8 /* StoryboardConfig.swift */; };
+		96720C3621EAB95B003816D8 /* InletCustomerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96720C3521EAB95B003816D8 /* InletCustomerTableViewCell.swift */; };
+		96720C3821EC5390003816D8 /* Crayons-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96720C3721EC5390003816D8 /* Crayons-Extension.swift */; };
 		A85F4CE62C5D35D80F4CB11C /* Pods_Inletclient_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFD5D7AE1509218C6B26C53 /* Pods_Inletclient_Example.framework */; };
 		F1011C3BDF9F955AD53A6C6B /* Pods_Inletclient_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2442E3112641CFE97253CA28 /* Pods_Inletclient_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -41,8 +43,10 @@
 		607FACE51AFB9204008FA782 /* Inletclient_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Inletclient_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		96460CDC21E5F66700AA2F2B /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
-		9676FDBD21E98F67005375CC /* MirroringTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MirroringTableController.swift; sourceTree = "<group>"; };
+		96720C3121EA8D6A003816D8 /* InletDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InletDataTableViewController.swift; sourceTree = "<group>"; };
+		96720C3321EA985F003816D8 /* StoryboardConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardConfig.swift; sourceTree = "<group>"; };
+		96720C3521EAB95B003816D8 /* InletCustomerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InletCustomerTableViewCell.swift; sourceTree = "<group>"; };
+		96720C3721EC5390003816D8 /* Crayons-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Crayons-Extension.swift"; sourceTree = "<group>"; };
 		CB48E150B25F8790A212C1B7 /* Pods-Inletclient_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inletclient_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Inletclient_Example/Pods-Inletclient_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		CD6A91F57BB8C4103A038C5D /* Pods-Inletclient_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inletclient_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Inletclient_Tests/Pods-Inletclient_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		CEFD5D7AE1509218C6B26C53 /* Pods_Inletclient_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inletclient_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,8 +100,10 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				96460CDC21E5F66700AA2F2B /* Tools.swift */,
-				9676FDBD21E98F67005375CC /* MirroringTableController.swift */,
+				96720C3321EA985F003816D8 /* StoryboardConfig.swift */,
+				96720C3121EA8D6A003816D8 /* InletDataTableViewController.swift */,
+				96720C3521EAB95B003816D8 /* InletCustomerTableViewCell.swift */,
+				96720C3721EC5390003816D8 /* Crayons-Extension.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -347,9 +353,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96460CDD21E5F66700AA2F2B /* Tools.swift in Sources */,
+				96720C3421EA985F003816D8 /* StoryboardConfig.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
-				9676FDBE21E98F67005375CC /* MirroringTableController.swift in Sources */,
+				96720C3821EC5390003816D8 /* Crayons-Extension.swift in Sources */,
+				96720C3221EA8D6A003816D8 /* InletDataTableViewController.swift in Sources */,
+				96720C3621EAB95B003816D8 /* InletCustomerTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

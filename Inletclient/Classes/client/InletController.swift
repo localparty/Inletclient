@@ -18,6 +18,8 @@ public struct ClientParameters {
     }
 }
 
+public typealias InletDataSingle = Single<(discoveryConsents: DiscoveryConsents, discoveryProfile: DiscoveryProfile, mailbox: Mailbox, brandProfiles: [(ResultMatch, BrandProfile)])>
+
 public class InletController {
     
     public enum InletClientError: Error {
@@ -147,7 +149,7 @@ public class InletController {
         
     }
     
-    public func getLocalData() -> BrandProfilesSingle {
+    public func loadData() -> BrandProfilesSingle {
         let singleOfDiscoveryConsents = getDiscoveryConsentsSingle()
         let singleOfDiscoveryProfile = getDiscoveryProfileSingle(singleOfDiscoveryConsents: singleOfDiscoveryConsents)
         let singleOfMailbox = getMailboxSingle(singleOfDiscoveryProfile: singleOfDiscoveryProfile)

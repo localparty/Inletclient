@@ -337,6 +337,7 @@ public final class RESTClient: RESTClientProtocol {
             
             return Disposables.create {
                 alamofireRequest.cancel()
+                print("cancelled– \(String(describing: alamofireRequest.request?.url))")
             }
         }
     }
