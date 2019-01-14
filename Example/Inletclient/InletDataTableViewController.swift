@@ -52,12 +52,12 @@ public class InletDataTableViewController:
     
     func loadData() -> InletDataSingle {
         /*
-         let restClient = RESTClient()
+         let username = "$2a$06$YKYwyV3lwnQ.mFNm97XtgOie.oTAOnsh0VQh1UHQ9jbLgyrNfY/1C"
+         let password = "$2a$06$H7RhnGbrHg17E4siBcilwuJTwgyRiYQZAC6GPO0lITc/t/r24ORAC"
+         let restClient = RESTClient(username: username, password: password)
          */
         
-        let username = "$2a$06$YKYwyV3lwnQ.mFNm97XtgOie.oTAOnsh0VQh1UHQ9jbLgyrNfY/1C"
-        let password = "$2a$06$H7RhnGbrHg17E4siBcilwuJTwgyRiYQZAC6GPO0lITc/t/r24ORAC"
-        let restClient = RESTClient(username: username, password: password)
+        let restClient = RESTClient()
         
         let minConfidenceLevel: Int = 10
         let inletCustomer: InletCustomer = InletCustomer.WFTEST111918A
