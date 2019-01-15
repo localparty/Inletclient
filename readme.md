@@ -33,9 +33,6 @@ Inletclient is available under the MIT license. See the LICENSE file for more in
 ### Missing Offline Control
 There is not a control for switching online/offline.
 
-### Double TableViewController
-There might be no need of having another definition of a TableViewController v using the mirroring one.
-
 ### Lowercase
 The repository names are not lower case, the preferred case.
 
@@ -44,11 +41,5 @@ It is ambiguos wheter other API calls are needed for geting the data of the cust
 
 #### Automating the Json responses build
 Other brands have not been tested, prob. I should have the API writing the files that are retrieved from Inlet to simplify offline testing.
-
-#### Test Data
-We should probably dump all the data into a swift struct and build a UI for testing it.
-
-#### File Collision
-The generated files fron JSON cafe didn't have a Class prefix so they collide with themselves, probably I should re-generate the classes using a Prefix
 
 ### Tests

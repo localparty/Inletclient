@@ -19,9 +19,13 @@ Pod::Spec.new do |s|
 
   s.description      = <<-DESC
 # The Swift client for the Inlet REST APIs, implemented with RxSwift and Alamofire.
+- Demo Data Enum
+- Persona Map
 - Payees include logo as base64
 - Payees
 - Current Bills
+- Removed unnecesary table view controllers
+- The client can be used offline now, easy testing.
                        DESC
 
   s.homepage         = 'https://github.com/localparty/Inletclient'
