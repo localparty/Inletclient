@@ -120,7 +120,6 @@
         <!--Proxy Table View Controller-->
         <scene sceneID="0sO-E6-ifU">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ncY-ey-M7P" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="table controller" id="Aud-lr-jQU" customClass="ProxyTableViewController" customModule="Inletclient" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="JL7-i9-7q5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -159,6 +158,7 @@
                         </connections>
                     </tableView>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ncY-ey-M7P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3790" y="133"/>
         </scene>

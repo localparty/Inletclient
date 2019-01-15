@@ -51,13 +51,13 @@ public class InletDataTableViewController:
     }
     
     func loadData() -> InletDataSingle {
-        /*
+        
          let username = "$2a$06$YKYwyV3lwnQ.mFNm97XtgOie.oTAOnsh0VQh1UHQ9jbLgyrNfY/1C"
          let password = "$2a$06$H7RhnGbrHg17E4siBcilwuJTwgyRiYQZAC6GPO0lITc/t/r24ORAC"
          let restClient = RESTClient(username: username, password: password)
-         */
+ 
         
-        let restClient = RESTClient()
+        //let restClient = RESTClient()
         
         let minConfidenceLevel: Int = 10
         let inletCustomer: InletCustomer = InletCustomer.WFTEST111918A
@@ -66,6 +66,27 @@ public class InletDataTableViewController:
                 inletCustomer: inletCustomer,
                 minConfidenceLevel: minConfidenceLevel,
                 partnerChannelId: partnerChannelId)
+        
+        enum Persona: String {
+            case Carly
+            case Dylan
+            case Miguel
+        }
+        
+        // implement this
+        
+        func getPersonaFromAppSettings () -> Persona? {
+            return nil
+        }
+        
+        let persona: Persona = getPersonaFromAppSettings()!
+        
+        // the persona v inlet data mapping
+        let personasMap: [Persona:InletCustomer] = [
+            .Carly : InletCustomer.WFTEST111918A,
+            .Dylan : InletCustomer.WFTEST111518B,
+            .Miguel : InletCustomer.WFTEST111518C
+        ]
         
         return
             InletController(
