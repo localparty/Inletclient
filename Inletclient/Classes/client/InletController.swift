@@ -18,7 +18,31 @@ public struct ClientParameters {
     }
 }
 
-public typealias InletDataSingle = Single<(discoveryConsents: DiscoveryConsents, discoveryProfile: DiscoveryProfile, mailbox: Mailbox, brandProfiles: [(ResultMatch, BrandProfile)])>
+public typealias InletDataTuple = (
+    discoveryConsents: DiscoveryConsents,
+    discoveryProfile: DiscoveryProfile, mailbox: Mailbox, brandProfiles: [(ResultMatch, BrandProfile)])
+
+public typealias InletDataSingle = Single<InletDataTuple>
+
+public typealias DiscoveryConsentsSingle = Single<DiscoveryConsents>
+
+public typealias DiscoveryProfileTuple = (
+    discoveryConsents: DiscoveryConsents,
+    discoveryProfile: DiscoveryProfile)
+
+public typealias DiscoveryProfileSingle = Single<DiscoveryProfileTuple>
+
+public typealias MailboxTuple = (
+    discoveryConsents: DiscoveryConsents,
+    discoveryProfile: DiscoveryProfile, mailbox: Mailbox)
+
+public typealias MailboxSingle = Single<MailboxTuple>
+
+public typealias BrandProfilesTuple = (
+    discoveryConsents: DiscoveryConsents, discoveryProfile: DiscoveryProfile,
+    mailbox: Mailbox, brandProfiles: [(ResultMatch, BrandProfile)])
+
+public typealias BrandProfilesSingle = Single<BrandProfilesTuple>
 
 public class InletController {
     
@@ -72,12 +96,9 @@ public class InletController {
         return observablesZip
     }
     
-    public typealias DiscoveryConsentsSingle = Single<DiscoveryConsents>
-    
     private func getDiscoveryConsentsSingle () -> DiscoveryConsentsSingle {
         return restClient.request(API.getDiscoveryConsents())
     }
-    public typealias DiscoveryProfileSingle = Single<(discoveryConsents: DiscoveryConsents, discoveryProfile: DiscoveryProfile)>
     
     private func getDiscoveryProfileSingle (singleOfDiscoveryConsents: DiscoveryConsentsSingle) -> DiscoveryProfileSingle {
         return singleOfDiscoveryConsents.flatMap {
@@ -102,7 +123,6 @@ public class InletController {
             }
         }
     }
-    public typealias MailboxSingle = Single<(discoveryConsents: DiscoveryConsents, discoveryProfile: DiscoveryProfile, mailbox: Mailbox)>
     
     private func getMailboxSingle (singleOfDiscoveryProfile: DiscoveryProfileSingle) -> MailboxSingle {
         return singleOfDiscoveryProfile.flatMap {
@@ -125,8 +145,6 @@ public class InletController {
             }
         }
     }
-    
-    public typealias BrandProfilesSingle = Single<(discoveryConsents: DiscoveryConsents, discoveryProfile: DiscoveryProfile, mailbox: Mailbox, brandProfiles: [(ResultMatch, BrandProfile)])>
     
     private func getBrandDetailsSingle (singleOfMailbox: MailboxSingle) -> BrandProfilesSingle {
         return singleOfMailbox.flatMap {

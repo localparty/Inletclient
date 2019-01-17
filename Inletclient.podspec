@@ -25,7 +25,9 @@ Pod::Spec.new do |s|
 - Payees
 - Current Bills
 - Removed unnecesary table view controllers
-- The client can be used offline now, easy testing.
+- The client can be used offline now, easy testing
+- The data has been fixed to include brand ids
+- The client has been fixed to include delivery points of type name and brand id
                        DESC
 
   s.homepage         = 'https://github.com/localparty/Inletclient'

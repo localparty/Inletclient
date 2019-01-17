@@ -14,10 +14,10 @@ public enum InletCustomer: String, CaseIterable {
     public enum InletBrand: String, CaseIterable  {
         // the inlet brand cases are based on their 'brand names'
         case
-            WFTB1EMPHZIP, WFTB2SNEMPH, WFTB3SNEMZIP, WFTB4ANPHZIP,
+        WFTB1EMPHZIP, WFTB2SNEMPH, WFTB3SNEMZIP, WFTB4ANPHZIP,
         
-            // IN-PROGRESS
-            Xcel_POC
+        // IN-PROGRESS
+        Xcel_POC
         
         public typealias InletBrandIds = (
             id: String,
@@ -522,7 +522,7 @@ public enum InletCustomer: String, CaseIterable {
             /* structured name */
             nil, /* no s. name */
             /* brand id */
-            nil /* no brand id */
+            "WFTEST111518Q"
             )
         case .WFTEST111518R: return (
             /* email */
@@ -534,7 +534,7 @@ public enum InletCustomer: String, CaseIterable {
             /* structured name */
             nil, /* no s. name */
             /* brand id */
-            nil /* no brand id */
+            "WFTEST111518R"
             )
         case .WFTEST111518S: return (
             /* email */
@@ -546,7 +546,7 @@ public enum InletCustomer: String, CaseIterable {
             /* structured name */
             nil, /* no s. name */
             /* brand id */
-            nil /* no brand id */
+            "WFTEST111518S"
             )
         case .WFTEST111518T: return (
             /* email */
@@ -558,7 +558,7 @@ public enum InletCustomer: String, CaseIterable {
             /* structured name */
             nil, /* no s. name */
             /* brand id */
-            nil /* no brand id */
+            "WFTEST111518T"
             )
         case .WFTEST111518U: return (
             /* email */
@@ -570,7 +570,7 @@ public enum InletCustomer: String, CaseIterable {
             /* structured name */
             nil, /* no s. name */
             /* brand id */
-            nil /* no brand id */
+            "WFTEST111518U"
             )
         case .WFTEST111918A: return (
             /* email */
@@ -583,7 +583,7 @@ public enum InletCustomer: String, CaseIterable {
             nil, /* no s. name */
             /* brand id */
             nil /* no brand id */
-        )
+            )
             
             
         }

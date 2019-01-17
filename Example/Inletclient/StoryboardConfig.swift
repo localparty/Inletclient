@@ -1,18 +1,19 @@
 import UIKit
 
 public enum ReuseIndentifier: String {
-    case `default` = "default"
-    case hyperTable = "hyper table"
-    case tableController = "table controller"
     case customer
+    case proxy
+    case mirror
+}
+
+public enum ControllerStoryboardIdentifier: String {
+    case customer
+    case proxy
+    case mirror
 }
 
 public enum UIStoryboardName: String {
     case main = "Main"
-}
-
-public enum ControllerStoryboardIdentifier: String {
-    case tableController = "table controller"
 }
 
 extension UITableView {

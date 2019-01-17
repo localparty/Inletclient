@@ -14,7 +14,7 @@ open class MirroringTableViewController: ProxyTableViewController {
         
         self.proxyDataSource =
             MirroringTableViewDataSource(
-                subject: subject)
+                subject: subject, delegate: usingDelegate)
         
         self.proxyDelegate =
             MirroringTableViewDelegate(
@@ -92,7 +92,7 @@ func unwrapOptionalThereof(any:Any) -> Any {
     
 }
 
-public protocol MirrorControllerDelegate {
+public protocol MirrorControllerDelegate: MirroringTableViewDataSourceDelegate {
     func instanciateProxyViewController() -> ProxyTableViewController
     func sourceController() -> UIViewController
 }
@@ -107,40 +107,48 @@ public class MirroringTableViewDelegate: NSObject, UITableViewDelegate {
         self.mirrorControllerDelegate = mirrorControllerDelegate
     }
     
-    public func tableView(_: UITableView, didSelectRowAt: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt: IndexPath) {
         let row = didSelectRowAt.row
         let child = childrenMap[row]
         let childValue = child.value
         let childType = type(of: childValue)
         let unwrappedChildValue = unwrapOptionalThereof(any: childValue)
         
-        if shouldDetailType(member: childType) {
-            
-            let newViewController = mirrorControllerDelegate.instanciateProxyViewController()
-            let sourceController = mirrorControllerDelegate.sourceController()
-            
-            newViewController.proxyDataSource =
-                MirroringTableViewDataSource(
-                    subject: unwrappedChildValue)
-            
-            newViewController.proxyDelegate =
-                MirroringTableViewDelegate(
-                    subject: unwrappedChildValue,
-                    mirrorControllerDelegate: self.mirrorControllerDelegate)
-            
-            DispatchQueue.main.async {
-                sourceController.show(newViewController, sender: nil)
-            }
+        guard shouldDetailType(member: childType) else {
+            tableView.deselectRow(at: didSelectRowAt, animated: false)
+            return
+        }
+        
+        let newViewController = mirrorControllerDelegate.instanciateProxyViewController()
+        let sourceController = mirrorControllerDelegate.sourceController()
+        
+        newViewController.proxyDataSource =
+            MirroringTableViewDataSource(
+                subject: unwrappedChildValue, delegate: mirrorControllerDelegate)
+        
+        newViewController.proxyDelegate =
+            MirroringTableViewDelegate(
+                subject: unwrappedChildValue,
+                mirrorControllerDelegate: self.mirrorControllerDelegate)
+        
+        DispatchQueue.main.async {
+            sourceController.show(newViewController, sender: nil)
         }
     }
+}
+
+public protocol MirroringTableViewDataSourceDelegate {
+    func getReusableCellIdentifier() -> String
 }
 
 public class MirroringTableViewDataSource: NSObject, UITableViewDataSource {
     
     let childrenMap: MirrorChildrenMap
+    let delegate: MirroringTableViewDataSourceDelegate
     
-    init(subject: Any) {
+    init(subject: Any, delegate: MirroringTableViewDataSourceDelegate) {
         self.childrenMap = reflectSubjectAsMap(subject)
+        self.delegate = delegate
     }
     
     public func numberOfSections(in tableView: UITableView) -> Int {
@@ -157,8 +165,9 @@ public class MirroringTableViewDataSource: NSObject, UITableViewDataSource {
         let childLabel = child.label
         let childValue = child.value
         let childType = child.type
+        let reusableCellIdentifier = delegate.getReusableCellIdentifier()
         let cell: UITableViewCell = tableView.dequeueReusableCell(
-            withIdentifier: "default",
+            withIdentifier: reusableCellIdentifier,
             for: indexPath)
         
         cell.textLabel?.text = childLabel
@@ -167,6 +176,7 @@ public class MirroringTableViewDataSource: NSObject, UITableViewDataSource {
         } else {
             let unwrappedChildValue = unwrapOptionalThereof(any: childValue)
             cell.detailTextLabel?.text = String(describing: unwrappedChildValue)
+            cell.selectionStyle = .none
         }
         
         return cell

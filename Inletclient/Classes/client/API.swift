@@ -40,21 +40,72 @@ public enum API {
         
         let channelId = clientParameters.partnerChannelId
         let channelSpecificConsumerId = clientParameters.inletCustomer.ids.sourceCID
-        let zip: Int? = clientParameters.inletCustomer.brandConnectionParameters.zip
-        let phoneCountryCode: Int? = clientParameters.inletCustomer.brandConnectionParameters.phoneNumber?.countryCode
-        let phone: Int64? = clientParameters.inletCustomer.brandConnectionParameters.phoneNumber?.number
-        let email: String? = clientParameters.inletCustomer.brandConnectionParameters.email
         
         /*  below, aliasing the 'sourceCID' from the data documentation
             as 'channelSpecificConsumerId' to reflect the name used in the
             API PDF documentation
          */
         let endpointPath = "api/access/v1/discovery/channel/\(channelId)/channelconsumer/\(channelSpecificConsumerId)"
+        var channelConsumerDeliveryPoints: [[String : [String : [[String : Any]]]]] = []
+        if let phoneNumber = clientParameters.inletCustomer.brandConnectionParameters.phoneNumber {
+            channelConsumerDeliveryPoints.append([
+                "phoneDeliveryPointType": [
+                    "userFields": [
+                        ["countryCode": String(phoneNumber.countryCode)],
+                        ["phone": String(phoneNumber.number)]
+                    ]
+                ]
+            ])
+        }
         
-        let parameters = [
+        if let email = clientParameters.inletCustomer.brandConnectionParameters.email {
+            channelConsumerDeliveryPoints.append([
+                "emailDeliveryPointType": [
+                    "userFields": [
+                        ["email": String(email)]
+                    ]
+                ]
+            ])
+        }
+        
+        if let zip = clientParameters.inletCustomer.brandConnectionParameters.zip {
+            channelConsumerDeliveryPoints.append([
+                "zipDeliveryPointType": [
+                    "userFields": [
+                        ["zipCode": String(zip)]
+                    ]
+                ]
+            ])
+        }
+        
+        if let structuredName = clientParameters.inletCustomer.brandConnectionParameters.structuredName {
+            channelConsumerDeliveryPoints.append([
+                "structuredNameDeliveryPointType": [
+                    "userFields": [
+                        ["salutation": String(structuredName.salutation)],
+                        ["firstName": String(structuredName.firstName)],
+                        ["middleName": String(structuredName.middleName)],
+                        ["lastName": String(structuredName.lastName)],
+                        ["suffix": String(structuredName.suffix)],
+                    ]
+                ]
+            ])
+        }
+        
+        if let brandId = clientParameters.inletCustomer.brandConnectionParameters.brandId {
+            channelConsumerDeliveryPoints.append([
+                "brandIdDeliveryPointType": [
+                    "userFields": [
+                        ["accountNum": String(brandId)]
+                    ]
+                ]
+            ])
+        }
+        
+        let parameters: [String: Any] = [
             "consentId": consentId,
-            "channelConsumerDeliveryPoints": [["zipDeliveryPointType": ["userFields": [["zipCode": zip]]]], ["phoneDeliveryPointType": ["userFields": [["countryCode": phoneCountryCode], ["phone": phone]]]], ["emailDeliveryPointType": ["userFields": [["email": email]]]]]
-            ] as [String : Any]
+            "channelConsumerDeliveryPoints": channelConsumerDeliveryPoints
+        ]
         
         return Endpoint(
             method: .put,

@@ -59,8 +59,16 @@ public final class RESTClient: RESTClientProtocol {
         case inlet
         case bundle
     }
+    private static func instanceDirectory () -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date = Date()
+        let timestampComponent = dateFormatter.string(from: date)
+        let uuidComponent = NSUUID().uuidString
+        return "\(timestampComponent)–\(uuidComponent)"
+    }
     
-    public static let localResourcedDirectoryName = "json"
+    public static let localResourcedDirectoryName = "json/\(RESTClient.instanceDirectory())"
     
     private let queue = DispatchQueue(label: "appdelivery.uat.inletdigital.com")
     private let baseURL = URL(string: "https://appdelivery.uat.inletdigital.com")!
@@ -205,21 +213,22 @@ public final class RESTClient: RESTClientProtocol {
         endpoint: Endpoint<Response>,
         jsonPathFromEndpoint: String){
         
-        guard mode == .inlet else {
-            return
-        }
-        
-        guard response.response?.statusCode == 200 else {
-            print("won't dump the data of a non-200 response :/")
-            return
-        }
-        
         guard let data = response.data else {
             return
         }
         
         guard let stringData = String(data: data, encoding: .utf8) else {
             print("couldn't UTF-8 decode the response's data, giving up now :/")
+            return
+        }
+        print("response data– \(stringData)")
+        
+        guard mode == .inlet else {
+            return
+        }
+        
+        guard response.response?.statusCode == 200 else {
+            print("won't dump the data of a non-200 response :/")
             return
         }
         
@@ -337,7 +346,6 @@ public final class RESTClient: RESTClientProtocol {
             
             return Disposables.create {
                 alamofireRequest.cancel()
-                print("cancelled– \(String(describing: alamofireRequest.request?.url))")
             }
         }
     }
