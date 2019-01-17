@@ -4,22 +4,19 @@
 <dict>
 	<key>StringsTable</key>
 	<string>Root</string>
+	<key>ApplicationGroupContainerIdentifier</key>
+	<string>group.com.wellsfargo.dct.Inletclient-Example</string>
 	<key>PreferenceSpecifiers</key>
 	<array>
 		<dict>
 			<key>Type</key>
-			<string>PSMultiValueSpecifier</string>
+			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
-			<string>Persona</string>
+			<string>Online</string>
 			<key>Key</key>
-			<string>persona</string>
+			<string>online</string>
 			<key>DefaultValue</key>
-			<string></string>
-			<key>Values</key>
-			<array>
-				<string>Carly</string>
-				<string>Miguel</string>
-			</array>
+			<true/>
 		</dict>
 	</array>
 </dict>

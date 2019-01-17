@@ -68,11 +68,18 @@ UITableViewDataSource, MirrorControllerDelegate {
         guard dataQuery.count > 0 else {
             return
         }
+        var restClient: RESTClient
+        let mainBundleIdentifier: String = Bundle.main.bundleIdentifier!
+        let suiteName: String = "group.\(mainBundleIdentifier)"
+        if UserDefaults(suiteName: suiteName)!
+            .bool(forKey: PreferenceItemIdentifier.online.rawValue) {
+        } else {
+            //restClient = RESTClient()
+        }
         
         let username = "$2a$06$YKYwyV3lwnQ.mFNm97XtgOie.oTAOnsh0VQh1UHQ9jbLgyrNfY/1C"
         let password = "$2a$06$H7RhnGbrHg17E4siBcilwuJTwgyRiYQZAC6GPO0lITc/t/r24ORAC"
-        let restClient = RESTClient(username: username, password: password)
-        //let restClient = RESTClient()
+        restClient = RESTClient(username: username, password: password)
         
         let dataSingles = dataQuery.map { (inletCustomer) in
             return loadDataOf(customer: inletCustomer, withClient: restClient).asObservable()

@@ -12,7 +12,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		9652142A21EE78F9005FD8A2 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9652142921EE78F9005FD8A2 /* Settings.bundle */; };
+		960BF4F021F12B9100C92B3F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9652142921EE78F9005FD8A2 /* Settings.bundle */; };
 		9652142C21EE83D7005FD8A2 /* InletDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9652142B21EE83D7005FD8A2 /* InletDataViewController.swift */; };
 		96720C3421EA985F003816D8 /* StoryboardConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96720C3321EA985F003816D8 /* StoryboardConfig.swift */; };
 		A85F4CE62C5D35D80F4CB11C /* Pods_Inletclient_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFD5D7AE1509218C6B26C53 /* Pods_Inletclient_Example.framework */; };
@@ -253,7 +253,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9652142A21EE78F9005FD8A2 /* Settings.bundle in Resources */,
+				960BF4F021F12B9100C92B3F /* Settings.bundle in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,

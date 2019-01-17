@@ -12,6 +12,10 @@ public enum ControllerStoryboardIdentifier: String {
     case mirror
 }
 
+public enum PreferenceItemIdentifier: String {
+    case online
+}
+
 public enum UIStoryboardName: String {
     case main = "Main"
 }
