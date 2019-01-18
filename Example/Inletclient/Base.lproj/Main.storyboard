@@ -188,14 +188,14 @@
                                                 <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EkE-bj-mqq" customClass="InletCustomerTableViewCell" customModule="Inletclient_Example" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="475.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HNg-7p-JSd" userLabel="Title">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HNg-7p-JSd" userLabel="Title">
                                                             <rect key="frame" x="10" y="0.0" width="296" height="238"/>
                                                             <color key="backgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tPH-Mz-2Bc" userLabel="Subtitle">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="subtitle" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tPH-Mz-2Bc" userLabel="Subtitle">
                                                             <rect key="frame" x="10" y="238" width="296" height="237.5"/>
                                                             <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -214,6 +214,7 @@
                                                         <constraint firstItem="4ij-Vg-uW7" firstAttribute="leading" secondItem="tPH-Mz-2Bc" secondAttribute="trailing" constant="10" id="1y0-Vy-1im"/>
                                                         <constraint firstItem="tPH-Mz-2Bc" firstAttribute="height" secondItem="EkE-bj-mqq" secondAttribute="height" multiplier="0.5" id="3jP-AL-0po"/>
                                                         <constraint firstItem="4ij-Vg-uW7" firstAttribute="centerY" secondItem="EkE-bj-mqq" secondAttribute="centerY" id="CLx-Ro-9d3"/>
+                                                        <constraint firstItem="tPH-Mz-2Bc" firstAttribute="width" relation="lessThanOrEqual" secondItem="EkE-bj-mqq" secondAttribute="width" constant="-79" id="Gqg-dl-yFm"/>
                                                         <constraint firstAttribute="bottom" secondItem="tPH-Mz-2Bc" secondAttribute="bottom" id="K1i-Bf-2Bd"/>
                                                         <constraint firstItem="tPH-Mz-2Bc" firstAttribute="leading" secondItem="EkE-bj-mqq" secondAttribute="leading" constant="10" id="Tm2-73-kBf"/>
                                                         <constraint firstAttribute="trailing" secondItem="4ij-Vg-uW7" secondAttribute="trailing" constant="10" id="XDx-Hl-P86"/>

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Inletclient'
-  s.version          = '1.0.11'
+  s.version          = '1.0.13'
   s.summary          = 'The Swift client for the Inlet REST APIs'
 
 # This description is used to generate tags and improve search results.
@@ -19,6 +19,11 @@ Pod::Spec.new do |s|
 
   s.description      = <<-DESC
 # The Swift client for the Inlet REST APIs, implemented with RxSwift and Alamofire.
+- Included updates to the data of the following: 
+-- WFTEST111918A
+-- WFTEST011019B
+-- WFTEST011019C
+-- WFTEST011019D
 - Demo Data Enum
 - Persona Map
 - Payees include logo as base64

@@ -7,6 +7,14 @@ public class InletDataViewController:
     UIViewController, UITableViewDelegate,
 UITableViewDataSource, MirrorControllerDelegate {
     
+    public let customersPool: [InletCustomer] = [
+        .WFTEST011019A,
+        .WFTEST111918A,
+        .WFTEST011019B,
+        .WFTEST011019C,
+        .WFTEST011019D
+    ]
+    
     
     @IBAction func onLoadActivated(_ sender: UIBarButtonItem) {
         retrieveData(sender)
@@ -60,7 +68,7 @@ UITableViewDataSource, MirrorControllerDelegate {
                 tableView.cellForRow(at: IndexPath(row: index, section: 0))
             if let cellAtIndex = cellAtIndex as? InletCustomerTableViewCell {
                 if cellAtIndex.switch.isOn {
-                    dataQuery.append(InletCustomer.allCases[index])
+                    dataQuery.append(customersPool[index])
                 }
             }
         }
@@ -103,12 +111,12 @@ UITableViewDataSource, MirrorControllerDelegate {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return InletCustomer.allCases.count
+        return customersPool.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let inletCustomer:InletCustomer = InletCustomer.allCases[indexPath.row]
+        let inletCustomer:InletCustomer = customersPool[indexPath.row]
         
         let cell: UITableViewCell =
             tableView.dequeueReusableCell(
@@ -116,12 +124,13 @@ UITableViewDataSource, MirrorControllerDelegate {
         
         if let cell = cell as? InletCustomerTableViewCell {
             
-            let title = inletCustomer.rawValue
-            let subtitle = inletCustomer.inletBrand.rawValue
+            let title = "\(inletCustomer.rawValue)– \(inletCustomer.brand.rawValue)"
+            let subtitle = "\(inletCustomer.brand.attributes.name)– \(inletCustomer.brand.attributes.connectionParametersDescription)"
             
             cell.titleCell.text = title
             cell.subtitleCell.text = subtitle
             cell.switch.isOn = false
+            cell.toggleMaskColor()
         }
         
         return cell
@@ -199,17 +208,15 @@ public class InletCustomerTableViewCell: UITableViewCell {
         super.init(coder: aDecoder)!
     }
     
-    override public func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    func getBackgroundColor(switchState: Bool) -> CGColor {
+        return switchState ?
+        CGColor.crayons.cantaloupe :
+        CGColor.crayons.honeydew
     }
     
     func toggleMaskColor(){
         
         if let cellBackground = self.viewWithTag(1){
-            
-            
-            
-            
             UIView.animate(
                 withDuration: 0.5, delay: 0,
                 options: [
@@ -217,11 +224,8 @@ public class InletCustomerTableViewCell: UITableViewCell {
                     .preferredFramesPerSecond30
                 ],
                 animations: {
-                    
-                    cellBackground.layer.backgroundColor = self.`switch`.isOn ?
-                        CGColor.crayons.cantaloupe :
-                        CGColor.crayons.honeydew
-                    
+                    cellBackground.layer.backgroundColor =
+                        self.getBackgroundColor(switchState: self.`switch`.isOn)
             })
         }
         

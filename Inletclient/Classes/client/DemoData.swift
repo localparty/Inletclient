@@ -14,12 +14,9 @@ public enum InletCustomer: String, CaseIterable {
     public enum InletBrand: String, CaseIterable  {
         // the inlet brand cases are based on their 'brand names'
         case
-        WFTB1EMPHZIP, WFTB2SNEMPH, WFTB3SNEMZIP, WFTB4ANPHZIP,
+        WFTB1EMPHZIP, WFTB2SNEMPH, WFTB3SNEMZIP, WFTB4ANPHZIP
         
-        // IN-PROGRESS
-        Xcel_POC
-        
-        public typealias InletBrandIds = (
+        public typealias AttributesTuple = (
             id: String,
             name: String,
             connectionParametersDescription: String,
@@ -27,13 +24,13 @@ public enum InletCustomer: String, CaseIterable {
             sourceSystemBrandId: String
         )
         
-        public var ids: InletBrandIds {
+        public var attributes: AttributesTuple {
             switch self {
             case .WFTB1EMPHZIP: return (
                 /* brand id */
                 "BB:10000001203",
                 /* brand name */
-                "WFTB1EMPHZIP",
+                "Xcel_POC, WFTB1EMPHZIP",
                 /* connection parameters description */
                 "Email, Phone, Zip",
                 /* source system id */
@@ -45,7 +42,7 @@ public enum InletCustomer: String, CaseIterable {
                 /* brand id */
                 "BB:10000002066",
                 /* brand name */
-                "WFTB2SNEMPH",
+                "ConEd, WFTB2SNEMPH",
                 /* connection parameters description */
                 "Structured Name, Email, Phone",
                 /* source system id */
@@ -57,7 +54,7 @@ public enum InletCustomer: String, CaseIterable {
                 /* brand id */
                 "BB:10000002067",
                 /* brand name */
-                "WFTB3SNEMZIP",
+                "Spring_POC, WFTB3SNEMZIP",
                 /* connection parameters description */
                 "Email, Structured Name, Zip",
                 /* source system id */
@@ -69,26 +66,13 @@ public enum InletCustomer: String, CaseIterable {
                 /* brand id */
                 "BB:10000002068",
                 /* brand name */
-                "WFTB4ANPHZIP",
+                "AT&T_POC, WFTB4ANPHZIP",
                 /* connection parameters description */
                 "Brand ID, Phone, Zip",
                 /* source system id */
                 "INLETDIRECT",
                 /*source system brand id */
                 "WFTB4ANPHZIP"
-                )
-                
-            case .Xcel_POC: return (
-                /* brand id */
-                "BB:10000001203",
-                /* brand name */
-                "Xcel_POC",
-                /* connection parameters description */
-                "?",
-                /* source system id */
-                "?",
-                /*source system brand id */
-                "?"
                 )
             }
         }
@@ -102,6 +86,8 @@ public enum InletCustomer: String, CaseIterable {
     WFTEST111518C,
     WFTEST111518D,
     WFTEST111518E,
+    WFTEST011019A,
+    WFTEST111918A, // mystery one, not in the table
     
     // WFTB2SNEMPH
     WFTEST111518F,
@@ -109,6 +95,8 @@ public enum InletCustomer: String, CaseIterable {
     WFTEST111518H,
     WFTEST111518I,
     WFTEST111518J,
+    WFTEST011019B,
+    
     
     // WFTB3SNEMZIP
     WFTEST111518K,
@@ -116,6 +104,7 @@ public enum InletCustomer: String, CaseIterable {
     WFTEST111518M,
     WFTEST111518N,
     WFTEST111518P,
+    WFTEST011019C,
     
     // WFTB4ANPHZIP
     WFTEST111518Q,
@@ -123,9 +112,7 @@ public enum InletCustomer: String, CaseIterable {
     WFTEST111518S,
     WFTEST111518T,
     WFTEST111518U,
-    
-    // this is the only one that works apparently
-    WFTEST111918A
+    WFTEST011019D
     
     
     public typealias StructuredName = (
@@ -154,40 +141,45 @@ public enum InletCustomer: String, CaseIterable {
         brandId: String?
     )
     
-    public typealias UserData = (
+    public typealias Attributes = (
         ids: IDs,
         brandConnectionParameters: BrandConnectionParameters
     )
     
-    public var inletBrand: InletBrand {
+    public var brand: InletBrand {
         switch self {
         // WFTB4ANPHZIP
-        case .WFTEST111518A: return .WFTB4ANPHZIP
-        case .WFTEST111518B: return .WFTB4ANPHZIP
-        case .WFTEST111518C: return .WFTB4ANPHZIP
-        case .WFTEST111518D: return .WFTB4ANPHZIP
-        case .WFTEST111518E: return .WFTB4ANPHZIP
+        case .WFTEST111518A: return .WFTB1EMPHZIP
+        case .WFTEST111518B: return .WFTB1EMPHZIP
+        case .WFTEST111518C: return .WFTB1EMPHZIP
+        case .WFTEST111518D: return .WFTB1EMPHZIP
+        case .WFTEST111518E: return .WFTB1EMPHZIP
+        case .WFTEST011019A: return .WFTB1EMPHZIP
+        case .WFTEST111918A: return .WFTB1EMPHZIP // mystery, where does this brand come from?
+            
         // WFTB2SNEMPH
         case .WFTEST111518F: return .WFTB2SNEMPH
         case .WFTEST111518G: return .WFTB2SNEMPH
         case .WFTEST111518H: return .WFTB2SNEMPH
         case .WFTEST111518I: return .WFTB2SNEMPH
         case .WFTEST111518J: return .WFTB2SNEMPH
+        case .WFTEST011019B: return .WFTB2SNEMPH
+            
         // WFTB3SNEMZIP
         case .WFTEST111518K: return .WFTB3SNEMZIP
         case .WFTEST111518L: return .WFTB3SNEMZIP
         case .WFTEST111518M: return .WFTB3SNEMZIP
         case .WFTEST111518N: return .WFTB3SNEMZIP
         case .WFTEST111518P: return .WFTB3SNEMZIP
+        case .WFTEST011019C: return .WFTB3SNEMZIP
+            
         // WFTB4ANPHZIP
         case .WFTEST111518Q: return .WFTB4ANPHZIP
         case .WFTEST111518R: return .WFTB4ANPHZIP
         case .WFTEST111518S: return .WFTB4ANPHZIP
         case .WFTEST111518T: return .WFTB4ANPHZIP
         case .WFTEST111518U: return .WFTB4ANPHZIP
-            
-        // IN-PROGRESS
-        case .WFTEST111918A: return .Xcel_POC
+        case .WFTEST011019D: return .WFTB4ANPHZIP
         }
     }
     
@@ -224,6 +216,20 @@ public enum InletCustomer: String, CaseIterable {
             /* cimd id */
             62862696
             )
+        case .WFTEST011019A: return (
+            /* source CID */
+            "WFTEST011019A",
+            /* cimd id */
+            62876387
+            )
+        // mystery
+        case .WFTEST111918A: return (
+            /* source CID */
+            "WFTEST111918A",
+            /* cimd id */
+            0
+            )
+            
         // WFTB2SNEMPH
         case .WFTEST111518F: return (
             /* source CID */
@@ -255,6 +261,13 @@ public enum InletCustomer: String, CaseIterable {
             /* cimd id */
             62862701
             )
+        case .WFTEST011019B: return (
+            /* source CID */
+            "WFTEST011019B",
+            /* cimd id */
+            62876388
+            )
+            
         // WFTB3SNEMZIP
         case .WFTEST111518K: return (
             /* source CID */
@@ -286,6 +299,13 @@ public enum InletCustomer: String, CaseIterable {
             /* cimd id */
             62862706
             )
+        case .WFTEST011019C: return (
+            /* source CID */
+            "WFTEST011019C",
+            /* cimd id */
+            62876389
+            )
+            
         // WFTB4ANPHZIP
         case .WFTEST111518Q: return (
             /* source CID */
@@ -317,17 +337,16 @@ public enum InletCustomer: String, CaseIterable {
             /* cim id */
             62862711
             )
-        // IN-PROGRESS
-        case .WFTEST111918A: return (
+        case .WFTEST011019D: return (
             /*. source CID */
-            "WFTEST111918A",
+            "WFTEST011019D",
             /* cim id */
-            99999999
+            62876390
             )
         }
     }
     
-    public var brandConnectionParameters: BrandConnectionParameters {
+    var brandConnectionParameters: BrandConnectionParameters {
         // WFTB4ANPHZIP
         switch self {
         case .WFTEST111518A: return (
@@ -390,6 +409,32 @@ public enum InletCustomer: String, CaseIterable {
             /* brand id */
             nil /* no brand id */
             )
+        case .WFTEST011019A: return (
+            /* email */
+            "wfuser011019A@email.com",
+            /* phone */
+            (1, 5555555555),
+            /* zip */
+            11754,
+            /* structured name */
+            nil, /* no name */
+            /* brand id */
+            nil /* no brand id */
+            )
+        // mystery
+        case .WFTEST111918A: return (
+            /* email */
+            "wfuser1@email.com",
+            /* phone */
+            (1, 4515551111),
+            /* zip */
+            94016,
+            /* structured name */
+            nil, /* no s. name */
+            /* brand id */
+            nil /* no brand id */
+            )
+            
         // WFTB2SNEMPH
         case .WFTEST111518F: return (
             /* email */
@@ -450,6 +495,19 @@ public enum InletCustomer: String, CaseIterable {
             /* brand id */
             nil /* no brand id */
             )
+        case .WFTEST011019B: return (
+            /* email */
+            "wfuser011019A@email.com",
+            /* phone */
+            (1, 5555555555),
+            /* zip */
+            nil, /* no zip */
+            /* structured name */
+            ("", "Fmultiple", "", "Lmultiple", ""),
+            /* brand id */
+            nil /* no brand id */
+            )
+            
         // WFTB3SNEMZIP
         case .WFTEST111518K: return (
             /* email */
@@ -511,6 +569,19 @@ public enum InletCustomer: String, CaseIterable {
             /* brand id */
             nil /* no brand id */
             )
+        case .WFTEST011019C: return (
+            /* email */
+            "wfuser011019A@email.com",
+            /* phone */
+            nil, /* no phone */
+            /* zip */
+            11754,
+            /* structured name */
+            ("", "Fmultiple", "", "Lmultiple", ""),
+            /* brand id */
+            nil /* no brand id */
+            )
+            
         // WFTB4ANPHZIP
         case .WFTEST111518Q: return (
             /* email */
@@ -572,20 +643,20 @@ public enum InletCustomer: String, CaseIterable {
             /* brand id */
             "WFTEST111518U"
             )
-        case .WFTEST111918A: return (
+        case .WFTEST011019D: return (
             /* email */
-            "wfuser1@email.com",
+            nil, /* no email */
             /* phone */
-            (1, 4515551111),
+            (1, 5555555555),
             /* zip */
-            94016,
+            11754,
             /* structured name */
             nil, /* no s. name */
             /* brand id */
-            nil /* no brand id */
+            "WFTEST011019D"
             )
-            
-            
         }
     }
 }
+
+
