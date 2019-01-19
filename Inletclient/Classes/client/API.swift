@@ -10,8 +10,6 @@ import UIKit
 import Alamofire
 import RxSwift
 import RxCocoa
-import Inletclient
-
 
 public enum API {
     
@@ -24,8 +22,12 @@ public enum API {
     }
     
     public static func getBrandProfile(brandId: String) -> Endpoint<[BrandProfile]> {
+        let parameters: [String: Any] = [
+            "assetBinaryData": true
+        ]
         return Endpoint(
             path: "api/access/v1/brand/\(brandId)",
+            parameters: parameters,
             localResource: "brand",
             localResourceType: "json"
         )
@@ -39,7 +41,7 @@ public enum API {
         let consentId = discoveryConsents.consents![0].consentId!
         
         let channelId = clientParameters.partnerChannelId
-        let channelSpecificConsumerId = clientParameters.inletCustomer.ids.sourceCID
+        let channelSpecificConsumerId = clientParameters.inletCustomer.cID
         
         /*  below, aliasing the 'sourceCID' from the data documentation
             as 'channelSpecificConsumerId' to reflect the name used in the
@@ -47,7 +49,7 @@ public enum API {
          */
         let endpointPath = "api/access/v1/discovery/channel/\(channelId)/channelconsumer/\(channelSpecificConsumerId)"
         var channelConsumerDeliveryPoints: [[String : [String : [[String : Any]]]]] = []
-        if let phoneNumber = clientParameters.inletCustomer.brandConnectionParameters.phoneNumber {
+        if let phoneNumber = clientParameters.inletCustomer.phoneNumber {
             channelConsumerDeliveryPoints.append([
                 "phoneDeliveryPointType": [
                     "userFields": [
@@ -58,7 +60,7 @@ public enum API {
             ])
         }
         
-        if let email = clientParameters.inletCustomer.brandConnectionParameters.email {
+        if let email = clientParameters.inletCustomer.email {
             channelConsumerDeliveryPoints.append([
                 "emailDeliveryPointType": [
                     "userFields": [
@@ -68,7 +70,7 @@ public enum API {
             ])
         }
         
-        if let zip = clientParameters.inletCustomer.brandConnectionParameters.zip {
+        if let zip = clientParameters.inletCustomer.zip {
             channelConsumerDeliveryPoints.append([
                 "zipDeliveryPointType": [
                     "userFields": [
@@ -78,7 +80,7 @@ public enum API {
             ])
         }
         
-        if let structuredName = clientParameters.inletCustomer.brandConnectionParameters.structuredName {
+        if let structuredName = clientParameters.inletCustomer.structuredName {
             channelConsumerDeliveryPoints.append([
                 "structuredNameDeliveryPointType": [
                     "userFields": [
@@ -92,7 +94,7 @@ public enum API {
             ])
         }
         
-        if let brandId = clientParameters.inletCustomer.brandConnectionParameters.brandId {
+        if let brandId = clientParameters.inletCustomer.brandId {
             channelConsumerDeliveryPoints.append([
                 "brandIdDeliveryPointType": [
                     "userFields": [

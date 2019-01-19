@@ -1,0 +1,204 @@
+[
+    {
+        "brandId":"BB:10000001203",
+        "brandName":"WFTB1EMPHZIP",
+        "brandDisplayName":"Xcel_POC",
+        "abbreviatedBrandName":"IDFSVDE_bidzip",
+        "brandDescription":"Internal test brand for CIMD",
+        "industryVerticals":null,
+        "parentId":null,
+        "hasChildren":"No",
+        "brandUrl":"http://www.inletdigital.com/",
+        "brandHeadquartersAddress":[
+            "292 Madison Ave",
+            "5th Floor",
+            "New York",
+            "NY",
+            "NY",
+            "10017"
+        ],
+        "remittanceAddresses":[
+            {
+                "addressName":null,
+                "addressLines":null
+            }
+        ],
+        "supportUrl":"http://www.inletdigital.com/",
+        "supportPhoneNumbers":[
+            {
+                "supportPhoneNumberName":"Support Phone Number",
+                "supportPhoneNumberValue":"800-522-0200"
+            }
+        ],
+        "supportEmails":[
+            {
+                "supportEmailValue":"support@inletdigital.com",
+                "supportEmailName":"Support Email"
+            }
+        ],
+        "accountNumberFormat":[
+            "(?=^[a-z0-9]{13}$)"
+        ],
+        "regionsServed":[
+            "US"
+        ],
+        "brandTerminationDate":"",
+        "dateOfFirstAvailability":"2017-09-26 00:00:00.0",
+        "historicalContentSupport":"No",
+        "deliveryInstructionConfirmationSupport":null,
+        "contentIngestionMethod":"Direct Ingest Provider File Exchange",
+        "documentRetentionPolicies":[
+            {
+                "documentRetentionPolicy":{
+                    "contentType":"Bill",
+                    "retentionDuration":"84"
+                }
+            }
+        ],
+        "brandConsents":[
+            {
+                "consentId":"BC:10000002105",
+                "brandId":null,
+                "consentLanguage":null,
+                "consentFile":null,
+                "consentFileName":null,
+                "consentSource":"Self",
+                "consentFormat":"Text",
+                "consentUrl":null,
+                "consentText":"Test Consent",
+                "consentUpdatePolicy":"New Only",
+                "languageCode":null,
+                "effectiveDate":null,
+                "status":null,
+                "expiryDate":null,
+                "consentReference":"Test Consent",
+                "consentLastAccessed":"2018-05-03 11:00:30.142"
+            },
+            {
+                "consentId":"GC:10000000002",
+                "brandId":null,
+                "consentLanguage":null,
+                "consentFile":null,
+                "consentFileName":null,
+                "consentSource":"SELF",
+                "consentFormat":"Text",
+                "consentUrl":null,
+                "consentText":"Test multi-brand consent - Aug 23",
+                "consentUpdatePolicy":"New Only",
+                "languageCode":null,
+                "effectiveDate":null,
+                "status":null,
+                "expiryDate":null,
+                "consentReference":"Test multi-brand consent - Aug 23",
+                "consentLastAccessed":"2017-08-23 09:38:25.281261"
+            }
+        ],
+        "brandConnectionParameters":[
+            {
+                "zipDeliveryPointType":{
+                    "deliveryPointName":"Zip Code",
+                    "deliveryPointScope":"WFTB1EMPHZIP/BB:10000001203",
+                    "userFields":[
+                        {
+                            "fieldId":"zipCode",
+                            "fieldType":"String"
+                        }
+                    ]
+                }
+            },
+            {
+                "emailDeliveryPointType":{
+                    "deliveryPointName":"EM",
+                    "deliveryPointScope":"WFTB1EMPHZIP/BB:10000001203",
+                    "userFields":[
+                        {
+                            "fieldId":"email",
+                            "fieldType":"String"
+                        }
+                    ]
+                }
+            },
+            {
+                "brandIdDeliveryPointType":{
+                    "deliveryPointName":"n/a",
+                    "deliveryPointScope":"WFTB1EMPHZIP/BB:10000001203",
+                    "userFields":[
+                        {
+                            "fieldId":"accountNum",
+                            "fieldType":"String"
+                        }
+                    ]
+                }
+            },
+            {
+                "structuredNameDeliveryPointType":{
+                    "deliveryPointName":"SN",
+                    "deliveryPointScope":"WFTB1EMPHZIP/BB:10000001203",
+                    "userFields":[
+                        {
+                            "fieldId":"salutation",
+                            "fieldType":"String"
+                        },
+                        {
+                            "fieldId":"firstName",
+                            "fieldType":"String"
+                        },
+                        {
+                            "fieldId":"middleName",
+                            "fieldType":"String"
+                        },
+                        {
+                            "fieldId":"lastName",
+                            "fieldType":"String"
+                        },
+                        {
+                            "fieldId":"suffix",
+                            "fieldType":"String"
+                        }
+                    ]
+                }
+            },
+            {
+                "phoneNumberDeliveryPointType":{
+                    "deliveryPointName":"n/a",
+                    "deliveryPointScope":"WFTB1EMPHZIP/BB:10000001203",
+                    "userFields":[
+                        {
+                            "fieldId":"countryCode",
+                            "fieldType":"String"
+                        },
+                        {
+                            "fieldId":"phoneNumber",
+                            "fieldType":"String"
+                        }
+                    ]
+                }
+            }
+        ],
+        "assetData":[
+            {
+                "brandId":null,
+                "assetId":"BA:10000002085",
+                "assetType":"LOGO",
+                "assetName":"Xcel Energy.svg",
+                "assetDescription":"svg Logo",
+                "assetTitle":"Xcel Logo",
+                "languageCode":null,
+                "assetFile":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSINCgkgaWQ9InN2ZzIyMDAiIHNvZGlwb2RpOmRvY25hbWU9IkJ1cmdlcl9LaW5nX0xvZ28uc3ZnIiBpbmtzY2FwZTp2ZXJzaW9uPSIwLjkxIHIxMzcyNSIgeG1sbnM6aW5rc2NhcGU9Imh0dHA6Ly93d3cuaW5rc2NhcGUub3JnL25hbWVzcGFjZXMvaW5rc2NhcGUiIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgeG1sbnM6Y2M9Imh0dHA6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL25zIyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIiB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczpzb2RpcG9kaT0iaHR0cDovL3NvZGlwb2RpLnNvdXJjZWZvcmdlLm5ldC9EVEQvc29kaXBvZGktMC5kdGQiDQoJIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSItOTguNSAtOTkuMiAyOTEuOCAyOTUiDQoJIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgLTk4LjUgLTk5LjIgMjkxLjggMjk1IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxzb2RpcG9kaTpuYW1lZHZpZXcgIGlkPSJuYW1lZHZpZXcyMCIgcGFnZWNvbG9yPSIjZmZmZmZmIiBib3JkZXJjb2xvcj0iIzY2NjY2NiIgaW5rc2NhcGU6em9vbT0iMC45MSIgYm9yZGVyb3BhY2l0eT0iMSIgaW5rc2NhcGU6Y3k9IjExNS4yNjU0NSIgaW5rc2NhcGU6Y3g9IjI3Mi4wNTYwOCIgc2hvd2dyaWQ9ImZhbHNlIiBpbmtzY2FwZTpwYWdlb3BhY2l0eT0iMCIgaW5rc2NhcGU6Y3VycmVudC1sYXllcj0ic3ZnMjIwMCIgaW5rc2NhcGU6d2luZG93LXdpZHRoPSIxMzY2IiBpbmtzY2FwZTp3aW5kb3cteT0iLTgiIGlua3NjYXBlOnBhZ2VzaGFkb3c9IjIiIGlua3NjYXBlOndpbmRvdy1tYXhpbWl6ZWQ9IjEiIGlua3NjYXBlOndpbmRvdy14PSItOCIgaW5rc2NhcGU6d2luZG93LWhlaWdodD0iNzA1IiBvYmplY3R0b2xlcmFuY2U9IjEwIiBncmlkdG9sZXJhbmNlPSIxMCIgZ3VpZGV0b2xlcmFuY2U9IjEwIj4NCgk8L3NvZGlwb2RpOm5hbWVkdmlldz4NCjxwYXRoIGlkPSJwYXRoMTEiIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiIGZpbGw9IiNGQUFGMTgiIGQ9Ik0xMjEuMi01Ny43YzAuNy0xLjctMC43LTMuMy0wLjctMy4zcy0xMS0xOC42LTQ5LjctMjIuOA0KCWMtMjAuOC0yLjItNDksMi02OC44LDEyLjdDLTM0LTUxLjgtMzkuNC0xOS45LTM5LjQtMTkuOWMtMC4yLDAuOC0wLjUsMy4yLDAuMyw0LjJjMC44LDEsMiwxLDMuNSwwLjVjMTIuNy00LjMsNTAuNC0xNi44LDc0LjItMjMuMQ0KCWMzMy45LTksNjEuOC0xNC41LDc5LjYtMTcuNUMxMTkuNi01Ni4xLDEyMC43LTU2LjUsMTIxLjItNTcuNyIvPg0KPHBhdGggaWQ9InBhdGgxMyIgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIgZmlsbD0iIzE4NTQ5NCIgZD0iTTE1OS45LDkyLjVjLTIwLjMsNDUuNi01OS4yLDc3LjMtMTEwLjMsNzgNCglDMTIuNSwxNzEtMjAuMywxNTguMy00NCwxMzYuMWwtMTQuMyw2LjFsMC0yMi4yYy0xNS42LTIxLTI0LjctNDcuNy0yNC43LTc3LjljMC03Ny41LDU5LjMtMTM4LjUsMTQyLjEtMTM4LjUNCgljMTMuNSwwLDI1LjcsMi4xLDM0LjksNC4yYy0xNC4yLTQuNS0yOC4zLTctNDQtN2MtODguOCwwLTE0OC42LDcyLTE0OC42LDE0Ni4zYzAsODAuOSw2My41LDE0OC43LDE0Ni44LDE0OC43DQoJYzc5LjYsMCwxMjIuNS01Ni4xLDEzNi4zLTg5LjlMMTU5LjksOTIuNSIvPg0KPHBhdGggaWQ9InBhdGgxNSIgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIgZmlsbD0iI0VEMUQyMSIgZD0iTTEzOS4zLDc2LjVjMTEuNy0xLjMsMTkuOC02LDI0LjItMTAuNGM0LTQsNS05LjQsNS0xMy41DQoJYzAuMi02LDAtMjQuOCwwLTI0LjhsLTMwLjksNi43YzAsMCwwLDIuMywwLDcuMmMwLjEsNC44LDIuNCw3LjQsNy40LDYuNWMxLjYtMC4zLDQtMSw0LTFsMCw1LjljMC0wLjIsMC41LDMuMy03LjMsNC44DQoJYy0xMC4yLDEuNi0xNC44LTQuNy0xNC45LTE1LjhjMC4yLTExLjksNi45LTE4LjcsMTUuMS0yMC42YzkuMi0yLjEsMTQuNCwwLjEsMTcuNCwwLjVjMTAuMiwxLjUsMTMuMS0xMy44LDMuOC0xNy40DQoJYy02LjktMi44LTE1LjgtMy4zLTI0LjMtMS42Yy0xMS40LDIuMy0zMy43LDExLjgtMzMuOCw0Mi43QzEwNC45LDcwLjMsMTIzLDc4LjMsMTM5LjMsNzYuNSIvPg0KPHBhdGggaWQ9InBhdGgxNyIgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIgZmlsbD0iI0VFMUMyMyIgZD0iTTM4LjgsMTAyLjhjMCwwLDkuNS0zLjMsMTAuMy0zLjVjNy42LTIuNiwxMC40LTcuMiwxMC40LTE1DQoJYy0wLjEtOC41LTAuMS0yNS4xLTAuMS0yNS4xbDIyLjEsMjUuNGMzLjYsMy43LDguMSw0LDEyLjIsMi44YzQuMi0xLjIsNy44LTUuMSw3LjktMTAuNmMwLTE4LjMsMC02My4xLDAtNjMuMXMtNS43LDEuMi0xMC40LDIuNQ0KCWMtNS40LDEuNS05LjYsNS05LjYsMTQuMmMwLDMuMiwwLDIxLjksMCwyMS45UzY5LDM2LjYsNjAuOSwyOC41Yy00LjMtNC4zLTExLjUtMS43LTExLjUtMS43bC0xMC42LDMuMkwzOC44LDEwMi44Ii8+DQo8cGF0aCBpZD0icGF0aDE5IiBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIiBmaWxsPSIjRUQxQzIzIiBkPSJNMzIuMSwzMS42YzAsMC02LjYsMS45LTEyLDMuOUMxMy4xLDM4LDksNDIuMSw5LDUyLjcNCgljMCw5LjgsMCw2MC41LDAsNjAuNXM2LjEtMi4xLDExLjktNC4zYzguMS0zLjEsMTEuMi03LjMsMTEuMi0xNS44QzMyLjEsODUuOCwzMi4xLDMxLjYsMzIuMSwzMS42Ii8+DQo8cGF0aCBpZD0icGF0aDIxIiBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIiBmaWxsPSIjRUUxRDIzIiBkPSJNLTAuOCw0NmMtNi4xLTIuOC0xMS4zLDAuMy0xMy41LDMuN2wtMTguNywzMS45bDAtMjUuNw0KCUwtNTUuMiw2NWwtMC4xLDcyLjZsMTUuNi02LjVjMCwwLDMuMS0wLjksNC45LTMuOGMxLjctMi43LDEuNi03LjEsMS42LTcuMWwwLTIzbDE3LjQsMTguNWMzLjgsNCwxMC44LDYsMTcsMQ0KCWM1LjYtNC41LDQuNy0xMi4yLDEuNi0xNS43TC0xMyw4NS4xYzAsMCwxMy45LTIyLDE2LjItMjUuNkM2LjIsNTQuNSw0LjcsNDguNS0wLjgsNDYiLz4NCjxwYXRoIGlkPSJwYXRoMjMiIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiIGZpbGw9IiNGQUFGMTgiIGQ9Ik0tOS41LDEzMS40Yy0wLjgsMS45LDEuMSwzLjgsMS4xLDMuOA0KCWM4LDEwLjEsNDMuNywyMi45LDgyLjUsMTMuNWM1OS4yLTE0LjMsNzEuNy01Ni4yLDczLjEtNjIuMWMwLjMtMS4yLDAuNS0zLjEtMC42LTQuM2MtMC45LTEtMi4zLTEtNC4xLTAuNg0KCUMxMDEuMyw5MS40LDMzLDExMi4zLTYuNSwxMjkuMkMtOC4yLDEyOS45LTguOSwxMzAuMi05LjUsMTMxLjQiLz4NCjxwYXRoIGlkPSJwYXRoMjUiIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiIGZpbGw9IiNFRTFDMjMiIGQ9Ik0tNDQuNiwzNi4yYy0wLjEtNC0zLjItNi4yLTguNS0zLjVsMCwxMi45YzAsMCwxLjctMC44LDMtMS40DQoJQy00Ni45LDQyLjctNDQuNSw0MC4xLTQ0LjYsMzYuMiBNLTUzLjIsMjQuNWMxLTAuNCwxLjctMC43LDIuNS0xLjFjMi45LTEuNCw1LTQuMSw1LTcuNWMwLTMuOS0zLjItNC45LTcuNS0yLjcNCglDLTUzLjIsMTMuMy01My4yLDI0LjUtNTMuMiwyNC41eiBNLTMwLjQsMzQuM2MwLjIsMTAuMi03LjEsMTUuNi0xNi43LDE5LjVsLTE5LjUsOC4zbDAtNTIuOWMwLDAsMTIuMy01LDE2LjMtNi41DQoJYzExLjQtNC4yLDE4LjEsMC45LDE4LjEsOC41YzAsNS4xLTIuMiw5LjQtNi45LDEzLjJDLTM0LjUsMjUuMi0zMC41LDI5LTMwLjQsMzQuM3oiLz4NCjxwYXRoIGlkPSJwYXRoMjciIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiIGZpbGw9IiNFRDFEMUYiIGQ9Ik02LjYtMTAuM2MwLTQuNS0zLjEtNS42LTYuOC00LjZjLTMsMC45LTYuNSwyLjItNi41LDIuMg0KCWwwLDMyLjljMCwzLjMtMC41LDcuNC00LjYsOC40Yy0zLjEsMC44LTQuNi0xLjMtNC42LTQuNmwwLTI2LjljMC00LjUtMy4xLTUuOC02LjgtNC42Yy00LjIsMS40LTYuNiwyLjQtNi42LDIuNHMwLDIzLjMsMCwzMi42DQoJYy0wLjEsMTAuOSw3LjUsMTYuNCwxOC45LDEzYzEwLjEtMywxNi45LTguNywxNy0yMy4yTDYuNi0xMC4zIi8+DQo8cGF0aCBpZD0icGF0aDI5IiBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIiBmaWxsPSIjRUUxQzIzIiBkPSJNMTE1LjIsMy4zYzIuOS0wLjYsNC43LTIuNyw0LjctNi4zYzAtMy4yLDAtNS43LDAtNS43DQoJbC0xNS44LDMuNWwwLTkuM2MwLDAsNy44LTEuNiw5LjktMi4xYzIuNy0wLjYsNC4xLTIuMSw0LjEtNS4yYzAtMi45LDAtNS40LDAtNS40bC0xNCwzbDAtNy40YzAsMCw3LjMtMS41LDExLjItMi4zDQoJYzMuMS0wLjYsNC4xLTIuNyw0LjEtNS42YzAtMS45LDAtNS42LDAtNS42Yy03LDEuMi0yMC4zLDMuOS0yOC42LDUuOEw5MC43LDguOUM5MC43LDguOSwxMDYuNSw1LjIsMTE1LjIsMy4zIi8+DQo8cGF0aCBpZD0icGF0aDMxIiBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIiBmaWxsPSIjRUUxRDIzIiBkPSJNMjMuNiwxLjNjMCwwLDcuOC00LjEsNy44LTEwLjVjLTAuMS01LjUtNS4xLTQuMy03LjctMy4zDQoJTDIzLjYsMS4zIE0yMy43LDguOGMwLDAsMCw5LjIsMCwxM2MwLDMuNS0yLjQsNi01LjQsNy4yYzAsMC4xLDAtMC4xLDAsMGMtMi41LDAuOS03LjksMi43LTcuOSwyLjdsMC00OS43YzAsMCwxMS4xLTMuOSwxNy42LTUuNA0KCUMzOC0yNS44LDQ1LjItMjEuMiw0NS4xLTEzQzQ1LTUuMiw0MC43LTAuNSwzNi44LDIuOGw4LjYsOC4yYzIuNiwyLjYsMi44LDcuMi0wLjEsMTBjLTEuOCwxLjctNi41LDMuNC0xMC4xLTAuNA0KCUMzNS4xLDIwLjYsMjMuNyw4LjgsMjMuNyw4Ljh6Ii8+DQo8cGF0aCBpZD0icGF0aDMzIiBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIiBmaWxsPSIjRUUxRDIzIiBkPSJNMTM1LjgtMjUuNGMwLDAsNy43LTIuOSw3LjYtOS4xYy0wLjEtNS4yLTUuMi00LjMtNy43LTMuNw0KCUwxMzUuOC0yNS40IE0xMjIuOCwxLjhsMC00Ny42YzAsMCwxMy45LTIuNSwxNy41LTIuOWMxMC0xLjMsMTYuNyw0LjMsMTYuNSwxMi4xYy0wLjEsNi45LTQuNCwxMS4xLTguMSwxMy42YzAsMCw2LjgsNy42LDguNiw5LjcNCgljMi40LDIuNywyLjMsNy40LTEuMyw5LjdjLTMuNSwyLjItNy4xLDEuMS05LjEtMS4yTDEzNS44LTE4YzAsMCwwLDguMSwwLDExLjZjMCwzLjUtMi4xLDYuMS01LjcsNi44TDEyMi44LDEuOEwxMjIuOCwxLjh6Ii8+DQo8cGF0aCBpZD0icGF0aDM1IiBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIiBmaWxsPSIjRUUxRDIzIiBkPSJNODcuNi0xOC4ybC0xOS43LDQuNWMwLDAsMCwyLjEsMCw1LjVjMCwyLjYsMS44LDQuMiw0LjQsMy43DQoJYzEuNi0wLjMsMi45LTAuNiwyLjktMC42bDAsNS41YzAsMi4yLTMuMiwzLjYtNi42LDMuNUM2My44LDMuNyw2MS4yLDAsNjEuMS03YzAuMS05LjIsNC41LTE0LjYsMTAuNC0xNi4xYzIuOS0wLjgsNS42LTAuNCw3LjctMC4xDQoJYzUuMSwwLjgsOC0xLjYsOC4xLTUuOGMwLjEtNC41LTMuOS03LjMtMTIuNC03QzU2LjMtMzUuNCw0Ni44LTIyLDQ2LjgtNi4xYzAsMTYuMywxMC43LDIzLjUsMjMuNywyMS4yYzcuMy0xLjUsMTEtMy45LDEzLjUtNi4xDQoJYzIuNS0yLjIsMy42LTUuNSwzLjYtOC40TDg3LjYtMTguMiIvPg0KPHBhdGggaWQ9InBhdGgzNyIgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIgZmlsbD0iI0ZGRkZGRiIgZD0iTTkuOS03MS41Qy0xMS45LTYxLjktMjYuNi0zOS0yNy40LTI5LjQNCgljLTAuMywzLjgsNC44LDQuNCw1LjMsMC4zQy0xNy41LTQ2LjctMy41LTYzLjMsOS45LTcxLjUiLz4NCjxwYXRoIGlkPSJwYXRoMzkiIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiIGZpbGw9IiNGRkZGRkYiIGQ9Ik04Mi01NS4xYzExLjctMi45LDE4LjItMy4zLDE4LjMtOC42DQoJYzAuMi04LjgtMjQuOC0xOS00Ny44LTE3LjFjMjMuNCwxLjYsMzcuNCwxMC42LDM3LjQsMTYuOEM5MC02MCw4Ni41LTU2LjUsODItNTUuMSIvPg0KPHBhdGggaWQ9InBhdGg0MSIgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIgZmlsbD0iI0ZGRkZGRiIgZD0iTTg5LjIsMTM4LjljMTcuNi02LjksMzQuNS0yMC4yLDQzLjktNDANCgljMi43LTUuNy01LjEtOC43LTcuMy0xLjlDMTIwLjMsMTExLjEsMTA5LjEsMTI3LjYsODkuMiwxMzguOSIvPg0KPHBhdGggaWQ9InBhdGg0MyIgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIgZmlsbD0iI0VFMUQyMyIgZD0iTTE3Ny45LDc5LjRoMi40YzEuMywwLDMsMC4yLDMsMS44YzAsMS44LTEuMiwyLTIuOCwyaC0yLjUNCglMMTc3LjksNzkuNCBNMTc1LDkxLjVoMi44di02LjFoMS44bDMuNSw2LjFoM2wtMy44LTYuM2MyLjEtMC4yLDMuOC0xLjIsMy44LTMuOGMwLTMuMS0yLTQuMy01LjYtNC4zSDE3NUwxNzUsOTEuNUwxNzUsOTEuNXoNCgkgTTE2Nyw4NC4zYzAsNy44LDYuMiwxMi45LDEzLjIsMTIuOWM3LDAsMTMuMi01LDEzLjItMTIuOWMwLTcuOC02LjItMTIuOC0xMy4yLTEyLjhDMTczLjIsNzEuNSwxNjcsNzYuNSwxNjcsODQuM3ogTTE3MC41LDg0LjMNCgljMC01LjgsNC4zLTEwLjEsOS43LTEwLjFjNS4zLDAsOS43LDQuMiw5LjcsMTAuMWMwLDUuOS00LjQsMTAuMS05LjcsMTAuMUMxNzQuOCw5NC41LDE3MC41LDkwLjIsMTcwLjUsODQuM3oiLz4NCjwvc3ZnPg0K"
+            }
+        ],
+        "deliveryInstructions":{
+            "allowParentInstruction":null,
+            "allowBrandWideInstruction":null,
+            "allowByAccount":"Yes-required",
+            "allowByContentType":"Yes-optional",
+            "allowByAccountContentType":"Yes-optional",
+            "acceptsPrintSuppression":"Yes-optional"
+        },
+        "contentTypes":[
+            "Bill"
+        ],
+        "lastModifiedOn":"2019-01-10 12:03:42.56",
+        "languageCode":"en"
+    }
+]

@@ -2,7 +2,6 @@ import UIKit
 import Alamofire
 import RxSwift
 import RxCocoa
-import Inletclient
 
 public struct ClientParameters {
     let inletCustomer: InletCustomer
@@ -46,13 +45,6 @@ public typealias BrandProfilesSingle = Single<BrandProfilesTuple>
 
 public class InletController {
     
-    public enum InletClientError: Error {
-        case emptyResponse
-    }
-    
-    let restClient: RESTClient
-    let clientParameters: ClientParameters
-    
     public init(
         restClient: RESTClient,
         clientParameters: ClientParameters
@@ -60,6 +52,13 @@ public class InletController {
         self.restClient = restClient
         self.clientParameters = clientParameters
     }
+    
+    public enum InletClientError: Error {
+        case emptyResponse
+    }
+    
+    let restClient: RESTClient
+    let clientParameters: ClientParameters
     
     public func getBrandProfilesObservablesZip (
         discoveryProfile: DiscoveryProfile

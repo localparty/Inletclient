@@ -9,7 +9,6 @@ UITableViewDataSource, MirrorControllerDelegate {
     
     public let customersPool: [InletCustomer] = [
         .WFTEST011019A,
-        .WFTEST111918A,
         .WFTEST011019B,
         .WFTEST011019C,
         .WFTEST011019D
@@ -76,21 +75,9 @@ UITableViewDataSource, MirrorControllerDelegate {
         guard dataQuery.count > 0 else {
             return
         }
-        var restClient: RESTClient
-        let mainBundleIdentifier: String = Bundle.main.bundleIdentifier!
-        let suiteName: String = "group.\(mainBundleIdentifier)"
-        if UserDefaults(suiteName: suiteName)!
-            .bool(forKey: PreferenceItemIdentifier.online.rawValue) {
-        } else {
-            //restClient = RESTClient()
-        }
-        
-        let username = "$2a$06$YKYwyV3lwnQ.mFNm97XtgOie.oTAOnsh0VQh1UHQ9jbLgyrNfY/1C"
-        let password = "$2a$06$H7RhnGbrHg17E4siBcilwuJTwgyRiYQZAC6GPO0lITc/t/r24ORAC"
-        restClient = RESTClient(username: username, password: password)
         
         let dataSingles = dataQuery.map { (inletCustomer) in
-            return loadDataOf(customer: inletCustomer, withClient: restClient).asObservable()
+            return loadDataOf(customer: inletCustomer).asObservable()
         }
         
         subscription = Observable
@@ -104,6 +91,57 @@ UITableViewDataSource, MirrorControllerDelegate {
         _ tableView: UITableView,
         shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return false
+    }
+    
+    func loadDataOf(customer: InletCustomer) -> InletDataSingle {
+        
+        let minConfidenceLevel: Int = 10
+        let clientParameters =
+            ClientParameters(
+                inletCustomer: customer,
+                minConfidenceLevel: minConfidenceLevel,
+                partnerChannelId: partnerChannelId)
+        
+        let dataDirectoryModeIsTrue = true
+        guard dataDirectoryModeIsTrue else {
+            
+            let username = "$2a$06$YKYwyV3lwnQ.mFNm97XtgOie.oTAOnsh0VQh1UHQ9jbLgyrNfY/1C"
+            let password = "$2a$06$H7RhnGbrHg17E4siBcilwuJTwgyRiYQZAC6GPO0lITc/t/r24ORAC"
+            
+            let restClient: RESTClient = RESTClient(
+                username: username, password: password)
+            
+            return
+                InletController(
+                    restClient: restClient,
+                    clientParameters: clientParameters)
+                    .loadData()
+        }
+        // local data mode
+        //let dataDirectory = "mono-brand"
+        
+        
+        let dataDirectory = "chris"
+        let bundle = Bundle.main
+        let restClient: RESTClient = RESTClient(
+            dataDirectory: dataDirectory,
+            bundle: bundle
+        )
+        
+        return
+            InletController(
+                restClient: restClient,
+                clientParameters: clientParameters)
+                .loadData()
+        
+    }
+    
+    private func getAppSetting () -> Bool {
+        
+        let mainBundleIdentifier: String = Bundle.main.bundleIdentifier!
+        let suiteName: String = "group.\(mainBundleIdentifier)"
+        return UserDefaults(suiteName: suiteName)!
+            .bool(forKey: PreferenceItemIdentifier.online.rawValue)
     }
     
     public func numberOfSections(in tableView: UITableView) -> Int {
@@ -146,22 +184,6 @@ UITableViewDataSource, MirrorControllerDelegate {
     
     public override func viewWillDisappear(_ animated: Bool) {
         subscription?.dispose()
-    }
-    
-    func loadDataOf(customer: InletCustomer, withClient: RESTClient) -> InletDataSingle {
-        
-        let minConfidenceLevel: Int = 10
-        let clientParameters =
-            ClientParameters(
-                inletCustomer: customer,
-                minConfidenceLevel: minConfidenceLevel,
-                partnerChannelId: partnerChannelId)
-        
-        return
-            InletController(
-                restClient: withClient,
-                clientParameters: clientParameters)
-                .loadData()
     }
     
     public func instanciateProxyViewController() -> ProxyTableViewController {

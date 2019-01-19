@@ -13,6 +13,7 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		960BF4F021F12B9100C92B3F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9652142921EE78F9005FD8A2 /* Settings.bundle */; };
+		960BF52021F2B17800C92B3F /* chris in Resources */ = {isa = PBXBuildFile; fileRef = 960BF51F21F2B17800C92B3F /* chris */; };
 		9652142C21EE83D7005FD8A2 /* InletDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9652142B21EE83D7005FD8A2 /* InletDataViewController.swift */; };
 		96720C3421EA985F003816D8 /* StoryboardConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96720C3321EA985F003816D8 /* StoryboardConfig.swift */; };
 		A85F4CE62C5D35D80F4CB11C /* Pods_Inletclient_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFD5D7AE1509218C6B26C53 /* Pods_Inletclient_Example.framework */; };
@@ -42,6 +43,7 @@
 		607FACE51AFB9204008FA782 /* Inletclient_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Inletclient_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		960BF51F21F2B17800C92B3F /* chris */ = {isa = PBXFileReference; lastKnownFileType = folder; name = chris; path = "../../../../demo-data/chris"; sourceTree = "<group>"; };
 		9652142921EE78F9005FD8A2 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		9652142B21EE83D7005FD8A2 /* InletDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InletDataViewController.swift; sourceTree = "<group>"; };
 		96720C3321EA985F003816D8 /* StoryboardConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardConfig.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 		607FACD31AFB9204008FA782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				960BF51F21F2B17800C92B3F /* chris */,
 				607FACD41AFB9204008FA782 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -254,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				960BF4F021F12B9100C92B3F /* Settings.bundle in Resources */,
+				960BF52021F2B17800C92B3F /* chris in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,

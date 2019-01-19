@@ -19,7 +19,10 @@ Pod::Spec.new do |s|
 
   s.description      = <<-DESC
 # The Swift client for the Inlet REST APIs, implemented with RxSwift and Alamofire.
-- Included updates to the data of the following: 
+- added a parameter for included the base64 svg logo of the brands
+- excluded the extraneous data from the data enum
+- updated the cid of the data for the setup executed on 2019-01-18
+- Included updates to the data of the following:
 -- WFTEST111918A
 -- WFTEST011019B
 -- WFTEST011019C

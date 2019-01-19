@@ -55,67 +55,37 @@ public class GenericError:Error {
 }
 
 public final class RESTClient: RESTClientProtocol {
+    
     public enum Mode: String {
         case inlet
         case bundle
     }
-    private static func instanceDirectory () -> String {
+    
+    private static func timestampDirectoryPrefix (withDate: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let date = Date()
-        let timestampComponent = dateFormatter.string(from: date)
+        let timestampComponent = dateFormatter.string(from: withDate)
         let uuidComponent = NSUUID().uuidString
         return "\(timestampComponent)–\(uuidComponent)"
     }
     
-    public static let localResourcedDirectoryName = "json/\(RESTClient.instanceDirectory())"
+    public static let inletBundleName = "Inletclient.framework"
+    public static let defaultLocalDataDirectory: String = "json"
+    public static let defaultBaseURL = "https://appdelivery.uat.inletdigital.com"
+    public static let defaultCredentialsValue = "n/a"
     
     private let queue = DispatchQueue(label: "appdelivery.uat.inletdigital.com")
-    private let baseURL = URL(string: "https://appdelivery.uat.inletdigital.com")!
     private let username: String
     private let password: String
-    private let mode: Mode
+    private let dataDirectory: String?
+    private let bundle: Bundle?
+    private let baseURL: URL
     
-    static func initUrlProtectionSpace(user: String, password: String) {
-        let upsHost = "appdelivery.uat.inletdigital.com"
-        
-        let protectionSpace0 = URLProtectionSpace.init(
-            host: upsHost,
-            port: 80,
-            protocol: "http",
-            realm: nil,
-            authenticationMethod: nil)
-        
-        let protectionSpace1 = URLProtectionSpace.init(
-            host: upsHost,
-            port: 443,
-            protocol: "https",
-            realm: nil,
-            authenticationMethod: nil)
-        
-        let protectionSpace2 = URLProtectionSpace.init(
-            host: upsHost,
-            port: 443,
-            protocol: "htps",
-            realm: nil,
-            authenticationMethod: nil)
-        
-        let userCredential = URLCredential(
-            user: user,
-            password: password,
-            persistence: .permanent)
-        
-        
-        URLCredentialStorage.shared.set(userCredential, for: protectionSpace0)
-        URLCredentialStorage.shared.set(userCredential, for: protectionSpace1)
-        URLCredentialStorage.shared.set(userCredential, for: protectionSpace2)
-    }
-    
-    static func configureProtectionSpace() {
-        let upsHost = "appdelivery.uat.inletdigital.com"
-        let upsPort = 443
-        let upsProtocol = "https"
-        let upsAuthenticationMethod:String? = nil
+    func configureProtectionSpace() {
+        let upsHost = self.baseURL.host!
+        let upsPort = self.baseURL.port!
+        let upsProtocol = self.baseURL.scheme!
+        let upsAuthenticationMethod:String = NSURLAuthenticationMethodHTTPDigest
         
         let protectionSpace = URLProtectionSpace.init(
             host: upsHost,
@@ -132,14 +102,13 @@ public final class RESTClient: RESTClientProtocol {
         URLCredentialStorage.shared.setDefaultCredential(credential, for: protectionSpace)
     }
     
-    private static let inletBundleName = "Inletclient.framework"
-    private static func inletBundle() -> Bundle? {
+    public static func findBundle(withName: String) -> Bundle? {
         let filterResult = Bundle.allFrameworks
             .compactMap { (bundle) -> (bundle: Bundle, path: String) in
                 return (bundle, bundle.bundlePath)
             }
             .compactMap { (tuple) -> (bundle: Bundle, path: String)? in
-                if tuple.path.contains(inletBundleName) {
+                if tuple.path.contains(withName) {
                     return (tuple.bundle, tuple.path)
                 }
                 return nil
@@ -149,56 +118,23 @@ public final class RESTClient: RESTClientProtocol {
         }
         return filterResult.first!.bundle
     }
-    private static func inletBundlePath(forResource: String, ofType: String) -> String? {
-        let filterResult = Bundle.allFrameworks
-            .compactMap { (bundle) -> (bundle: Bundle, path: String) in
-                return (bundle, bundle.bundlePath)
-            }
-            .compactMap { (tuple) -> (bundle: Bundle, path: String)? in
-                if tuple.path.contains(inletBundleName) {
-                    return (tuple.bundle, tuple.path)
-                }
-                return nil
-        }
-        guard filterResult.count == 1 else {
-            return nil
-        }
-        let bundle: Bundle = filterResult.first!.bundle
-        return bundle.path(forResource: forResource, ofType: ofType)
-    }
-    
-    private static func inletBundlePath() -> String? {
-        let filterResult = Bundle.allFrameworks
-            .compactMap { (bundle) -> (bundle: Bundle, path: String) in
-                return (bundle, bundle.bundlePath)
-            }
-            .compactMap { (tuple) -> (bundle: Bundle, path: String)? in
-                if tuple.path.contains(inletBundleName) {
-                    return (tuple.bundle, tuple.path)
-                }
-                return nil
-        }
-        guard filterResult.count == 1 else {
-            return nil
-        }
-        return filterResult.first?.bundle.bundlePath
-    }
-    
-    public convenience init() {
-        self.init(username: "n/a", password: "n/a", mode: .bundle)
-    }
     
     public init(
-        username: String,
-        password: String,
-        mode: Mode? = .inlet) {
-        RESTClient.configureProtectionSpace()
+        username: String = RESTClient.defaultCredentialsValue,
+        password: String = RESTClient.defaultCredentialsValue,
+        baseURL: String = RESTClient.defaultBaseURL,
+        dataDirectory: String? = nil,
+        bundle: Bundle? = findBundle(withName: inletBundleName)
+        ) {
         self.username = username
         self.password = password
-        self.mode = mode!
+        self.baseURL = URL(string: baseURL)!
+        self.dataDirectory = dataDirectory
+        self.bundle = bundle
+        //configureProtectionSpace()
     }
     
-    static func httpMethod(from method: Method) -> Alamofire.HTTPMethod {
+    static func alamoFireHttpMethod(from method: Method) -> Alamofire.HTTPMethod {
         switch method {
         case .get: return .get
         case .post: return .post
@@ -223,7 +159,7 @@ public final class RESTClient: RESTClientProtocol {
         }
         print("response data– \(stringData)")
         
-        guard mode == .inlet else {
+        guard bundle == nil else {
             return
         }
         
@@ -265,42 +201,39 @@ public final class RESTClient: RESTClientProtocol {
         }
     }
     
-    private func getLocalOrRemoteRequest<Response>(
-        endpoint: Endpoint<Response>,
-        jsonPathFromEndpoint: String
-        ) -> DataRequest {
-    
-        var alamofireRequest: DataRequest
+    private static func getFileURL<Response>(
+        fromBundle bundle: Bundle,
+        andfromEndpoint endpoint: Endpoint<Response>,
+        andDataDirectory dataDirectory: String) -> URL {
         
-        if self.mode == .bundle {
-            let inletBundle = RESTClient.inletBundle()
-            let inletBundleResource = inletBundle!.path(
-                forResource: endpoint.localResource,
-                ofType: endpoint.localResourceType,
-                inDirectory: jsonPathFromEndpoint)
-            if inletBundleResource == nil {
-                let debuggingDirectoryPath =
-                    URL(fileURLWithPath: (inletBundle?.bundlePath)!)
-                        .appendingPathComponent(RESTClient.localResourcedDirectoryName, isDirectory: true)
-                        .appendingPathComponent(endpoint.path, isDirectory: true)
-                        .appendingPathComponent(endpoint.localResource!, isDirectory: false)
-                        .appendingPathExtension(endpoint.localResourceType!)
-                        .path
-                print("couldn't find–– \(debuggingDirectoryPath)")
-            }
-            let localResourceURL = URL(fileURLWithPath: inletBundleResource!)
-            alamofireRequest = Alamofire.request(localResourceURL)
-            print("created request with file URL– \(localResourceURL)")
-        } else {
-            let apiURL = self.urlFromBase(withPath: endpoint.path)
+        // first we try to find the resource in the main bundle
+        let resource = endpoint.localResource
+        let resourceType = endpoint.localResourceType
+        let resourceDirectory = URL(string: dataDirectory)!
+            .appendingPathComponent(endpoint.path, isDirectory: true)
+            .path
+        let bundleResourcePath = bundle.path(
+            forResource: resource,
+            ofType: resourceType,
+            inDirectory: resourceDirectory
+        )
+        // if the previous path was nil it means that the bundle couldnt' find the resource
+        let bundleResourcePathFileURL = URL(fileURLWithPath: bundleResourcePath!)
+        return bundleResourcePathFileURL
+    }
+    
+    private func getDataRequest<Response>(fromEndpoint endpoint: Endpoint<Response>) -> DataRequest {
+        guard let bundle = bundle else {
+            // i.e. inline mode
+            let urlFromEndpointAndBasePath = urlFromBasePath(appendingPath: endpoint.path)
             
             var urlRequest = URLRequest(
-                url: apiURL,
+                url: urlFromEndpointAndBasePath,
                 cachePolicy: .useProtocolCachePolicy,
                 timeoutInterval: endpoint.timeoutInterval!
             )
             
-            urlRequest.httpMethod = RESTClient.httpMethod(from: endpoint.method).rawValue
+            urlRequest.httpMethod = RESTClient.alamoFireHttpMethod(from: endpoint.method).rawValue
             urlRequest.allHTTPHeaderFields = endpoint.headers
             urlRequest.timeoutInterval = endpoint.timeoutInterval!
             
@@ -308,18 +241,18 @@ public final class RESTClient: RESTClientProtocol {
                 let postData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
                 urlRequest.httpBody = postData as Data
             }
-            alamofireRequest = Alamofire.request(urlRequest)
-            print("created request with URL– \(urlRequest)")
+            return Alamofire.request(urlRequest)
         }
-        return alamofireRequest
+        
+        // i.e. local data mode
+        let fileURL = RESTClient.getFileURL(fromBundle: bundle, andfromEndpoint: endpoint, andDataDirectory: dataDirectory!)
+        return Alamofire.request(fileURL)
     }
     
     public func request<Response>(_ endpoint: Endpoint<Response>) -> Single<Response> {
         return Single<Response>.create { observer in
             // the following pathes might be used if in writing mode
-            let jsonPathFromEndpoint = "\(RESTClient.localResourcedDirectoryName)/\(endpoint.path)"
-            let alamofireRequest =
-                self.getLocalOrRemoteRequest(endpoint: endpoint, jsonPathFromEndpoint: jsonPathFromEndpoint)
+            let alamofireRequest = self.getDataRequest(fromEndpoint: endpoint)
                 .validateResponseStatus()
                 .debugLog()
                 .authenticate(user: self.username, password: self.password, persistence: .permanent)
@@ -327,8 +260,8 @@ public final class RESTClient: RESTClientProtocol {
                     self.dumpResponseData(
                         response: response,
                         endpoint: endpoint,
-                        jsonPathFromEndpoint: jsonPathFromEndpoint)
-                    if self.mode == .inlet {
+                        jsonPathFromEndpoint: endpoint.path)
+                    if self.bundle == nil {
                         guard response.response?.statusCode == 200 else {
                             observer(SingleEvent.error(GenericError(
                                 name: "error HTTP status",
@@ -350,8 +283,8 @@ public final class RESTClient: RESTClientProtocol {
         }
     }
     
-    private func urlFromBase(withPath: Path) -> URL {
-        return baseURL.appendingPathComponent(withPath)
+    private func urlFromBasePath(appendingPath: Path) -> URL {
+        return baseURL.appendingPathComponent(appendingPath)
     }
 }
 
