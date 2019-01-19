@@ -1,0 +1,155 @@
+[
+    {
+        "brandId": "BB:10000002067",
+        "brandName": "WFTB3SNEMZIP",
+        "brandDisplayName": "Sprint_POC",
+        "abbreviatedBrandName": "WFTB3SNEMZIP",
+        "brandDescription": "Discovery Test Brand Structured Name, EM and ZIP",
+        "industryVerticals": null,
+        "parentId": null,
+        "hasChildren": "No",
+        "brandUrl": "http://www.inletdigital.com/",
+        "brandHeadquartersAddress": [
+            "292 Madison Ave",
+            "5th Floor",
+            "New York",
+            "NY",
+            "NY",
+            "10017"
+        ],
+        "remittanceAddresses": [
+            {
+                "addressName": null,
+                "addressLines": null
+            }
+        ],
+        "supportUrl": "http://www.inletdigital.com/",
+        "supportPhoneNumbers": [],
+        "supportEmails": [],
+        "accountNumberFormat": [],
+        "regionsServed": [],
+        "brandTerminationDate": "",
+        "dateOfFirstAvailability": "",
+        "historicalContentSupport": "Yes",
+        "deliveryInstructionConfirmationSupport": null,
+        "contentIngestionMethod": "Direct Ingest Provider File Exchange",
+        "documentRetentionPolicies": [],
+        "brandConsents": [
+            {
+                "consentId": "BC:10000002292",
+                "brandId": null,
+                "consentLanguage": null,
+                "consentFile": null,
+                "consentFileName": null,
+                "consentSource": "self",
+                "consentFormat": "Text",
+                "consentUrl": null,
+                "consentText": "Test Brand Specific Consent",
+                "consentUpdatePolicy": "New only",
+                "languageCode": null,
+                "effectiveDate": null,
+                "status": null,
+                "expiryDate": null,
+                "consentReference": "Test Brand Specific Consent",
+                "consentLastAccessed": "2018-11-15 16:40:16.744"
+            },
+            {
+                "consentId": "GC:10000000002",
+                "brandId": null,
+                "consentLanguage": null,
+                "consentFile": null,
+                "consentFileName": null,
+                "consentSource": "SELF",
+                "consentFormat": "Text",
+                "consentUrl": null,
+                "consentText": "Test multi-brand consent - Aug 23",
+                "consentUpdatePolicy": "New Only",
+                "languageCode": null,
+                "effectiveDate": null,
+                "status": null,
+                "expiryDate": null,
+                "consentReference": "Test multi-brand consent - Aug 23",
+                "consentLastAccessed": "2017-08-23 09:38:25.281261"
+            }
+        ],
+        "brandConnectionParameters": [
+            {
+                "emailDeliveryPointType": {
+                    "deliveryPointName": "Email",
+                    "deliveryPointScope": "WFTB3SNEMZIP/BB:10000002067",
+                    "userFields": [
+                        {
+                            "fieldId": "email",
+                            "fieldType": "String"
+                        }
+                    ]
+                }
+            },
+            {
+                "structuredNameDeliveryPointType": {
+                    "deliveryPointName": "Name",
+                    "deliveryPointScope": "WFTB3SNEMZIP/BB:10000002067",
+                    "userFields": [
+                        {
+                            "fieldId": "salutation",
+                            "fieldType": "String"
+                        },
+                        {
+                            "fieldId": "firstName",
+                            "fieldType": "String"
+                        },
+                        {
+                            "fieldId": "middleName",
+                            "fieldType": "String"
+                        },
+                        {
+                            "fieldId": "lastName",
+                            "fieldType": "String"
+                        },
+                        {
+                            "fieldId": "suffix",
+                            "fieldType": "String"
+                        }
+                    ]
+                }
+            },
+            {
+                "zipDeliveryPointType": {
+                    "deliveryPointName": "ZIP",
+                    "deliveryPointScope": "WFTB3SNEMZIP/BB:10000002067",
+                    "userFields": [
+                        {
+                            "fieldId": "zipCode",
+                            "fieldType": "String"
+                        }
+                    ]
+                }
+            }
+        ],
+        "assetData": [
+            {
+                "brandId": null,
+                "assetId": "BA:10000002087",
+                "assetType": "LOGO",
+                "assetName": "sprint-logo.svg",
+                "assetDescription": "svg Logo",
+                "assetTitle": "Sprint Logo",
+                "languageCode": null,
+                "assetFile": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNS4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAgLS0+DQo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiIFsNCgk8IUVOVElUWSBuc19mbG93cyAiaHR0cDovL25zLmFkb2JlLmNvbS9GbG93cy8xLjAvIj4NCl0+DQo8c3ZnIHZlcnNpb249IjEuMSINCgkgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sbnM6YT0iaHR0cDovL25zLmFkb2JlLmNvbS9BZG9iZVNWR1ZpZXdlckV4dGVuc2lvbnMvMy4wLyINCgkgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSIzMDFweCIgaGVpZ2h0PSIxMjdweCIgdmlld0JveD0iLTEgMCAzMDEgMTI3IiBvdmVyZmxvdz0idmlzaWJsZSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAtMSAwIDMwMSAxMjciDQoJIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGRlZnM+DQo8L2RlZnM+DQo8cGF0aCBmaWxsPSIjMjMxRjIwIiBkPSJNMTAuNzIyLDEwOS4wMDFjLTMuNDMyLDAtNi44OTYtMC40MzUtOS42NzMtMS4xNTNsMC40MzQtNy4zMjhjMi43NCwxLjAxNCw2LjQ2MSwxLjc3LDkuOTYsMS43Nw0KCWM1LjI3LDAsOS41My0yLjE5OSw5LjUzLTcuMzYzQzIwLjk3Myw4NC44MTgsMCw4OS4wODIsMCw3My41NjJjMC04LjMwMiw2LjQ2MS0xNC4wNDEsMTcuNjE3LTE0LjA0MWMyLjg4LDAsNS44MDUsMC4zOTQsOC43MywwLjg2NQ0KCWwtMC40MzUsNi44OTZjLTIuNzc4LTAuODY2LTUuODQ1LTEuMzM2LTguNjYzLTEuMzM2Yy01Ljk5MSwwLTkuMDU4LDIuNzc4LTkuMDU4LDYuNzVjMCw5LjYzNCwyMC45NzMsNi4wMjcsMjAuOTczLDIxLjA3Mg0KCUMyOS4xNjUsMTAyLjU4LDIyLjIzLDEwOS4wMDEsMTAuNzIyLDEwOS4wMDEiLz4NCjxwYXRoIGZpbGw9IiMyMzFGMjAiIGQ9Ik00Ny44OTIsMTA4Ljc1Yy0yLjAxOCwwLTMuNDk5LTAuMDM3LTUuMzc1LTAuNDN2MTUuMzg5SDM0Ljk3di01MC44M2g3LjE4MWMwLDEuODc1LTAuMTA2LDQuNzYtMC40MzQsNi42NzINCgloMC4xNDZjMS45NTEtNC41MDgsNi4wMjgtNy4zMjYsMTEuNDQtNy4zMjZjOC4zNzUsMCwxMy4wMjksNS45MjQsMTMuMDI5LDE2LjYwNUM2Ni4zMzMsMTAxLjI4MSw1OS43MjcsMTA4Ljc1LDQ3Ljg5MiwxMDguNzUNCgkgTTUxLjI4Niw3OC40MzZjLTUuNzAxLDAtOC43Nyw2LjcxMy04Ljc3LDEyLjczOHYxMC45MzZjMS42OTIsMC40NzEsMy40NjEsMC43MjMsNS41NTgsMC43MjNjNi4wOTQsMCwxMC4yMTItMy43NTEsMTAuMjEyLTEzLjI3OQ0KCUM1OC4yODYsODIuNDc1LDU2LjA4Myw3OC40MzYsNTEuMjg2LDc4LjQzNnoiLz4NCjxwYXRoIGZpbGw9IiMyMzFGMjAiIGQ9Ik05MC43MDQsNzkuNjk1Yy03LjA0Mi0xLjI5OS0xMC40MzQsMy41NzgtMTAuNDM0LDE0LjIyMXYxNC4zNjNoLTcuNjE3VjcyLjg3OGg3LjI5DQoJYzAsMi4wMTktMC4yNSw1LjEyNC0wLjcyNCw3Ljg2N2gwLjE0NGMxLjUyLTQuOCw1LjEyOC05LjIwNiwxMS43MzMtOC41MjFMOTAuNzA0LDc5LjY5NSIvPg0KPHBhdGggZmlsbD0iIzIzMUYyMCIgZD0iTTEwMS42MjUsNjcuNjc2Yy0yLjczOSwwLTQuOTQxLTIuMTYyLTQuOTQxLTQuNzk3YzAtMi42MzMsMi4yMDItNC44LDQuOTQxLTQuOA0KCWMyLjYzNSwwLDQuODM3LDIuMTI3LDQuODM3LDQuOEMxMDYuNDYyLDY1LjUxNCwxMDQuMjYsNjcuNjc2LDEwMS42MjUsNjcuNjc2IE0xMDUuMzQ4LDEwOC4yNzloLTcuNjE1VjcyLjg3OGg3LjYxNVYxMDguMjc5eiIvPg0KPHBhdGggZmlsbD0iIzIzMUYyMCIgZD0iTTEzNi42NzUsMTA4LjI3OVY4NS40NzNjMC00LjQwMi0xLjE5My02LjkzMS01LjI2OC02LjkzMWMtNS4zMDgsMC05LjI0MSw1LjU5Ny05LjI0MSwxMi42MzJ2MTcuMTA1aC03LjYxNw0KCVY3Mi44NzhoNy4yODljMCwxLjg3NS0wLjE0NCw0Ljk0LTAuNTM3LDYuOTYxbDAuMTA1LDAuMDM4YzIuMDU4LTQuNTUsNi4zMTgtNy42NTIsMTIuMzA4LTcuNjUyYzguMDQ0LDAsMTAuNTM3LDUuMDE4LDEwLjUzNywxMS4yOTcNCgl2MjQuNzU4SDEzNi42NzUiLz4NCjxwYXRoIGZpbGw9IiMyMzFGMjAiIGQ9Ik0xNjUuMjE2LDEwOC44OTVjLTcuNTc3LDAtOS44ODUtMi45Mi05Ljg4NS0xMC44MjRWNzguODNoLTYuNjgydi01Ljk1MWg2LjY4MlY2MS42ODVsNy41NzUtMi4wNTd2MTMuMjUxDQoJaDkuMzQ2djUuOTUxaC05LjMwN3YxNi44OTNjMCw1LjI3NSwxLjExNyw2LjcxMyw0LjY1Miw2LjcxM2MxLjUyMSwwLDMuMjUtMC4xODQsNC42NTMtMC41NzZ2Ni4yNzcNCglDMTcwLjE5MywxMDguNTY4LDE2Ny41NjEsMTA4Ljg5NSwxNjUuMjE2LDEwOC44OTUiLz4NCjxwYXRoIGZpbGw9IiNGOUQ1MDgiIGQ9Ik0yMzcuNDQ3LDg2LjAyM2MxMS44MTItMTUuMzQ0LDIxLjE3NC0zMy4yNzQsMjEuMTc0LTQ2LjE4MmMwLTYuODEtNC43NjYtMTEuNTA5LTExLjEzNS0xNS4wNjENCglDMjQ3LjY4NiwzOC44MjksMjQyLjc3MSw3MS42OTMsMjM3LjQ0Nyw4Ni4wMjMiLz4NCjxwYXRoIGZpbGw9IiNGOUQ1MDgiIGQ9Ik0xOTguNDYyLDEyMy43MDhjMjcuODU0LTkuMjgxLDY4LjI3MS0zMC45ODMsOTYuMzg2LTUwLjQyNmMyLjM0OC0xLjYxOCw0LjE1Mi0zLjExLDQuMTUyLTUuNzQzDQoJYzAtNC42MzQtOC40MzktMTAuNzgxLTEyLjUyOS0xMy4xODJDMjY0LjQyLDc3LjM1NCwyMjAuNDQxLDExMS43ODMsMTk4LjQ2MiwxMjMuNzA4Ii8+DQo8cGF0aCBmaWxsPSIjRjlENTA4IiBkPSJNMjI0LjI4NSwxMDQuMjAxYzE3LjIyOS0xMS44NzcsNDIuMTcxLTM0LjI1Niw1MC42MzktNDYuNDE2YzEuODg3LTIuODI2LDMuMzU0LTQuNDYxLDMuMzU0LTcuNDkzDQoJYzAtNC44NzUtNS42NDctOC41MDItOS43NjItMTAuOTk4QzI1OC42MDcsNjIuNTY5LDIzNi41MjEsOTEuNTUyLDIyNC4yODUsMTA0LjIwMSIvPg0KPHBhdGggZmlsbD0iI0Y5RDUwOCIgZD0iTTIzOS44ODQsNzEuMjQ1YzIuMjc3LTE0LjY3NCwxLjAzMi0zMi40MDItMS44NDktNDMuNTI4Yy0xLjUwOC02LjAzMy03LjAxOC0xMi44OTMtMTIuMDMyLTE1LjA1NQ0KCUMyMzIuNTQxLDMxLjUwMSwyMzguMzA3LDU4LjIxOCwyMzkuODg0LDcxLjI0NSIvPg0KPHBhdGggZmlsbD0iI0Y5RDUwOCIgZD0iTTIzNS4wODQsNTAuNjgzQzIyOS44NDYsMzYuNTQ1LDIxNi45MDQsNy4yMjksMTk3LjcwMywwQzIxMC4yMSwxMy42NzUsMjI4LjY1Niw0MC45MDUsMjM1LjA4NCw1MC42ODMiLz4NCjxwb2x5bGluZSBmaWxsPSIjMjMxRjIwIiBwb2ludHM9IjI1NC40LDEwNC4yOTYgMjU0LjQsMTA4LjI3OSAyNTMuNjY2LDEwOC4yNzkgMjUzLjY2NiwxMDQuMjk2IDI1Mi40MjQsMTA0LjI5NiAyNTIuNDI0LDEwMy43NDggDQoJMjU1LjY0OCwxMDMuNzQ4IDI1NS42NDgsMTA0LjI5NiAyNTQuNCwxMDQuMjk2ICIvPg0KPHBhdGggZmlsbD0iIzIzMUYyMCIgZD0iTTI2MS4xNjQsMTA4LjI3OWwtMC40NzUtMi42MjNjLTAuMDQxLTAuNDgyLTAuMDYyLTAuODYxLTAuMDc2LTEuMTQxaC0wLjAwNg0KCWMtMC4wMjUsMC4yNS0wLjE5OSwwLjUzNi0wLjI1NiwwLjg0OWwtMC45MywyLjkxNUgyNTguOGwtMS4wMzQtMi43NDRjLTAuMDYzLTAuMzItMC4xMjktMC43MjMtMC4yOTEtMS4wMmgtMC4wMDQNCgljLTAuMDE0LDAuNDAxLTAuMDQxLDAuNzMyLTAuMDY4LDEuMTc0bC0wLjMwMywyLjU5aC0wLjYwOWwwLjYyOS00LjUzMWgwLjgxMmwwLjkxOCwyLjgxOGMwLjA2NSwwLjM3OSwwLjI0NCwwLjY3NiwwLjI3MSwwLjk1Nw0KCWgwLjAwOWMwLjAzNy0wLjM2OSwwLjA3Mi0wLjU2LDAuMjY1LTAuODY5bDAuOTM4LTIuOTA2aDAuODE3bDAuNjM4LDQuNTMxSDI2MS4xNjQiLz4NCjxwYXRoIGZpbGw9IiMyMzFGMjAiIGQ9Ik0xNzcuMjQzLDY1LjUzN2MtMS43MjQsMC0yLjk1NS0xLjMxMi0yLjk1NS0yLjk1N2MwLTEuNjI0LDEuMjYyLTIuOTUzLDIuOTU1LTIuOTUzDQoJYzEuNzE2LDAsMi45NTIsMS4yMzgsMi45NTIsMi45NTNDMTgwLjE5NSw2NC4xOTQsMTc4Ljc4Niw2NS41MzcsMTc3LjI0Myw2NS41MzcgTTE3Ny4yNDMsNjAuMjA4Yy0xLjI0NSwwLTIuMzUzLDEuMDQ0LTIuMzUzLDIuMzU4DQoJczEuMTA2LDIuMzkyLDIuMzUzLDIuMzkyYzEuMjQ3LDAsMi4zNTEtMS4wNDksMi4zNTEtMi4zNkMxNzkuNTk0LDYxLjI4NiwxNzguNDksNjAuMjA4LDE3Ny4yNDMsNjAuMjA4eiBNMTc3LjgyOSw2NC4yMTYNCglsLTAuOTMxLTEuNDg5aC0wLjAxN3YxLjQ4OWgtMC41NTd2LTMuMzU3aDAuOTE3YzAuODMxLDAsMS4xMzcsMC4zNzksMS4xMzcsMC44NTNjMCwwLjU3OS0wLjMyNywwLjg5OS0wLjg5MywxDQoJYzAuMDM3LDAuMDQ2LDAuMTA5LDAuMjgxLDAuMzEyLDAuNDU5bDAuNjY0LDEuMDQ2TDE3Ny44MjksNjQuMjE2TDE3Ny44MjksNjQuMjE2eiBNMTc3LjIyOSw2MS4yOTNoLTAuMzQ2djEuMTEzaDAuMTM1DQoJYzAuNTcsMCwwLjc5Ny0wLjM3MywwLjc5Ny0wLjU4N0MxNzcuODE0LDYxLjQzOCwxNzcuNTk4LDYxLjI5MywxNzcuMjI5LDYxLjI5M3oiLz4NCjwvc3ZnPg0K"
+            }
+        ],
+        "deliveryInstructions": {
+            "allowParentInstruction": null,
+            "allowBrandWideInstruction": null,
+            "allowByAccount": "Yes-required",
+            "allowByContentType": "Yes-required",
+            "allowByAccountContentType": "Yes-required",
+            "acceptsPrintSuppression": "Yes-optional"
+        },
+        "contentTypes": [
+            "Monthly Bill"
+        ],
+        "lastModifiedOn": "2018-11-15 16:40:16.358",
+        "languageCode": "en"
+    }
+]

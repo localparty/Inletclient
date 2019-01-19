@@ -1,0 +1,124 @@
+{
+    "ccId": "UATCC:10000276072",
+    "consentId": "GC:10000000002",
+    "resultMatch": [
+        {
+            "brandId": "BB:10000001203",
+            "brandName": "Xcel_POC",
+            "contentType": [
+                "Bill"
+            ],
+            "accountNumber": "WFTEST011019A",
+            "confidenceLevel": 19,
+            "verificationComplete": true,
+            "enrollmentEligibilityStatus": true,
+            "connection": false,
+            "billMetadata": [
+                {
+                    "billDataName": "accountNumber",
+                    "billDataValue": "WFTEST011019A"
+                },
+                {
+                    "billDataName": "amountDue",
+                    "billDataValue": "175.45"
+                },
+                {
+                    "billDataName": "date",
+                    "billDataValue": "Jan 10 2019"
+                },
+                {
+                    "billDataName": "dueDate",
+                    "billDataValue": "Jan 30 2019"
+                }
+            ],
+            "remittanceAddresses": [
+                {
+                    "remittanceAddress": {
+                        "addressName": "Remittance Address",
+                        "addressLines": [
+                            "292 Madison Ave",
+                            "5th Floor",
+                            "New York",
+                            "NY",
+                            "US",
+                            "10017"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "brandId": "BB:10000002066",
+            "brandName": "ConEd_POC",
+            "contentType": [
+                "Monthly Bill"
+            ],
+            "accountNumber": null,
+            "confidenceLevel": 16,
+            "verificationComplete": false,
+            "enrollmentEligibilityStatus": true,
+            "connection": false,
+            "billMetadata": null,
+            "remittanceAddresses": null
+        },
+        {
+            "brandId": "BB:10000002067",
+            "brandName": "Sprint_POC",
+            "contentType": [
+                "Monthly Bill"
+            ],
+            "accountNumber": null,
+            "confidenceLevel": 11,
+            "verificationComplete": false,
+            "enrollmentEligibilityStatus": true,
+            "connection": false,
+            "billMetadata": null,
+            "remittanceAddresses": null
+        },
+        {
+            "brandId": "BB:10000002068",
+            "brandName": "AT&T_POC",
+            "contentType": [
+                "Monthly Bill"
+            ],
+            "accountNumber": "WFTEST011019D",
+            "confidenceLevel": 11,
+            "verificationComplete": true,
+            "enrollmentEligibilityStatus": true,
+            "connection": false,
+            "billMetadata": [
+                {
+                    "billDataName": "accountNumber",
+                    "billDataValue": "WFTEST011019D"
+                },
+                {
+                    "billDataName": "amountDue",
+                    "billDataValue": "119.99"
+                },
+                {
+                    "billDataName": "date",
+                    "billDataValue": "Jan 11 2019"
+                },
+                {
+                    "billDataName": "dueDate",
+                    "billDataValue": "Jan 27 2019"
+                }
+            ],
+            "remittanceAddresses": [
+                {
+                    "remittanceAddress": {
+                        "addressName": "Remittance Address",
+                        "addressLines": [
+                            "292 Madison Ave",
+                            "5th Floor",
+                            "New York",
+                            "NY",
+                            "US",
+                            "10017"
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

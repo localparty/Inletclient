@@ -1,0 +1,130 @@
+[
+    {
+        "brandId": "BB:10000002068",
+        "brandName": "WFTB4ANPHZIP",
+        "brandDisplayName": "AT&T_POC",
+        "abbreviatedBrandName": "WFTB4ANPHZIP",
+        "brandDescription": "Discovery Test Brand Account Number, Phone Zip",
+        "industryVerticals": null,
+        "parentId": null,
+        "hasChildren": "No",
+        "brandUrl": "http://www.inletdigital.com/",
+        "brandHeadquartersAddress": [
+            "292 Madison Ave",
+            "5th Floor",
+            "New York",
+            "NY",
+            "NY",
+            "10017"
+        ],
+        "remittanceAddresses": [
+            {
+                "addressName": null,
+                "addressLines": null
+            }
+        ],
+        "supportUrl": "http://www.inletdigital.com/",
+        "supportPhoneNumbers": [],
+        "supportEmails": [],
+        "accountNumberFormat": [
+            "AAAAAA######A"
+        ],
+        "regionsServed": [],
+        "brandTerminationDate": "",
+        "dateOfFirstAvailability": "",
+        "historicalContentSupport": "Yes",
+        "deliveryInstructionConfirmationSupport": null,
+        "contentIngestionMethod": "Direct Ingest Provider File Exchange",
+        "documentRetentionPolicies": [],
+        "brandConsents": [
+            {
+                "consentId": "BC:10000002294",
+                "brandId": null,
+                "consentLanguage": null,
+                "consentFile": null,
+                "consentFileName": null,
+                "consentSource": "self",
+                "consentFormat": "Text",
+                "consentUrl": null,
+                "consentText": "Test Brand Specific Consent",
+                "consentUpdatePolicy": "New only",
+                "languageCode": null,
+                "effectiveDate": null,
+                "status": null,
+                "expiryDate": null,
+                "consentReference": "Test Brand Specific Consent",
+                "consentLastAccessed": "2018-11-15 16:40:34.054"
+            },
+            {
+                "consentId": "GC:10000000002",
+                "brandId": null,
+                "consentLanguage": null,
+                "consentFile": null,
+                "consentFileName": null,
+                "consentSource": "SELF",
+                "consentFormat": "Text",
+                "consentUrl": null,
+                "consentText": "Test multi-brand consent - Aug 23",
+                "consentUpdatePolicy": "New Only",
+                "languageCode": null,
+                "effectiveDate": null,
+                "status": null,
+                "expiryDate": null,
+                "consentReference": "Test multi-brand consent - Aug 23",
+                "consentLastAccessed": "2017-08-23 09:38:25.281261"
+            }
+        ],
+        "brandConnectionParameters": [
+            {
+                "brandIdDeliveryPointType": {
+                    "deliveryPointName": "Account Number",
+                    "deliveryPointScope": "WFTB4ANPHZIP/BB:10000002068",
+                    "userFields": [
+                        {
+                            "fieldId": "accountNum",
+                            "fieldType": "MaskedString"
+                        }
+                    ]
+                }
+            },
+            {},
+            {
+                "zipDeliveryPointType": {
+                    "deliveryPointName": "ZIP",
+                    "deliveryPointScope": "WFTB4ANPHZIP/BB:10000002068",
+                    "userFields": [
+                        {
+                            "fieldId": "zipCode",
+                            "fieldType": "String"
+                        }
+                    ]
+                }
+            }
+        ],
+        "assetData": [
+            {
+                "brandId": null,
+                "assetId": "BA:10000002088",
+                "assetType": "LOGO",
+                "assetName": "att logo.svg",
+                "assetDescription": "svg Logo",
+                "assetTitle": "AT&T Logo",
+                "languageCode": null,
+                "assetFile": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIzLjAuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA0OTYuMDkgMjExIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0OTYuMDkgMjExOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGw6bm9uZTt9Cgkuc3Qxe2ZpbGw6IzAwOUZEQjt9Cjwvc3R5bGU+CjxyZWN0IGNsYXNzPSJzdDAiIHdpZHRoPSI0OTYuMDkiIGhlaWdodD0iMjg4Ii8+CjxnPgoJPHBhdGggZD0iTTQ2Ny4wNSwxNDQuNjljMS4zLDAsMi4yMS0wLjksMi4yMS0yLjIxVjc3LjY5aDIyYzEuMzEsMCwyLjIxLTAuOSwyLjIxLTIuMjF2LTguOTRjMC0xLjMxLTAuOS0yLjIxLTIuMjEtMi4yMUg0MzIuNwoJCWMtMS4zMSwwLTIuMjEsMC45LTIuMjEsMi4yMXY4Ljk0YzAsMS4zMSwwLjksMi4yMSwyLjIxLDIuMjFoMjJ2NjQuNzhjMCwxLjMxLDAuOSwyLjIxLDIuMjEsMi4yMUg0NjcuMDV6IE0zMTQuMDEsMTQyLjA3CgkJbC0yNy4yMi03NS43M2MtMC41LTEuNDEtMS41MS0yLjAxLTMuMDEtMi4wMWgtMTMuNDZjLTEuNSwwLTIuNDEsMC42LTIuOTEsMi4wMWwtMjcuMjIsNzUuNzNjLTAuNSwxLjMxLDAuNCwyLjYxLDEuNzEsMi42MWg5Ljg0CgkJYzEuNTEsMCwyLjQxLTAuNywyLjkxLTIuMTFsNS45My0xNy4wN2gzMi40NGw1LjkzLDE3LjA3YzAuNSwxLjQxLDEuNDEsMi4xMSwyLjkxLDIuMTFoMTAuNDUKCQlDMzEzLjcxLDE0NC42OSwzMTQuNTEsMTQzLjM4LDMxNC4wMSwxNDIuMDd6IE0yNjUuMiwxMTIuMzVsMTEuNjUtMzMuMTRsMTEuNTUsMzMuMTRIMjY1LjJ6IE00NDEuMDQsMTQxLjg3bC0xNi45Ny0xOC4zOAoJCWwxMS4yNS0xOS4yOGMxLTEuNzEsMC4xLTIuODEtMS41MS0yLjgxaC05Ljc0Yy0xLjYxLDAtMi41MSwwLjUtMy4zMSwxLjgxbC02LjMzLDExLjA1bC0xMS4yNS0xMi4xNQoJCWM3LjY0LTQuMjIsMTQuODctOS44NCwxNC44Ny0xOS44OWMwLTExLjc1LTguMjQtMTkuNjktMjEuNy0xOS42OWMtMTMuMTYsMC0yMS44OSw4LjU0LTIxLjg5LDIwLjk5YzAsNC45MiwyLjExLDEwLjU0LDYuNzMsMTUuODcKCQljLTkuNDQsNS4yMi0xNS42NywxMS40NS0xNS42NywyMy4xYzAsMTUuMTcsMTEuNTUsMjQsMjYuMjIsMjRjMTEuODUsMCwxOC45OC01LjEyLDI0LjEtMTEuOTVsNy42Myw4LjQzCgkJYzEuMTEsMS4zMSwyLjAxLDEuNzEsMy43MiwxLjcxaDEyLjc1QzQ0MS41NCwxNDQuNjksNDQyLjM1LDE0My4yOCw0NDEuMDQsMTQxLjg3eiBNMzk2LjU1LDc0Ljk4YzUuMjIsMCw3LjgzLDMuNDEsNy44Myw3LjU0CgkJYzAsNC40Mi0zLjAxLDYuOTMtMTAuMTQsMTEuMDVjLTQuMTItNC40Mi01LjkyLTcuNDMtNS45Mi0xMC44NUMzODguMzEsNzguMywzOTEuMzIsNzQuOTgsMzk2LjU1LDc0Ljk4eiBNMzkyLjAzLDEzMy44NAoJCWMtNi42MywwLTEyLjI1LTQuOTItMTIuMjUtMTEuODVjMC03LjAzLDQuMDItMTAuNTUsMTAuMjUtMTQuMDZsMTYuMjcsMTcuNDhDNDAyLjc3LDEzMC43MywzOTguNDUsMTMzLjg0LDM5Mi4wMywxMzMuODR6CgkJIE0zMzAuNjYsMTQ0LjY5Yy0xLjMsMC0yLjIxLTAuOS0yLjIxLTIuMjFWNzcuNjloLTIxLjk5Yy0xLjMxLDAtMi4yMS0wLjktMi4yMS0yLjIxdi04Ljk0YzAtMS4zMSwwLjktMi4yMSwyLjIxLTIuMjFoNTguNTUKCQljMS4zMSwwLDIuMjEsMC45LDIuMjEsMi4yMXY4Ljk0YzAsMS4zMS0wLjksMi4yMS0yLjIxLDIuMjFoLTIxLjk5djY0Ljc4YzAsMS4zMS0wLjksMi4yMS0yLjIxLDIuMjFIMzMwLjY2eiIvPgoJPHBhdGggY2xhc3M9InN0MSIgZD0iTTE1Ni41OSwxOC4xNkMxNDEuNTQsOS4xMywxMjQuMDYsNCwxMDUuMjIsNEM4Ni4yNCw0LDY4LjIzLDkuMzIsNTMuMTMsMTguNThjLTQuNTMsMi43OS03LjA4LDUuMDMtNy4wOCw3LjkKCQljMCw4LjQ4LDE5Ljc5LDE3LjU4LDU0LjksMTcuNThjMzQuNzQsMCw2MS43LTkuOTgsNjEuNy0xOS41OEMxNjIuNjUsMjIuMTksMTYwLjY1LDIwLjU4LDE1Ni41OSwxOC4xNnogTTE3MS41NCwyOS4zMgoJCWMwLjQyLDAuNjYsMC42MywxLjM3LDAuNjMsMi4zMmMwLDExLjE2LTM0LjE0LDMwLjktODguNDksMzAuOWMtMzkuOTMsMC00Ny40LTE0LjgyLTQ3LjQtMjQuMjRjMC0zLjM3LDEuMjktNi44Miw0LjEzLTEwLjMyCgkJYzAuMTYtMC4yMSwwLjAzLTAuMjktMC4xNi0wLjEzYy01LjE5LDQuNC05Ljk1LDkuMzQtMTQuMTMsMTQuNjljLTIsMi41My0zLjI0LDQuNzYtMy4yNCw2LjExYzAsMTkuNTMsNDguOTYsMzMuNjksOTQuNzMsMzMuNjkKCQljNDguNzcsMCw3MC41NC0xNS45Miw3MC41NC0yOS45M2MwLTUtMS45NS03LjkyLTYuOTItMTMuNThjLTMuMjQtMy42OS02LjI5LTYuNjktOS41My05LjYzCgkJQzE3MS41NCwyOS4wNiwxNzEuNDQsMjkuMTYsMTcxLjU0LDI5LjMyeiBNMTQuNDYsNjEuMzVjLTIuOTUsNS44NC02LjIxLDE1LjcxLTcuMTksMjAuODJjLTAuNDIsMi4xOC0wLjI0LDMuMjQsMC41Myw0Ljg3CgkJYzYuMTYsMTMuMDgsMzcuMzIsMzQuMDEsMTEwLjAyLDM0LjAxYzQ0LjM1LDAsNzguOC0xMC45LDg0LjM4LTMwLjhjMS4wMy0zLjY2LDEuMDgtNy41My0wLjI0LTEyLjc0CgkJYy0xLjQ3LTUuODItNC4yNC0xMi42MS02LjU4LTE3LjM3Yy0wLjA4LTAuMTYtMC4yMS0wLjEzLTAuMTgsMC4wNWMwLjg3LDI2LjA4LTcxLjg2LDQyLjktMTA4LjU1LDQyLjkKCQljLTM5Ljc0LDAtNzIuOTEtMTUuODQtNzIuOTEtMzUuODVjMC0xLjkyLDAuMzktMy44NCwwLjg5LTUuODRDMTQuNyw2MS4yMiwxNC41NCw2MS4xOSwxNC40Niw2MS4zNXogTTg1LjAzLDE0NC43MQoJCWMtNTEuNCwwLTc1LjY1LTIzLjk1LTgwLjA0LTQwLjNjLTAuMDUtMC4yNC0wLjIxLTAuMTgtMC4yMSwwLjAzYzAsNS41LDAuNTUsMTIuNjEsMS41LDE3LjMyYzAuNDUsMi4yOSwyLjMyLDUuOSw1LjA1LDguNzcKCQljMTIuNDUsMTIuOTgsNDMuNDgsMzEuMTYsOTcuMjMsMzEuMTZjNzMuMjIsMCw4OS45Ni0yNC40LDkzLjM5LTMyLjQzYzIuNDUtNS43NCwzLjcxLTE2LjExLDMuNzEtMjQuODJjMC0yLjExLTAuMDUtMy43OS0wLjEzLTUuNDUKCQljMC0wLjI2LTAuMTYtMC4yOS0wLjIxLTAuMDNDMjAxLjY1LDExOC42LDEzOS4wOSwxNDQuNzEsODUuMDMsMTQ0LjcxeiBNMTEyLjAzLDE4OC45YzI0LjcxLDAsNTEuODgtNi43NCw2OC4xMi0yMC4wOAoJCWM0LjQ1LTMuNjMsOC42OS04LjQ3LDEyLjQ4LTE0Ljk4YzIuMTgtMy43NCw0LjMyLTguMTksNi4wNS0xMi41NmMwLjA4LTAuMjEtMC4wNS0wLjMxLTAuMjEtMC4wOAoJCWMtMTUuMTEsMjIuMjQtNTguODUsMzYuMTEtMTA0LjAyLDM2LjExYy0zMS45MywwLTY2LjI4LTEwLjIxLTc5LjczLTI5LjcyYy0wLjEzLTAuMTgtMC4yNi0wLjExLTAuMTgsMC4xMQoJCUMyNy4wNywxNzQuMzUsNjUuMDgsMTg4LjksMTEyLjAzLDE4OC45eiBNNDMuNjIsMTgzLjc3YzE3LjAzLDEzLjE5LDM4LjQsMjEuMTEsNjEuNTksMjEuMTFjMjUuMzcsMCw0OC41MS05LjQyLDY2LjE3LTI0LjkKCQljMC4yMS0wLjE4LDAuMTEtMC4zMi0wLjExLTAuMThjLTcuOTIsNS4yOS0zMC41MSwxNi44NS02Ni4wNywxNi44NWMtMzAuOSwwLTUwLjQzLTYuOS02MS40Ni0xMy4wNQoJCUM0My41NSwxODMuNDgsNDMuNDcsMTgzLjY0LDQzLjYyLDE4My43N3oiLz4KPC9nPgo8L3N2Zz4K"
+            }
+        ],
+        "deliveryInstructions": {
+            "allowParentInstruction": null,
+            "allowBrandWideInstruction": null,
+            "allowByAccount": "Yes-required",
+            "allowByContentType": "Yes-required",
+            "allowByAccountContentType": "Yes-required",
+            "acceptsPrintSuppression": "No"
+        },
+        "contentTypes": [
+            "Monthly Bill"
+        ],
+        "lastModifiedOn": "2018-11-15 16:40:33.668",
+        "languageCode": "en"
+    }
+]
