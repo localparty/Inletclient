@@ -7,7 +7,8 @@ public final class Endpoint<Response> {
     
     let method: Method
     let path: Path
-    let parameters: Parameters?
+    let bodyParameters: BodyParameters?
+    let queryItems: QueryItems?
     let encoding: ParameterEncoding?
     let localResource: String?
     let localResourceType: String?
@@ -20,7 +21,8 @@ public final class Endpoint<Response> {
     init(
         method: Method = .get,
         path: Path,
-        parameters: Parameters? = nil,
+        bodyParameters: BodyParameters? = nil,
+        queryItems: QueryItems? = nil,
         headers: Headers? = nil,
         encoding: ParameterEncoding? = JSONEncoding.default,
         localResource: String? = nil,
@@ -29,7 +31,8 @@ public final class Endpoint<Response> {
         ) {
         self.method = method
         self.path = path
-        self.parameters = parameters
+        self.bodyParameters = bodyParameters
+        self.queryItems = queryItems
         self.encoding = encoding
         self.localResource = localResource
         self.localResourceType = localResourceType
@@ -41,7 +44,8 @@ extension Endpoint where Response: Swift.Decodable {
     convenience init(
         method: Method = .get,
         path: Path,
-        parameters: Parameters? = nil,
+        bodyParameters: BodyParameters? = nil,
+        queryItems: QueryItems? = nil,
         headers: Headers? = nil,
         localResource: String? = nil,
         localResourceType: String? = nil,
@@ -49,24 +53,31 @@ extension Endpoint where Response: Swift.Decodable {
         ) {
         self.init(
             method: method, path: path,
-            parameters: parameters, encoding: encoding,
-            localResource: localResource, localResourceType: localResourceType) { jsonData in
+            bodyParameters: bodyParameters,
+            queryItems: queryItems,
+            encoding: encoding,
+            localResource: localResource,
+            localResourceType: localResourceType) { jsonData in
             try JSONDecoder().decode(Response.self, from: jsonData)
         }
     }
 }
 
 extension Endpoint where Response == Void {
-    convenience init(method: Method = .get,
-                     path: Path,
-                     parameters: Parameters? = nil) {
+    convenience init(
+        method: Method = .get,
+        path: Path,
+        bodyParameters: BodyParameters? = nil,
+        queryItems: QueryItems? = nil
+        ) {
         self.init(
             method: method,
             path: path,
-            parameters: parameters,
+            bodyParameters: bodyParameters,
+            queryItems: queryItems,
             decode: { result in
                 print("void result– \(result)")
-        }
+            }
         )
     }
 }

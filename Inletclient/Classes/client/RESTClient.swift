@@ -75,6 +75,7 @@ public final class RESTClient: RESTClientProtocol {
     public static let defaultCredentialsValue = "n/a"
     
     private let queue = DispatchQueue(label: "appdelivery.uat.inletdigital.com")
+    private let uuid = NSUUID().uuidString
     private let username: String
     private let password: String
     private let dataDirectory: String?
@@ -124,14 +125,13 @@ public final class RESTClient: RESTClientProtocol {
         password: String = RESTClient.defaultCredentialsValue,
         baseURL: String = RESTClient.defaultBaseURL,
         dataDirectory: String? = nil,
-        bundle: Bundle? = findBundle(withName: inletBundleName)
+        bundle: Bundle? = nil
         ) {
         self.username = username
         self.password = password
         self.baseURL = URL(string: baseURL)!
         self.dataDirectory = dataDirectory
         self.bundle = bundle
-        //configureProtectionSpace()
     }
     
     static func alamoFireHttpMethod(from method: Method) -> Alamofire.HTTPMethod {
@@ -176,7 +176,8 @@ public final class RESTClient: RESTClientProtocol {
                         .documentDirectory, .userDomainMask, true).first!)
             let logsPath =
                 documentsPath
-                    .appendingPathComponent(jsonPathFromEndpoint)!
+                    .appendingPathComponent(uuid, isDirectory: true)!
+                    .appendingPathComponent(jsonPathFromEndpoint)
             
             let filePathUrl =
                 logsPath
@@ -225,7 +226,20 @@ public final class RESTClient: RESTClientProtocol {
     private func getDataRequest<Response>(fromEndpoint endpoint: Endpoint<Response>) -> DataRequest {
         guard let bundle = bundle else {
             // i.e. inline mode
-            let urlFromEndpointAndBasePath = urlFromBasePath(appendingPath: endpoint.path)
+            var urlFromEndpointAndBasePath: URL
+            
+            if let urlParameters = endpoint.queryItems {
+                let queryItems: [URLQueryItem] =
+                    urlParameters.map { (key: String, value: String) -> URLQueryItem in
+                    return URLQueryItem(name: key, value: value)
+                }
+                let urlComps = NSURLComponents(
+                    string: urlFromBasePath(appendingPath: endpoint.path).absoluteString)!
+                urlComps.queryItems = queryItems
+                urlFromEndpointAndBasePath = urlComps.url!
+            } else {
+                urlFromEndpointAndBasePath = urlFromBasePath(appendingPath: endpoint.path)
+            }
             
             var urlRequest = URLRequest(
                 url: urlFromEndpointAndBasePath,
@@ -237,7 +251,7 @@ public final class RESTClient: RESTClientProtocol {
             urlRequest.allHTTPHeaderFields = endpoint.headers
             urlRequest.timeoutInterval = endpoint.timeoutInterval!
             
-            if let parameters:Parameters = endpoint.parameters {
+            if let parameters:BodyParameters = endpoint.bodyParameters {
                 let postData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
                 urlRequest.httpBody = postData as Data
             }

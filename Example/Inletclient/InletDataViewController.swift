@@ -27,6 +27,16 @@ UITableViewDataSource, MirrorControllerDelegate {
     
     var subscription: Disposable?
     
+    func onNext(data: Any) {
+        DispatchQueue.main.async {
+            let viewController = self.instanciateProxyViewController()
+            if let viewController = viewController as? MirroringTableViewController {
+                viewController.mirror(data, usingDelegate: self)
+                self.navigationController!.show(viewController, sender: self)
+            }
+        }
+    }
+    
     func onNext(data: [BrandProfilesTuple]) {
         DispatchQueue.main.async {
             let viewController = self.instanciateProxyViewController()
@@ -86,6 +96,15 @@ UITableViewDataSource, MirrorControllerDelegate {
             .subscribe(onNext: onNext, onError: onError)
     }
     
+    func retrieveDataBackup(_ sender: UIBarButtonItem) {
+        
+        subscription?.dispose()
+        
+        subscription = brandId(customer: InletCustomer.WFTEST011019A)
+            .asObservable()
+            .subscribe(onNext: onNext, onError: onError)
+    }
+    
     
     public func tableView(
         _ tableView: UITableView,
@@ -102,7 +121,7 @@ UITableViewDataSource, MirrorControllerDelegate {
                 minConfidenceLevel: minConfidenceLevel,
                 partnerChannelId: partnerChannelId)
         
-        let dataDirectoryModeIsTrue = true
+        let dataDirectoryModeIsTrue = false
         guard dataDirectoryModeIsTrue else {
             
             let username = "$2a$06$YKYwyV3lwnQ.mFNm97XtgOie.oTAOnsh0VQh1UHQ9jbLgyrNfY/1C"
@@ -133,6 +152,30 @@ UITableViewDataSource, MirrorControllerDelegate {
                 restClient: restClient,
                 clientParameters: clientParameters)
                 .loadData()
+        
+    }
+    
+    func brandId(customer: InletCustomer) -> Single<[BrandProfile]> {
+        
+        let minConfidenceLevel: Int = 10
+        let clientParameters =
+            ClientParameters(
+                inletCustomer: customer,
+                minConfidenceLevel: minConfidenceLevel,
+                partnerChannelId: partnerChannelId)
+        let username = "$2a$06$YKYwyV3lwnQ.mFNm97XtgOie.oTAOnsh0VQh1UHQ9jbLgyrNfY/1C"
+        let password = "$2a$06$H7RhnGbrHg17E4siBcilwuJTwgyRiYQZAC6GPO0lITc/t/r24ORAC"
+        
+        let restClient: RESTClient = RESTClient(
+            username: username, password: password)
+        
+        let brandId = "BB:10000001203"
+        
+        return
+            InletController(
+                restClient: restClient,
+                clientParameters: clientParameters)
+                .getProfileSingle(ofBrandWithId: brandId)
         
     }
     

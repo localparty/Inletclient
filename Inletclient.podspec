@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Inletclient'
-  s.version          = '1.0.14'
+  s.version          = '1.0.15'
   s.summary          = 'The Swift client for the Inlet REST APIs'
 
 # This description is used to generate tags and improve search results.
@@ -19,6 +19,9 @@ Pod::Spec.new do |s|
 
   s.description      = <<-DESC
 # The Swift client for the Inlet REST APIs, implemented with RxSwift and Alamofire.
+- 2019-01-23: fixed- the http response dumps woudl be overwritten, including now a UUID in the directory path
+- 2019-01-23: fixed– the inline version would fail with a nil
+- 2019-01-23: fixed- get brand profile would send the data in the request body v query items
 - added a parameter for included the base64 svg logo of the brands
 - excluded the extraneous data from the data enum
 - updated the cid of the data for the setup executed on 2019-01-18

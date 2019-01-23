@@ -22,12 +22,12 @@ public enum API {
     }
     
     public static func getBrandProfile(brandId: String) -> Endpoint<[BrandProfile]> {
-        let parameters: [String: Any] = [
-            "assetBinaryData": true
+        let queryItems: QueryItems = [
+            "assetBinaryData": String(true)
         ]
         return Endpoint(
             path: "api/access/v1/brand/\(brandId)",
-            parameters: parameters,
+            queryItems: queryItems,
             localResource: "brand",
             localResourceType: "json"
         )
@@ -104,7 +104,7 @@ public enum API {
             ])
         }
         
-        let parameters: [String: Any] = [
+        let bodyParameters: [String: Any] = [
             "consentId": consentId,
             "channelConsumerDeliveryPoints": channelConsumerDeliveryPoints
         ]
@@ -112,7 +112,7 @@ public enum API {
         return Endpoint(
             method: .put,
             path: endpointPath,
-            parameters: parameters,
+            bodyParameters: bodyParameters,
             localResource: "discovery-profile",
             localResourceType: "json"
         )
@@ -139,7 +139,8 @@ public class EndpointConfiguration {
 }
 
 public typealias Headers = [String: String]
-public typealias Parameters = [String: Any]
+public typealias BodyParameters = [String: Any]
+public typealias QueryItems = [String: String]
 public typealias Path = String
 
 public enum Method {

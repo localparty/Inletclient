@@ -99,6 +99,10 @@ public class InletController {
         return restClient.request(API.getDiscoveryConsents())
     }
     
+    public func getProfileSingle (ofBrandWithId brandId: String) -> Single<[BrandProfile]> {
+        return restClient.request(API.getBrandProfile(brandId: brandId))
+    }
+    
     private func getDiscoveryProfileSingle (singleOfDiscoveryConsents: DiscoveryConsentsSingle) -> DiscoveryProfileSingle {
         return singleOfDiscoveryConsents.flatMap {
             (discoveryConsents) in
