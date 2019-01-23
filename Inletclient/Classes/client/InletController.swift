@@ -79,18 +79,30 @@ public class InletController {
         let observables: [Observable<(ResultMatch, BrandProfile)>] = filteredResultMatches.map { (resultMatch) -> Observable<(ResultMatch, BrandProfile)> in
             let brandId = resultMatch.brandId!
             let observable: Observable<(ResultMatch, BrandProfile)> =
-            restClient.request(API.getBrandProfile(brandId: brandId)).flatMap { (brandProfile) in
-                return Single<(ResultMatch, BrandProfile)>.create { (observer) in
-                    if brandProfile.capacity != 1{
-                        observer(SingleEvent.error(InletClientError.emptyResponse))
-                    } else {
-                        observer(SingleEvent.success((resultMatch, brandProfile.first!)))
+                restClient.request(API.getBrandProfile(brandId: brandId)).flatMap { (brandProfile) in
+                    return Single<(ResultMatch, BrandProfile)>.create { (observer) in
+                        if brandProfile.capacity != 1{
+                            observer(SingleEvent.error(InletClientError.emptyResponse))
+                        } else {
+                            observer(SingleEvent.success((resultMatch, brandProfile.first!)))
+                        }
+                        return Disposables.create {}
                     }
-                    return Disposables.create {}
-                }
-            }.asObservable()
+                }.asObservable()
             return observable
         }
+        //
+        guard observables.count > 0 else {
+            let single: Single<[(ResultMatch, BrandProfile)]> =
+                Single<[(ResultMatch, BrandProfile)]>.create { (observer) in
+                    let result: [(ResultMatch, BrandProfile)] = []
+                    observer(SingleEvent.success(result))
+                    return Disposables.create {}
+                }
+            let observable = single.asObservable()
+            return observable
+        }
+        
         let observablesZip = Observable.zip(observables)
         return observablesZip
     }
