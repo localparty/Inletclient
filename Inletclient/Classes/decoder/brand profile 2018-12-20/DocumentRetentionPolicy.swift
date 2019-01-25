@@ -7,8 +7,8 @@ import Foundation
 
 public struct DocumentRetentionPolicy : Codable {
     
-    let contentType : String?
-    let retentionDuration : String?
+    public let contentType : String?
+    public let retentionDuration : String?
     
     enum CodingKeys: String, CodingKey {
         case contentType = "contentType"

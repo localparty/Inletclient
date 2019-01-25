@@ -7,21 +7,21 @@ import Foundation
 
 public struct BrandConsent : Codable {
     
-    let brandId : String?
-    let consentFile : String?
-    let consentFileName : String?
-    let consentFormat : String?
-    let consentId : String?
-    let consentLanguage : String?
-    let consentReference : String?
-    let consentSource : String?
-    let consentText : String?
-    let consentUpdatePolicy : String?
-    let consentUrl : String?
-    let effectiveDate : String?
-    let expiryDate : String?
-    let languageCode : String?
-    let status : String?
+    public let brandId : String?
+    public let consentFile : String?
+    public let consentFileName : String?
+    public let consentFormat : String?
+    public let consentId : String?
+    public let consentLanguage : String?
+    public let consentReference : String?
+    public let consentSource : String?
+    public let consentText : String?
+    public let consentUpdatePolicy : String?
+    public let consentUrl : String?
+    public let effectiveDate : String?
+    public let expiryDate : String?
+    public let languageCode : String?
+    public let status : String?
     
     enum CodingKeys: String, CodingKey {
         case brandId = "brandId"

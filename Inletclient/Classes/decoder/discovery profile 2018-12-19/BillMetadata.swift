@@ -7,8 +7,8 @@ import Foundation
 
 public struct BillMetadata : Codable {
     
-    let billDataName : String?
-    let billDataValue : String?
+    public let billDataName : String?
+    public let billDataValue : String?
     
     enum CodingKeys: String, CodingKey {
         case billDataName = "billDataName"

@@ -7,8 +7,8 @@ import Foundation
 
 public struct RemittanceAddres : Codable {
     
-    let addressLines : [String]?
-    let addressName : String?
+    public let addressLines : [String]?
+    public let addressName : String?
     
     enum CodingKeys: String, CodingKey {
         case addressLines = "addressLines"
