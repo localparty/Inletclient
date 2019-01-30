@@ -7,8 +7,8 @@ import Foundation
 
 public struct SupportEmail : Codable {
     
-    let supportEmailName : String?
-    let supportEmailValue : String?
+    public let supportEmailName : String?
+    public let supportEmailValue : String?
     
     enum CodingKeys: String, CodingKey {
         case supportEmailName = "supportEmailName"

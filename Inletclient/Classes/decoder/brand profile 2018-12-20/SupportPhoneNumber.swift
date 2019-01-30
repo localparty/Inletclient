@@ -7,8 +7,8 @@ import Foundation
 
 public struct SupportPhoneNumber : Codable {
     
-    let supportPhoneNumberName : String?
-    let supportPhoneNumberValue : String?
+    public let supportPhoneNumberName : String?
+    public let supportPhoneNumberValue : String?
     
     enum CodingKeys: String, CodingKey {
         case supportPhoneNumberName = "supportPhoneNumberName"

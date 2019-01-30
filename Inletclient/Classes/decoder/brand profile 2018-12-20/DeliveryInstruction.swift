@@ -7,12 +7,12 @@ import Foundation
 
 public struct DeliveryInstruction : Codable {
     
-    let acceptsPrintSuppression : String?
-    let allowBrandWideInstruction : String?
-    let allowByAccount : String?
-    let allowByAccountContentType : String?
-    let allowByContentType : String?
-    let allowParentInstruction : String?
+    public let acceptsPrintSuppression : String?
+    public let allowBrandWideInstruction : String?
+    public let allowByAccount : String?
+    public let allowByAccountContentType : String?
+    public let allowByContentType : String?
+    public let allowParentInstruction : String?
     
     enum CodingKeys: String, CodingKey {
         case acceptsPrintSuppression = "acceptsPrintSuppression"

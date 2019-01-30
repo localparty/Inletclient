@@ -7,9 +7,9 @@ import Foundation
 
 public struct StructuredNameDeliveryPointType : Codable {
     
-    let deliveryPointName : String?
-    let deliveryPointScope : String?
-    let userFields : [UserField]?
+    public let deliveryPointName : String?
+    public let deliveryPointScope : String?
+    public let userFields : [UserField]?
     
     enum CodingKeys: String, CodingKey {
         case deliveryPointName = "deliveryPointName"

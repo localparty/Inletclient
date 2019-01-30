@@ -7,8 +7,8 @@ import Foundation
 
 public struct UserField : Codable {
     
-    let fieldId : String?
-    let fieldType : String?
+    public let fieldId : String?
+    public let fieldType : String?
     
     enum CodingKeys: String, CodingKey {
         case fieldId = "fieldId"
