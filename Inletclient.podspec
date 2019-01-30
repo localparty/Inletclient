@@ -63,5 +63,6 @@ Pod::Spec.new do |s|
   s.dependency 'Alamofire'
   s.dependency 'RxSwift'
   s.dependency 'RxCocoa'
+  s.dependency 'Sourcery'
 
 end

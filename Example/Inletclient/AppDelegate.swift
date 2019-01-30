@@ -13,42 +13,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    func debugBundle(){
-        enum Endpoint {
-            case endpoint
-            var localResource: String {
-                return "discovery-consent"
-            }
-            var localResourceType: String {
-                return "json"
-            }
-            var path: String {
-                return "faux-api"
-            }
-        }
-        let endpoint = Endpoint.endpoint
-        let localDataDirectory = "chris"
-        // first we try to find the resource in the main bundle
-        let resource = endpoint.localResource
-        let resourceType = endpoint.localResourceType
-        let bundle = Bundle.main
-        let resourceDirectory = URL(string: localDataDirectory)!
-            .appendingPathComponent(endpoint.path, isDirectory: true)
-            .path
-        let bundleResourcePath = bundle.path(
-            forResource: resource,
-            ofType: resourceType,
-            inDirectory: resourceDirectory
-        )
-        // if the previous path was nil it means that the bundle couldnt' find the resource
-        let bundleResourcePathFileURL = URL(fileURLWithPath: bundleResourcePath!)
-        print("\(bundleResourcePathFileURL)")
+    func debugEnvironment(){
+        let environment: [String: String] = ProcessInfo.processInfo.environment
+        debugPrint(environment)
     }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        //debugBundle()
+        debugEnvironment()
         return true
     }
 

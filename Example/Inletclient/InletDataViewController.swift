@@ -163,11 +163,11 @@ UITableViewDataSource, MirrorControllerDelegate {
                 inletCustomer: customer,
                 minConfidenceLevel: minConfidenceLevel,
                 partnerChannelId: partnerChannelId)
-        let username = "$2a$06$YKYwyV3lwnQ.mFNm97XtgOie.oTAOnsh0VQh1UHQ9jbLgyrNfY/1C"
-        let password = "$2a$06$H7RhnGbrHg17E4siBcilwuJTwgyRiYQZAC6GPO0lITc/t/r24ORAC"
+        
+        let template = InletCredentials()
         
         let restClient: RESTClient = RESTClient(
-            username: username, password: password)
+            username: template.username, password: template.password)
         
         let brandId = "BB:10000001203"
         

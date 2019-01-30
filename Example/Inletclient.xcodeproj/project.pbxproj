@@ -16,6 +16,8 @@
 		960BF52021F2B17800C92B3F /* chris in Resources */ = {isa = PBXBuildFile; fileRef = 960BF51F21F2B17800C92B3F /* chris */; };
 		9652142C21EE83D7005FD8A2 /* InletDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9652142B21EE83D7005FD8A2 /* InletDataViewController.swift */; };
 		96720C3421EA985F003816D8 /* StoryboardConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96720C3321EA985F003816D8 /* StoryboardConfig.swift */; };
+		9678830321FBC0F10032BDB8 /* InletCredentials.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9678830221FBC0F10032BDB8 /* InletCredentials.generated.swift */; };
+		9678830521FBC1BB0032BDB8 /* InletCredentials.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 9678830421FBC1BB0032BDB8 /* InletCredentials.stencil */; };
 		A85F4CE62C5D35D80F4CB11C /* Pods_Inletclient_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFD5D7AE1509218C6B26C53 /* Pods_Inletclient_Example.framework */; };
 		F1011C3BDF9F955AD53A6C6B /* Pods_Inletclient_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2442E3112641CFE97253CA28 /* Pods_Inletclient_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -47,6 +49,8 @@
 		9652142921EE78F9005FD8A2 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		9652142B21EE83D7005FD8A2 /* InletDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InletDataViewController.swift; sourceTree = "<group>"; };
 		96720C3321EA985F003816D8 /* StoryboardConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardConfig.swift; sourceTree = "<group>"; };
+		9678830221FBC0F10032BDB8 /* InletCredentials.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InletCredentials.generated.swift; sourceTree = "<group>"; };
+		9678830421FBC1BB0032BDB8 /* InletCredentials.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = InletCredentials.stencil; sourceTree = "<group>"; };
 		CB48E150B25F8790A212C1B7 /* Pods-Inletclient_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inletclient_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Inletclient_Example/Pods-Inletclient_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		CD6A91F57BB8C4103A038C5D /* Pods-Inletclient_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inletclient_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Inletclient_Tests/Pods-Inletclient_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		CEFD5D7AE1509218C6B26C53 /* Pods_Inletclient_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inletclient_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +103,8 @@
 		607FACD21AFB9204008FA782 /* Example for Inletclient */ = {
 			isa = PBXGroup;
 			children = (
+				9678830421FBC1BB0032BDB8 /* InletCredentials.stencil */,
+				9678830221FBC0F10032BDB8 /* InletCredentials.generated.swift */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				96720C3321EA985F003816D8 /* StoryboardConfig.swift */,
 				9652142B21EE83D7005FD8A2 /* InletDataViewController.swift */,
@@ -176,6 +182,7 @@
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "Inletclient_Example" */;
 			buildPhases = (
 				09BC13A04B5E2B99ED82DF4F /* [CP] Check Pods Manifest.lock */,
+				967882FD21FB9F620032BDB8 /* ShellScript */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
@@ -256,6 +263,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9678830521FBC1BB0032BDB8 /* InletCredentials.stencil in Resources */,
 				960BF4F021F12B9100C92B3F /* Settings.bundle in Resources */,
 				960BF52021F2B17800C92B3F /* chris in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
@@ -326,6 +334,23 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Inletclient_Example/Pods-Inletclient_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		967882FD21FB9F620032BDB8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/bin/bash -ex ";
+			shellScript = "\"${PROJECT_DIR}/Tools/sourcery-inlet-credentials.bash\" \"${INLET_CREDENTIALS_SOURCE}\";\n";
+		};
 		DBA060C229705110430E2EF6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -358,6 +383,7 @@
 				96720C3421EA985F003816D8 /* StoryboardConfig.swift in Sources */,
 				9652142C21EE83D7005FD8A2 /* InletDataViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				9678830321FBC0F10032BDB8 /* InletCredentials.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +533,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V7KW592DBA;
 				INFOPLIST_FILE = Inletclient/Info.plist;
+				INLET_CREDENTIALS_SOURCE = "${HOME}/Documents/inlet/credentials/generic-passwords-find.bash";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wellsfargo.dct.Inletclient-Example";
@@ -526,6 +553,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V7KW592DBA;
 				INFOPLIST_FILE = Inletclient/Info.plist;
+				INLET_CREDENTIALS_SOURCE = "${HOME}/Documents/inlet/credentials/generic-passwords-find.bash";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wellsfargo.dct.Inletclient-Example";
