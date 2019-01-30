@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Inletclient'
-  s.version          = '1.0.17'
+  s.version          = '1.1.0'
   s.summary          = 'The Swift client for the Inlet REST APIs'
 
 # This description is used to generate tags and improve search results.
@@ -18,7 +18,10 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-# The Swift client for the Inlet REST APIs, implemented with RxSwift and Alamofire.
+# The Swift client for the Inlet REST APIs, implemented with RxSwift and Alamofire
+## Revisions
+- 2019-01-30: fixed- fixed the version number for the dependencies
+- 2019-01-30: fixed- removed the credentials and implemented a tool based on sourcery for extracted them from the macOS keychain during build time
 - 2019-01-23: fixed- data with no applicable brands would hang the client
 - 2019-01-23: fixed- the http response dumps would be overwritten, including now a UUID in the directory path
 - 2019-01-23: fixed– the inline version would fail with a nil
@@ -43,7 +46,6 @@ Pod::Spec.new do |s|
                        DESC
 
   s.homepage         = 'https://github.com/localparty/Inletclient'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'localparty' => 'localparty@gmail.com' }
   s.source           = { :git => 'https://github.com/localparty/Inletclient.git', :tag => s.version.to_s }
@@ -53,16 +55,15 @@ Pod::Spec.new do |s|
 
   s.source_files = 'Inletclient/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'Inletclient' => ['Inletclient/Assets/*.png']
-  # }
+  s.resource_bundles = {
+    'Inletclient' => ['Inletclient/Assets/*']
+  }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
-  s.dependency 'Alamofire'
-  s.dependency 'RxSwift'
-  s.dependency 'RxCocoa'
-  s.dependency 'Sourcery'
+  s.dependency 'Alamofire', '~> 4.8.0'
+  s.dependency 'RxSwift', '~> 4.4.0'
+  s.dependency 'RxCocoa', '~> 4.4.0'
+  s.dependency 'Sourcery', '~> 0.15.0'
 
 end
